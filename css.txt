@@ -1,0 +1,94 @@
+1、 display: flex(弯曲，曲折)【把N个横列变成竖列】
+
+2、 flex-direction（方向）【默认为“row（行）”】： column(列)【把一行变为列】flex-wrap（包裹）：wrap
+3、letter-spacing【设置字母间距】 word-spacing 【设置字间距】
+
+4、overflow：visible  hidden scroll auto;
+visible: 不剪裁溢出的内容。浏览器将把溢出的内容呈现在其容器元素的显示区域以外的地方，全部内容在浏览器窗口里都是可见的。
+hidden： 剪裁溢出的内容。 内容只显示在其容器元素的显示区域里，这意味着只有一部分内容在浏览器窗口里是可见的。
+scroll： 类似于hidden，浏览器将对溢出的内容进行剪裁，但会显示滚动条以便让用户能够看到内容的其他部分。
+auto： 类似于scroll，但浏览器只在真的发生内容溢出时才显示滚动条。如果内容没有溢出，就不显示滚动条。
+
+5、font-style: italic【定义字体斜体】
+
+6、p:nth-child(even)/（2n）【偶数】
+                  ......
+            }
+            p:nth-child(odd)/（2n+1）【奇数】
+7、file【发送文件】
+8、<td rowspan="2">【表格中单元格占2行】
+   colspan
+
+9、multiple【多选属性】 {select里面}
+
+10、placeholder【文本提示属性】
+
+11、required【提示必须输入】
+
+12、:first-letter 【设置首字母样式】
+13、:first-line 【第一行样式】
+:before{content:"xxx"}【设置之前元素的样式】
+:after{content:"xxxx"}【设置之后元素的样式】
+14、！important【表示重要，放在声明最后，分号前面（如果一个属性的值可以包含多个关键词，如font，这一点则尤为重要，必须将！important标志放在声明的最后）】
+15、声明权重考虑5级，权重由大到小的顺序依次为：
+1.读者的重要声明2.创作人员的重要声明3.创作人员的正常声明4.读者的正常声明5.用户代理的声明。（创作人员通常只需要考虑前4个权重级别，因为任何声明都会胜过用户代理样式）
+16、绝对路径（url）指从网址开始（http:www.），
+而相对路径指相对于这个html文件所对应的路径
+17、white-space： pre【会保留文本中的空格】
+18、opacity：0.9/0.8  设置背景不透明度
+19、font-size: 0px； 可以消除 设置 display: inlie-block 的块级元素 间距；
+20、calc()： width: clac(100% - 100px);  【计算宽度，运算符号左右一定要有空格 】
+21、两个div，一个左浮动，左浮动的会覆盖在另一个div上，设置另一个div为 overflow： auto； 就会显示在旁边。
+22、color: #23527c; color: #337ab7;
+23、有下载需求的图片采用img标签实现，无下载需求的图片采用css背景实现
+①产品logo、用户头像、用户产生的图片等有潜在下载需求的图片，以img形式实现，能方便用户下载。
+②无下载需求的图片，比如 icon、背景、代码使用的图片等，尽可能采用css背景图实现。
+24、[建议] 同一 rule set 下的属性在书写时，应按功能进行分组，并以 Formatting Model（布局方式、位置） > Box Model（尺寸） > Typographic（文本相关） > Visual（视觉效果） 的顺序书写，以提高代码的可读性。
+Formatting Model 相关属性包括: position/top/right/bottom/left/float/display/overflow
+Box Model 相关属性包括:border/margin/padding/width/height
+Typographic 相关属性包括:font/line-height/text-align/owrd-wrap
+Visual 相关属性包括: background/color/transition/list-style
+25. cursor: pointer; 【定义鼠标放上小手效果】
+
+border
+1、border-radius（半径）【实现内凹（px/em/%）】【定义圆角】
+2、box-sizing： border-box【此元素的内边距和边框不再会增加他的宽度】
+
+input
+1、placeholder 【预定义文本】
+2、required【定义文本为必填项】
+3、checked【表单默认选中】
+4、autofocus 【设置默认焦点】
+5、maxlength 【接受最大字符数】
+6、password 【给文本加密{但是表单数据不会采用安全的方式发送到服务器}】
+7.select();【获得焦点默认全选】 this.select()
+
+form  
+1、action【form要提交到的地址】
+
+a  
+1、a:link      【未点击之前】
+2、a:visited  【点击之后】
+3、a:hover   【鼠标悬停】
+4、a:active   【点击时状态】
+5、a:link:hover
+6、a:visited:hover
+7、text-decoration: underline【下划线】 overline 【顶部线】 
+line-through 【文本中间】
+
+position 
+1、position:  static(默认值)
+position： relative【相对定位】（可以设置负值如top： -2px；）
+position：fixed（固定的）；【固定一个元素，滚动页面元素不动】
+position： absolute【绝对定位】【相对于父元素的固定定位】
+z-inside: 0   z-inside: 1    【1永远在0的上面】
+2、在使用absolute绝对定位的时候必须要设置一个父元素的相对定位。如果不设置那么就是认为是对 window窗口进行定位了。
+
+text文本
+1、text-indent【定义首行缩进】
+2、text-transform：uppercase【大写】lowercase【小写】 capitalize【单词首字母大写】
+3、text-shadow【定义文本阴影】xxx xxx xxx 【第一个定义颜色，第二个定义【偏移距离，第三个模糊半径】
+
+background 
+1、background-position： left
+2、background-repeat: no-repeat【定义图像不重复】（repeat-x/ repeat-y）
