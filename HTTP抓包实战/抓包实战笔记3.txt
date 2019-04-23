@@ -1,0 +1,16 @@
+1.HTTP请求发送给服务器之后是进行压缩的，一般是gzip压缩。
+在Fiddler里，可以点击Response body is encoded. Click to decode 按钮，可以解压HTTP响应。
+2.点击Fiddler 上方的 Decode 自动解压。
+3.gzip、compress以及deflate编码都是无损压缩算法，用于减少传输报文的大小，不会导致信息损失。
+其中gzip通常效率最高，使用最为广泛。
+4.HTTP压缩可以将纯文本压缩至原内容大小的40%，从而节省了60%的数据传输。
+5.gzip的不足之处：JPEG这类文件用gzip压缩的效果不够好，gzip占用了一些服务器和客户端的CPU
+6.字符编码：Fiddler里面的 TextWizard 可以选择 编码。
+7.与Fiddler同类的抓包软件还有 Charles、Firebug、Wireshark、HTTPWatch等。
+8.ctrl+F 搜索
+9.Fiddler保存抓到的包
+File---Sava---Selected Sessions
+10.Fiddler编辑会话
+选中Session，右键点击选中 Unlock for editing【F2】
+11.换取网站图片：
+选中网站图片的session，拉入到右侧AutoResponder中，点击 右下方的Find a file。找到替换图片后，勾选上方 Enable  rules  和 Unmatched requests passthrough。并单击 Sava 按钮。刷新浏览器。
