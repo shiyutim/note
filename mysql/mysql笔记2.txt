@@ -1,0 +1,46 @@
+1.更改数据表里面的数据条，用update 
+update 表名 set 列名=新值  where 更新条件；
+例：UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
+
+2.查找 like 子句；
+like子句用来查找以 xx 结尾的 数据条。
+select  *  from 表名 where 要查找列名 like "%xxx";
+例：SELECT * from runoob_tbl  WHERE runoob_author LIKE '%COM';
+
+
+3.排序 order by
+select * from 表名  order  by 要排序的列名 asc(升序);
+select * from 表名  order by  要排序的列名 desc(降序)；\
+例：SELECT * from runoob_tbl ORDER BY submission_date ASC;
+
+4.group by 语句可以根据一个或多个列队结果进行分组。
+例：SELECT name, COUNT(*) FROM   employee_tbl GROUP BY name;
+
+5.Alter 命令和 drop 子句
+删除 表 字段 
+例： ALTER TABLE testalter_tbl  DROP i;
+添加 表 字段 
+例：ALTER TABLE testalter_tbl ADD i INT;
+
+6.如果需要修改字段类型及名称, 你可以在ALTER命令中使用 MODIFY 或 CHANGE 子句 
+例如，把字段 c 的类型从 CHAR(1) 改为 CHAR(10)，可以执行以下命令:
+mysql> ALTER TABLE testalter_tbl MODIFY c CHAR(10);
+
+使用 CHANGE 子句, 语法有很大的不同。 在 CHANGE 关键字之后，紧跟着的是你要修改的字段名，然后指定新字段名及类型。尝试如下实例：
+mysql> ALTER TABLE testalter_tbl CHANGE i j BIGINT;
+mysql> ALTER TABLE testalter_tbl CHANGE j j INT;
+
+7.修改表名
+例：将数据表 testalter_tbl 重命名为 alter_tbl：
+mysql> ALTER TABLE testalter_tbl RENAME TO alter_tbl;
+
+8.导出数据
+使用 SELECT ... INTO OUTFILE 语句导出数据
+例： SELECT * FROM runoob_tbl 
+    -> INTO OUTFILE '/tmp/runoob.txt';
+
+9.导入数据
+mysql 命令导入
+使用 mysql 命令导入语法格式为：
+mysql -u用户名    -p密码    <  要导入的数据库数据(runoob.sql)
+例： mysql -uroot -p123456 < runoob.sql
