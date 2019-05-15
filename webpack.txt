@@ -1,0 +1,22 @@
+1.首先新建文件夹。
+2.vscode中打开文件夹，然后分别新建一个 dist 和 src  文件夹。并且在src文件夹下建立 css 、images和js文件夹；并且在src文件夹下建立 index.html  和 main.js 文件。
+3.在终端里输入 npm init -y  格式化文件（里面有webpack.json 文件） 【如果在js文件夹里面引入 jquery等，需要安装，在终端里输入 npm install jquery -S】
+
+
+4.配置webpack.config.js文件
+内容为：
+const path = require('path')
+module.exports = {
+    entry: path.join(_dirname, '.src/index.js'),
+    output: {
+        path: path.join(_dirname, './dist'),
+        filename: 'main.js'
+    }
+}
+5.想要同时预览可以安装 npm install webpack-dev-server -D  。安装完之后需要在package.json文件里，"test"下面配置 "dev": "webpack-dev-server"
+6.安装 server之后，如果出错需要手动删除 node_moudules 文件夹，之后 npm i  来进行安装。
+7.之后在从新安装一个 npm i webpack -D
+8.如果出错在提示信息里出现webpack-cli的话，可以 npm install webpack-cli 来进行安装
+9.之后在终端里输入 npm run dev来启动 server
+10.在端口号里面查看页面，修改代码可以实事查看。
+11.之后 添加如下代码可以实现 server 自动弹出"dev": "webpack-dev-server --open --post 3000 --contentBase src --hot"
