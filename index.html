@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container {
+            background-color: #ff0000;
+            padding: 10px;
+        }
+        .container::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .container > img {
+            width: 500px;
+            height: 400px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="../webpage-demo/JS按钮轮播图/images/001.jpeg">
+    </div>
+</body>
+</html>
