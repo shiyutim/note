@@ -25,3 +25,8 @@ inline|内联盒子|内联盒子
 3. `div、p`这些元素的宽度默认是100%于父容器的。
 4. 设置`display:block`的元素，除非必要情况，尽量不需要设置`width=100%`了。这是利用块级元素的流特性。
 5. 设置`display:inline-block`的元素具有包裹性，也就是说里面元素的内容会被父元素包裹起来，一行放不下会自动换行。
+6. 在使用固定宽度的情况下，增加`border`和`padding`会增加元素的宽度，这样不便于计算`content`的宽度。
+   * 可以使用设置父元素宽度，子元素设置`padding`和`border`，这样就可以让内容自动计算宽度。
+   * 设置`box-sizing: border-box`可以使得增加`padding`和`border`不会改变内容的宽度。
+7. `textarea`里，想要让内容100%溶于父元素，只有设置`width`。`textarea`是有`border`，所以想要体验好需要设置`padding`。这时候可以通过设置`box-sizing:border-box`来改变该内容。
+8. 相对于设置`*{box-sizing:border-box}`来说，设置`input,textarea,img,video,object {box-sizing:border-box}`更合理。
