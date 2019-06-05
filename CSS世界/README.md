@@ -29,4 +29,9 @@ inline|内联盒子|内联盒子
    * 可以使用设置父元素宽度，子元素设置`padding`和`border`，这样就可以让内容自动计算宽度。
    * 设置`box-sizing: border-box`可以使得增加`padding`和`border`不会改变内容的宽度。
 7. `textarea`里，想要让内容100%溶于父元素，只有设置`width`。`textarea`是有`border`，所以想要体验好需要设置`padding`。这时候可以通过设置`box-sizing:border-box`来改变该内容。
-8. 相对于设置`*{box-sizing:border-box}`来说，设置`input,textarea,img,video,object {box-sizing:border-box}`更合理。
+8. 相对于设置`*{box-sizing:border-box}`来说，设置`input,textarea,img,video,object {box-sizing:border-box}`更合理。          
+9. 如果想要设置一个全屏的`div`,需要设置`html,body{height: 100%}`,然后设置`div{height:100%;}`。
+也就是说想要**百分比高度值**起作用，其父级必须有一个可以生效的高度值。
+10. 如何让`height:100%`生效？
+    * 父元素设置固定宽度，或者设置`html,body {height:100%};`
+    * 使用绝对定位，如：`div {position: absolute; width:100%; height:100%;}`
