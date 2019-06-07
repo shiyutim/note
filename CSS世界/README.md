@@ -35,3 +35,8 @@ inline|内联盒子|内联盒子
 10. 如何让`height:100%`生效？
     * 父元素设置固定宽度，或者设置`html,body {height:100%};`
     * 使用绝对定位，如：`div {position: absolute; width:100%; height:100%;}`
+11. `min-width`和`max-width`一般出现在自适应布局和流体布局中。在使用**固定值**的`height/width`中，这两个属性毫无作用。
+    * 特定区间的自适应布局方案可以设置为：`.container{min-width: 1200px; max-width: 1400px;}`。
+    * 对于有些**图片**在移动端上，可以设置`img {max-width: 100%; height: auto!important;}`。高度自适应是必须的，因为`max-width`生效的时候，图片就会被压缩，`auto`会使图片保持一定的比例显示出来。但是这样会有体验的问题，就是在加载图片占据高度会从0变成计算高度，图文会有明显的瀑布式下落。
+12. 当`max-width和min-width`跟`width`冲突时，前者会覆盖后者，而且`width`加上`!important`也没有用。
+13. 当`min-width`和`max-width`冲突时，前者会覆盖后者。
