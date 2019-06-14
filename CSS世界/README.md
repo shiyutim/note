@@ -59,3 +59,5 @@ inline|内联盒子|内联盒子
         max-height: 666px;
     }
     ```
+17. `<img>`元素的默认声明是`object-fit: fill`,如果设置了`object-fit: contain`，则图片会以保持比例图片，尽可能利用HTML尺寸但又不会超出的方式显示。如果设置`<img>`元素的`with/height`，如果比图片本身大的话，可以使**图片自动垂直居中**。
+18. 
