@@ -38,11 +38,32 @@ Page({
 * `<view>`组件，类似于`div`标签。
 * `<text>`组件用来显示一段文本，类似于`<span>`标签。
 * `<image>`组件用来显示一张图片，类似于`<img>`标签。
-2. 配置导航栏颜色，需要在`app.json`下配置：
+2. 配置**全局**导航栏颜色，需要在`app.json`下配置：
 ```
 "window": {
     navigationBarBackgroundColor: "xxx"
 }
+```
+配置单页导航栏颜色需要在本页面的`json`下配置：
+```
+{
+    "navigationBarBackgroundColor": "#xxxxxx"
+}
+```
+
+或者
+```
+//定义导航条标题颜色
+wx.setNavigationBarColor({
+  frontColor: "#000000",
+  //定义所有的页面颜色为深黄色
+  backgroundColor: "#ffa801",
+  //定义动画
+  animation: {
+    duration: 100,
+    timingFunc: "easeIn"
+  }
+})
 ```
 3. 配置轮播图，使用`swiper`组件，`swiper`组件只允许是`swiper-item`。 *注：在设置图片宽度和高度的时候，需要同时设置swiper 和 swiper image的高度和宽度*。
 ```
@@ -70,8 +91,11 @@ Page({
     <swiper-item></swiper-item>
 </swiper>
 ```
+9. `wx.redirectTo`会使页面被卸载，`wx.navigateTo`会使页面被隐藏，并且导航栏有返回按钮。
+**也就是说，从父页面进入子页面，可以执行`Unload`和`Hide`事件，但是子页面返回父页面，被动执行`Unload`事件**。因为不执行unload事件会使得大量页面残留在小程序中。
+10. 当使用`wx.navigateTo`跳转的时候，就形成了两个页面层级，小程序里强制规定，**只允许有5层页面**，**太多的子页面严重影响用户体验**，建议页面不超过**3层**。
 ---
-### 生命周期
+### 页面生命周期
 周期|代码|内容
 |-|:-:|:-:|
 加载|onLoad|监听页面加载，一个页面只会调用一次
@@ -80,4 +104,40 @@ Page({
 隐藏|onHide|监听页面隐藏
 卸载|onUnload| 监听页面卸载
 
+
+### 小程序生命周期
+
+周期|代码|内容
+|:-:|:-:|:-:|
+初始化|onLaunch|**监听小程序初始化**，当小程序初始化完成时，会触发onLaunch（全局只触发一次）。
+显示|onShow|**监听小程序显示**，当小程序启动，或从后台进去前台显示，会触发onShow。
+隐藏|onHide|**监听小程序隐藏**，当小程序从前台进入后台，会触发onHide。
+错误|onError|**错误监听函数**，当小程序发生脚本错误，或者API调用失败时，会触发onError并带上错误信息。
+---
+### 事件
+1. 跳转事件
+
+事件| 代码|实例
+|:-:|:-:|:-:|
+跳转|catchtap|catchtap="onCatJump"
+```
+onCatJump: function() {
+    wx.redirectTo({
+       url: "../",
+)}
+```
+2. 冒泡事件和非冒泡事件
+
+代码|描述
+|:-:|:-:|
+touchstart|手指触摸动作开始
+touchmove|手指触摸后移动
+touchcancel|手指触摸动作被打断，如来电提醒，弹窗。
+touchend|手指触摸动作结束
+tap| 手指触摸后马上离开
+longtap|手指触摸后，超过350ms再离开
+冒泡事件是指某个组件上的事件被触发后，事件还会继续向父级元素传递。非冒泡事件则不会向父级元素传递。
+```
+bind不会阻止事件的传播，catch讲阻止事件继续向父节点传播
+```
 
