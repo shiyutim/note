@@ -94,6 +94,23 @@ wx.setNavigationBarColor({
 9. `wx.redirectTo`会使页面被卸载，`wx.navigateTo`会使页面被隐藏，并且导航栏有返回按钮。
 **也就是说，从父页面进入子页面，可以执行`Unload`和`Hide`事件，但是子页面返回父页面，被动执行`Unload`事件**。因为不执行unload事件会使得大量页面残留在小程序中。
 10. 当使用`wx.navigateTo`跳转的时候，就形成了两个页面层级，小程序里强制规定，**只允许有5层页面**，**太多的子页面严重影响用户体验**，建议页面不超过**3层**。
+11. **不能再`<template>`上注册事件**，因为`<tempalte>`仅仅是一个**占位符**，再**编译**后会被**模板内容**替换。所以，在`<template>`上**注册事件是无效的**。
+    * 可以在`<tempalte>`标签外部使用`<view>`标签包裹起来。然后把事件添加到`<view>`标签里。
+    ```
+    <view catchtap="xxxxx">
+        <template></template>
+    </view>
+    ```
+12. 在以前的版本里，使用`wx.setNavigationBarTitle`设置导航条动态获取文章标题，需要在`onReady`里面设置，因为`onReady`在`onShow`发生之后触发，`onShow`设置完后，`onReady`会从新渲染页面，所以会发生这种情况。**而在新版本中，可以在`onLoad`或者`onShow`中调用这个方法。**
+    ```
+    onReady: function(){
+        wx.setNavigationBarTitle({
+            title: this.postData.title //这里可以是任何代码
+        })
+    }
+    ```
+
+
 ---
 ### 页面生命周期
 周期|代码|内容
@@ -139,5 +156,10 @@ longtap|手指触摸后，超过350ms再离开
 冒泡事件是指某个组件上的事件被触发后，事件还会继续向父级元素传递。非冒泡事件则不会向父级元素传递。
 ```
 bind不会阻止事件的传播，catch讲阻止事件继续向父节点传播
+```
+
+### 在url中添加Id
+```
+url: "post-detail/post-detail?id=" + postId
 ```
 
