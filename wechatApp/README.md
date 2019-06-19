@@ -162,4 +162,15 @@ bind不会阻止事件的传播，catch讲阻止事件继续向父节点传播
 ```
 url: "post-detail/post-detail?id=" + postId
 ```
+### 条件渲染: `wx:if/wx:else`
+* 当变量为`true`时，执行`wx:if`，否则将执行`wx:else`。
+    ```
+    <image wx:if="{{post.status}}" src="../"></image>
+    <image wx:else src="../"></image>
+    ```
 
+### 交互`wx.showToast`
+* API ->界面->交互
+    ```
+    wx.showToast
+    ```
