@@ -174,3 +174,17 @@ url: "post-detail/post-detail?id=" + postId
     ```
     wx.showToast
     ```
+### 控制元素显示和隐藏`wx:if/hidden`
+```
+                if
+<image wx:if="{{post.status}}" src="../"></image>
+                hidden
+hidden="{{see}}"
+hidden="{{!see}}"
+```
+* `wx:if`
+    * `wx:if`的切换和渲染机制较为复杂。在条件快切换时销毁或重新渲染。
+* `hidden`
+    * 组件始终会渲染，只是简单的控制显示与隐藏。
+
+`wx:if`有更高的切换消耗，而`hidden`有更高的初始渲染消耗。因此，**在需要频繁切换的情景下用`hidden`更好，在运行条件不大可能改变时用`wx:if`更好。**
