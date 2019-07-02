@@ -55,3 +55,58 @@ export default {
     }
     ```
     * `true`为显示，默认为`false`。
+
+# 学习笔记
+#### 使用定时器`setInterval()`
+首先在`methods`中定义好函数后，在`mounted`里面调用。
+**调用方法的时候，不要加括号**;**定时器在页面关闭时一定要销毁掉，不然会一直存在**
+```
+methods: {
+    add () {
+        xxxx
+    }
+},
+mounted () {
+    this.add();
+    var timer = setInterval(this.add, 1000);
+}
+beforeDestroy() {
+    clearTnterval(this.timer)
+}
+```
+
+#### 使用方法后不能更新视图
+可以使用`Vue.set()`方法。
+```
+Vue.set(this.xxx, 0, {
+    name: 'xxx',
+    xxxx: xxxx
+})
+```
+
+
+
+
+
+# Vue-cli(脚手架)
+## 使用`vue-cli`构建项目
+1. **首先安装全局安装`webpack`,**
+```
+cnpm install webpack@3.10.0 -g
+```
+然后使用`webpack -v`查看安装是否成功
+
+**全局安装vue-cli**
+```
+cnpm install --global vue-cli
+```
+安装完成后，使用`vue -V`查看版本号
+2. 用vue-cli构建项目,输入如下指令
+```
+vue init webpack <项目名称>
+```
+按`enter`/`y `来确认信息
+3. 如果需要使用`cnpm install`安装依赖包
+4. 使用`npm run dev`运行项目
+5. 在项目开发完成后，可以输入`npm run build`来进行打包工作
+
