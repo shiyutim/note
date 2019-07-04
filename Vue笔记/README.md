@@ -83,7 +83,8 @@ Vue.set(this.xxx, 0, {
     xxxx: xxxx
 })
 ```
-
+#### 跨域问题
+通过在index.js文件里面通过设置model.export = {}设置代理。
 
 
 
