@@ -50,3 +50,42 @@ console.log(reg.test(str))  //false
 6. 在`[]`集合里面放入`^`意为取非。这将把给定的字符集合排除在外。
 
  `/[^0-9]/`的意思为，除了0到9之外的都将匹配
+
+### 第四章
+1. 字符类代表匹配某一类别的字符
+* 数字类别
+
+|元字符|说  明|
+|:--|--|
+|\d|任何一个数字字符(等价于[0-9])|
+|\D|任何一个非数字字符(等价于[^0-9])|
+```
+let reg = /marry\[[\d][\d]\]/;
+let str = "marry[10]";
+let result = reg.test(str);
+console.log(result);          // true
+
+
+let reg = /marry\[[\d][\D]\]/;
+let str = "marry[10]";
+let result = reg.test(str);
+console.log(result);          // false
+ 
+
+let reg = /marry\[[\D][\D]\]/;
+let str = "marry[ab]";
+let result = reg.test(str);
+console.log(result);          // true
+```
+* 字母数字类别
+
+|元字符|说  明|
+|:--|--|
+|\w|任何一个字母和数字字符(大小写均可)或下划线字符(等价于[a-zA-Z0-9_])|
+|\W|任何一个非字母和数字字符或非下划线(等价于[^a-zA-Z0-9_])|
+* 空白字符
+
+|元字符|说  明|
+|:--|--|
+|\s|任何一个空白字符（等价于[\f\n\r\t\v]）|
+|\S|任何一个非空白字符（等价于[^\f\n\r\t\v]）|
