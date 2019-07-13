@@ -89,3 +89,90 @@ console.log(result);          // true
 |:--|--|
 |\s|任何一个空白字符（等价于[\f\n\r\t\v]）|
 |\S|任何一个非空白字符（等价于[^\f\n\r\t\v]）|
+
+### 第五章
+|元字符|说    明|
+|:--|--|
+|+|匹配1个或多个字符|
+该元字符能够匹配最少一个，最多N个字符。
+如果要匹配邮箱，就需要使用+。如下：
+```
+let reg = /\w+@\w+\.\w+/;
+let str = "text@test.com"
+let result = reg.test(str);
+console.log(result);     //true
+```
+这样可以简单的匹配一个常见邮箱。，如果繁琐点，可以如下设置：
+```
+let reg = /[\w\.]+@[\w\.]+\.\w+/
+```
+这样设置可以多匹配几个.来控制地址。
+##### *匹配0个或多个字符
+|元字符|说    明|
+|:--|--|
+|*|匹配0个或多个字符|
+```
+let reg = /\w+[\w\.]*@[\w\.]+\.\w+/
+let str = "text@test.com"
+let result = reg.test(str);
+console.log(result);     //true
+```
+相比上面开头少了匹配`.`和后面添加了一个`[\w\.]*`，这样设置可以控制`text.`后面和`@`前面这段是否出现。**因为使用`*`可以匹配0个或者多个。**
+
+---
+\*与-的区别是：+匹配一个或多个字符，最少要匹配一次；*匹配零个或任意多个字符，可以没有匹配。
+
+---
+##### ?匹配0次或1次
+|元字符|说    明|
+|:--|--|
+|?|匹配0次或1次|
+比如：
+```
+let reg = /http://[\w./]+/
+let str = "https://www.baidu.com"
+let result = reg.test(str);
+console.log(result);     //false
+
+如上只能匹配http大头的，如果想要匹配https，可以这样设置
+
+let reg = /https?://[\w./]+/
+```
+
+---
+##### 设定一个精确的值
+如上几个元字符`*+`能够匹配一些不确定的字符，我们没法精确控制个数。
+那么使用`{}`可以精确的控制个数
+|元字符|说    明|
+|:--|--|
+|{}|精确的控制个数|
+```
+let reg = /\w{5}.\w{3}/
+let str = "baidu.com"
+let result = reg.test(str);
+console.log(result);     //true
+```
+
+##### 为重复匹配设定一个区间
+也就是说，在`{}`这样的基础上，填入几就是控制几个字符。如果填入`{2,5}`这样的话，就是最少出现2次，最多出现5次。
+
+##### 最少匹配几次，或多次
+`{3, }`这样设置就是最少出现3次，或多次。
+
+#### 第六章
+|元字符|说    明|
+|:--|--|
+|\b|用来规定边界|
+```
+let reg = /cat/
+let str = "cat cation"
+let result = reg.test(str);
+console.log(result);     //true
+```
+如上代码想要匹配cat这个单词，但是例子中两个都能够匹配上。所以想要单独只匹配cat的话，需要使用边界符
+```
+let reg = /\bcat\b/
+let str = "cat cation"
+let result = reg.test(str);
+console.log(result);     //true
+```
