@@ -172,3 +172,57 @@ newFn();
 newFn();
 newFn();
 ```
+
+#### 使用原生JS，动态的改变元素文字颜色和背景色，并在一定时间后停止
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            color: yellow;
+            background-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p id="text">Hello World</p>
+    </div>
+    <script>    
+        var box = document.getElementById('box');
+        //这里执行对元素文字和背景的转换
+        function active () {
+            var textColor = getStyle(box, 'color');
+            var textBg = getStyle(box, 'backgroundColor');
+            console.log(textColor);
+            console.log(textBg);
+            
+            box.style.color = textBg;
+            box.style.backgroundColor = textColor;
+        }
+        //把定时器赋值给h
+        var h = setInterval(active, 2000);
+        //在5秒之后执行操作
+        setTimeout((function() {
+            //清除定时器
+            clearInterval(h)
+        }), 5000);
+
+
+        //获取元素样式
+        function getStyle(obj, attr) {
+            if(window.getComputedStyle) {
+                return getComputedStyle(obj)[attr];
+            }else {
+                return obj.currentStyle[attr];
+            }
+        };    
+    </script>
+</body>
+</html>
+```
