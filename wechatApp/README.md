@@ -176,9 +176,9 @@ url: "post-detail/post-detail?id=" + postId
     ```
 ### 控制元素显示和隐藏`wx:if/hidden`
 ```
-                if
+            //    if
 <image wx:if="{{post.status}}" src="../"></image>
-                hidden
+            //    hidden
 hidden="{{see}}"
 hidden="{{!see}}"
 ```
@@ -188,3 +188,63 @@ hidden="{{!see}}"
     * 组件始终会渲染，只是简单的控制显示与隐藏。
 
 `wx:if`有更高的切换消耗，而`hidden`有更高的初始渲染消耗。因此，**在需要频繁切换的情景下用`hidden`更好，在运行条件不大可能改变时用`wx:if`更好。**
+
+
+### 背景音乐播放的特点
+* 音乐播放不受页面关闭的影响，即使一个页面被`unload`掉，音乐依然会继续播放。所以在官方的API中音乐被称为背景音乐。
+* 同时只能有一个后台音乐在播放，如果播放另外一首音乐，那么当前音乐将停止。
+* 如果用户不主动关闭音乐，那么只有在退出小程序后音乐播放才会停止。关闭当前页面是不会影响小程序音乐播放的。
+* 一首音乐拥有3个主要属性：`dataUrl(音乐的播放地址)`/`title(音乐标题)`/`coverImgUrl(音乐封面图Url)`
+* 歌曲只能是网络流媒体，不能是本地音乐文件
+
+
+
+
+#### `checkbox`等更改为默认选中
+`checkbox`更改为默认选中状态等，需要在里面添加`checked`,如果需要取消的话，需要添加花括号的形式
+```
+<checkbox checked="{{ false }}"></checkbox>
+```
+
+
+#### 750px宽度比
+设定默认为750px,那么，`1rpx = 1px`，然后进行换算比较方便，如：
+```
+750px  宽高为 100px
+375px  宽高为 50px
+```
+
+
+#### 在请求验证码之后，设置按钮禁用
+```
+<button disabled="{{isDisabled}}" bindtap="xxx">
+```
+如上按钮，通过动态的设置`isDisabled`的值来更改按钮的状态。逻辑是**点击请求事件后，按钮进入倒计时，同时把`isDisabled`的值设置为`true`，等到秒数结束后，设置值为`false`。**
+
+完整的代码为：
+```
+if(/^1[3456789]\d{9}/.test(userPhone)) {
+    //如果为true，说明手机号正确，则获取验证码接口
+    
+    //请求接口
+    wx.request({
+        url: 'https://www.baidu.com',
+        data: {
+          phonenum: xsjm.jiami(userPhone)
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
+        success(res) {
+          console.log(res.data)
+          codeP = xsjm.jiemi(res.data)
+        }
+      })
+      
+}else if(userPhone == '') {
+    //说明手机号为空，还没有输入，则使用`wx.showToast`来进行提示输入手机号
+}else {
+    //说明手机号错误，提示输入正确的手机号
+}
+```
