@@ -248,3 +248,38 @@ if(/^1[3456789]\d{9}/.test(userPhone)) {
     //说明手机号错误，提示输入正确的手机号
 }
 ```
+
+
+
+#### 微信小程序点击导航高亮显示
+点击导航，并高亮显示。思路就是点击导航触发事件，然后动态的添加类名
+
+`wxml`为：
+```
+<view 
+bindtap="activeNav"   //绑定点击事件
+wx:for="{{navList}}"  //遍历这个数组里面的数据
+data-index="{{index}}"  //取出navList里面的下角标
+class="{{index === currentIndexNav ? 'active' : ''}}"    //currentIndexNav定义在data里面，默认为0，然后动态绑定一个类>
+	{{item}}
+</view>
+```
+
+`js`为：
+```
+data: {
+	currentIndexNav: 0
+},
+
+activeNav(e) {
+	this.setData({
+		currentIndexNav: e.target.dataset.index
+	})
+}
+```
+`wxss`为：
+```
+.active {
+	border-bottom: 5rpx solid #de688b;    //点击的时候在导航底部添加一个横线
+}
+```
