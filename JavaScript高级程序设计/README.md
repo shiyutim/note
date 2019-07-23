@@ -77,3 +77,67 @@ var num = parseInt("0xAF", 16);
 ```
 var num = parseFloat("22.34.5") // 22.34
 ```
+
+15. `\r`为回车，`\n`为换行
+16. 任意长度的字符串可以通过访问其`length`的属性取得：
+```
+var str = "hello world";
+console.log(str.length)  // 11
+```
+17. 要把一个值转换为字符串可以使用`toString()`方法。
+```
+var boolean = true
+var stringBoolean = boolean.toString()  // "true"
+```
+
+还有一个`String()`方法，此方法对null和undefined返回他本身
+```
+var value;
+console.log(String(value) // undefined
+```
+
+18. 按位非，用波浪线（~）表示，返回数值的反码。其实就是：操作数的负值减1.
+```
+var num = 25;
+console.log(~num)   // -26
+
+//等同于
+var num1 = 25;
+var num2 = -num - 1;
+console.log(num2)  // -26
+```
+
+19. 逻辑与操作符（&&）,规则为：
+* 如果第一个运算子的布尔值为true，则返回第二个运算子的值。
+* 如果第一个运算子的布尔值为false，则返回第一个运算子的值。
+
+20. +法操作有时候会拼接字符串，如：
+```
+var num1 = 5;
+var num2 = 10;
+var message = "The number is" + num1 + num2 
+console.log(message) // The number is 510
+```
+想要正确的计算值，可以加个括号，如:
+```
+var num1 = 5;
+var num2 = 10;
+var message = "The number is" + (num1 + num2 )
+console.log(message) // The number is 15
+```
+
+21. `==`表示相等，`===`表示全等。规则为：
+* == 在比较前会先转换类型。
+* === 直接比较，不会转换类型，比较严格
+```
+var result1 = ("55" == 55)  // true 转换之后相等
+var result1 = ("55" === 55)  // false 因数据类型不同，返回false
+```
+
+22. 条件操作符，也就是三元表达式`xx?xx:xx`
+```
+var max = (num1 > num2) ? num1 : num2
+//以上代码max中储存一个最大的值
+```
+
+## 第四章
