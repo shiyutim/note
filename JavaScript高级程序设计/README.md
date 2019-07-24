@@ -141,3 +141,48 @@ var max = (num1 > num2) ? num1 : num2
 ```
 
 ## 第四章
+1. 一个变量从另一个变量复制**基本类型的值**，会创建一个新值，两者不会影响，如：
+```
+var num1 = 5;
+var num2 = num1;
+
+num1 = 10;
+console.log(num1)  // 10
+console.log(num2)  // 5
+```
+2. 一个变量从另一个变量复制**引用类型的值**；而两个的指针都指向同一个对象。改变一个会影响另外一个。如：
+```
+var obj1 = new Object();
+var obj2 = obj1;
+
+obj1.name = "tim";
+console.log(obj2.name)  // tim
+```
+3. 使用`instanceof`可以检测一个值的类型，如：
+```
+var person = new Object();
+console.log(person instanceof Object); // true
+```
+4. 某个执行环境中的代码执行完毕后，改环境被销毁，同时其中保存的变量和函数定义也会被销毁。
+5. 全局环境被认为是window对象。其执行环境直到应用退出后，才会被销毁。
+6. 内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数。
+7. 访问数据就近原则，如果在局部环境内能访问到，就取局部的值，如果访问不到，会逐级向上搜索。
+```
+var color = "blue";
+function getColor() {
+    var color = "red";
+    return color;
+}
+console.log(getColor());  // red
+```
+如果想要访问到全局的color，需要这样写
+```
+{
+    return window.color
+}
+console.log(getColor()) // blue
+```
+
+8. JavaScript具有自动垃圾收集机制。其原理是： 找出那些不再继续使用的变量，然后释放其占用的内存。为此，垃圾收集器会按照固定的时间间隔周期性的执行这一操作。
+9. JS中最常用的垃圾收集方式是标记清除。垃圾收集器在运行的时候会给内存中的所有变量加上标记。然后去掉标记。**再被加上标记的变量**视为**准备删除的变量**。最后，垃圾收集器完成内存清除工作。
+10. 另外一种不太常见的垃圾收集策略叫做引用计数。意思为跟踪记录每个值被引用的次数。
