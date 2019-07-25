@@ -176,9 +176,9 @@ url: "post-detail/post-detail?id=" + postId
     ```
 ### 控制元素显示和隐藏`wx:if/hidden`
 ```
-            //    if
+                if
 <image wx:if="{{post.status}}" src="../"></image>
-            //    hidden
+                hidden
 hidden="{{see}}"
 hidden="{{!see}}"
 ```
@@ -188,7 +188,6 @@ hidden="{{!see}}"
     * 组件始终会渲染，只是简单的控制显示与隐藏。
 
 `wx:if`有更高的切换消耗，而`hidden`有更高的初始渲染消耗。因此，**在需要频繁切换的情景下用`hidden`更好，在运行条件不大可能改变时用`wx:if`更好。**
-
 
 ### 背景音乐播放的特点
 * 音乐播放不受页面关闭的影响，即使一个页面被`unload`掉，音乐依然会继续播放。所以在官方的API中音乐被称为背景音乐。
@@ -249,6 +248,21 @@ if(/^1[3456789]\d{9}/.test(userPhone)) {
 }
 ```
 
+#### 使用组件
+创建：右键点击`component`，然后出现四个文件。
+
+使用：在需要使用的文件夹里面，找到`json`文件，在`usingComponents{}`里面，填写需要使用的组件路径。如：
+```
+"usingComponents": {
+    "myComponents": "xxx"  
+    //MyComponents 为组件的文件名
+    //xxx为页面路径
+}
+```
+然后再文件中这样引入就可以了
+```
+<myComponents></myComponents>
+```
 
 
 #### 微信小程序点击导航高亮显示
@@ -283,3 +297,82 @@ activeNav(e) {
 	border-bottom: 5rpx solid #de688b;    //点击的时候在导航底部添加一个横线
 }
 ```
+
+
+#### 修改顶部导航栏颜色无效问题
+接手的项目，想要修改一下导航栏颜色，发现修改后并没有生效。研究了半天，发现上一个人使用了自定义导航栏，这样定义的属性，默认为`default`
+```
+"navigationStyle": "custom"
+```
+使用这个属性后，想要修改导航栏的颜色，就需要在**每个页面单独设置**，然后找到单独页面的`wxss`文件后，修改里面的样式属性，就可以更改了。
+
+> 网上看到有人抽离成一个组件，然后设置一个样式。但会很麻烦，还有一系列问题
+
+
+#### 阻止点击事件
+可以使用三元表达式
+```
+<view bindtap="{{isClicked ? 'clicked' : ''}}"></view>
+
+
+data {
+    isClicked: true
+}
+
+clicked() {
+    //
+}
+```
+
+
+#### 设置圆形头像
+直接设置`border-radius: 50%;`是不起作用的，需要设置`overflow:hidden`
+```
+{
+    border-radius: 50%;
+    overflow: hidden;
+}
+```
+
+
+#### 获取地理位置信息
+使用小程序提供的`wx.getLocation`之后，使用说需要**在app.json**里面提供`permission`说明。
+```
+ "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序的效果展示"
+    }
+  }
+```
+
+
+#### 获取数据
+一般获取接口的数据后，需要赋值，然后在页面里渲染出来。遇到一个问题，就是赋值之后，`data`里面的数据很乱。几个`data`分不清，然后我突然发现一个问题。就是：
+```
+success(res) {
+    list: res
+}
+
+//假如说页面是如下格式渲染
+<view wx:for="{{list}}">
+    {{item.data.data.name}}
+</view>
+```
+如果在js中变成如下配置
+```
+success(res) {
+    list: res.data
+}
+```
+那么，在页面上也是需要改变的
+```
+<view wx:for="{{list}}">
+    {{item.data.  name}}
+</view>
+```
+
+
+#### 异步操作的登陆接口`wx.login`
+登陆接口是异步的，所以说，如果下面有别的操作需要在登陆接口之后调用，需要在`wx.login`内部进行操作，如果在外面调用，有可能发能：还没有登陆，就已经发生后面的函数调用，可以在控制台里面输入`console.log`来进行查看。
+
+如果没在登陆之后调用，就会造成一种现象，就是有时候能请求到具体信息，有时候请求不到。
