@@ -376,3 +376,75 @@ success(res) {
 登陆接口是异步的，所以说，如果下面有别的操作需要在登陆接口之后调用，需要在`wx.login`内部进行操作，如果在外面调用，有可能发能：还没有登陆，就已经发生后面的函数调用，可以在控制台里面输入`console.log`来进行查看。
 
 如果没在登陆之后调用，就会造成一种现象，就是有时候能请求到具体信息，有时候请求不到。
+
+
+
+#### 动态切换toggle效果
+就是使用三元表达式，然后点击切换false/true
+```
+data: {
+    onShow: true
+}
+
+showOrHide() {
+    let that = this
+    if(this.data.onShow === true) {
+       that.setData({
+         onShow: false
+       })
+    }else {
+       that.setData({
+         onShow: true
+       })
+    }
+}
+```
+主要是获取data里面的onShow，需要`this.data.onShow`才能获取到。但是以上方法比较繁琐，有更简洁的方法：
+```
+showOrHide() {
+    let that = this
+    var toggle = !this.data.onShow
+    that.setData({
+      onShow: toggle
+    })
+}
+```
+这个方法就是点击一下`取反`，比较简洁。
+
+
+#### 根据金额的位数动态渲染*的位数
+为了完美，不想固定的放置一堆“****”，想要根据金额的位数来渲染*的位数
+```
+showOrHide() {
+    let that = this
+    var toggle = !this.data.onShow
+    var moneyLength = that.data.userCardCharge.length 
+    var noShowLength = []
+    for(var i=0;i<moneyLength;i++) {
+      noShowLength+="*"
+    }
+    console.log(noShowLength);
+    that.setData({
+      onShow: toggle,
+      noShow: noShowLength
+    })
+  }
+```
+
+
+#### 有时候修改完数据后，没有刷新页面，需要重新`onLoad()`
+修改信息数据后,就要去执行下onLoad函数重新渲染。
+```
+that.setData({
+    xxx: xxx
+})
+that.onLoad()
+```
+
+#### 在前一页修改数据后，返回后一页也需要刷新页面
+```
+  onShow: function() {
+    let that = this
+    that.onLoad();
+  },
+```
