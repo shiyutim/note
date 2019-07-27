@@ -448,3 +448,25 @@ that.onLoad()
     that.onLoad();
   },
 ```
+
+#### 任何想要绑定Boolean值的情况下，需要使用数据双向绑定
+举个例子，一个值，`autoplay`，这个是轮播图里面的，代表是否自动播放，我们想让他为true，那么只要这么写就可以:
+```
+autoplay="true"
+```
+但是如果想要换成false呢，
+```
+autoplay="false"
+```
+发现根本没用，因为只要不是空字符串，就会识别为true。所以如果想要为“真false”的话，需要这样写:
+```
+autoplay="{{false}}"
+```
+
+
+#### 获取openid
+* 首先通过官方提供的`wx.login`API，然后获取一个`code`
+* 然后发起`wx.request`请求，把`code`(也就是res.code)发送给开发者服务器(后端)
+* 后端会发送给微信服务器，然后返回openid等信息
+* 然后通过`success(res) {openid:res.openid}`来获取openid
+
