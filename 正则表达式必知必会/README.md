@@ -1,5 +1,5 @@
  # 正则表达式笔记
- ### 第二章
+ #### 第二章
  1. 正则表达式被简称为模式，他们是有一些字符构成的字符串。这些字符可以是**普通字符和元字符**。
  2. 通过元字符`.`可以匹配除了换行符以外的任意字符。
  ```
@@ -7,7 +7,7 @@ let reg = /a.c/;
 let str = "abc";
 console.log(reg.test(str))  //true
 ```
-### 第三章
+#### 第三章
 1. 使用`[]`来匹配字符集合。
 ```
 let reg = /[ns]a/;
@@ -50,9 +50,9 @@ console.log(reg.test(str))  //false
 6. 在`[]`集合里面放入`^`意为取非。这将把给定的字符集合排除在外。
 
  `/[^0-9]/`的意思为，除了0到9之外的都将匹配
-
-### 第四章
-1. 字符类代表匹配某一类别的字符
+ 
+ #### 第四章
+ 1. 字符类代表匹配某一类别的字符
 * 数字类别
 
 |元字符|说  明|
@@ -90,7 +90,7 @@ console.log(result);          // true
 |\s|任何一个空白字符（等价于[\f\n\r\t\v]）|
 |\S|任何一个非空白字符（等价于[^\f\n\r\t\v]）|
 
-### 第五章
+#### 第五章
 |元字符|说    明|
 |:--|--|
 |+|匹配1个或多个字符|
@@ -176,3 +176,173 @@ let str = "cat cation"
 let result = reg.test(str);
 console.log(result);     //true
 ```
+另外两个常用的匹配边界`^ and $`
+
+`^`匹配字符串的开头，如：
+```
+let reg = /^\d/
+let str1 = "1234"
+let str2 = "a1234"
+
+let result1 = reg.test(str1);
+let result2 = reg.test(str2);
+
+console.log(result1)  // true
+console.log(result2)  // false
+```
+
+相应的，$匹配字符串的结尾。如：
+```
+//我们把字母换个位置
+
+let reg = /\d$/
+let str1 = "1234"
+let str2 = "1234a"
+
+let result1 = reg.test(str1);
+let result2 = reg.test(str2);
+
+console.log(result1)  // true
+console.log(result2)  // false
+```
+
+#### 第七章
+1. `|`表示或，如：
+```
+let reg = /19|20/;
+let str = "2019";
+let result = reg.test(str);
+console.log(result); // true
+
+//把2019换成1937，同样返回true
+
+let reg = /19|20/;
+let str = "1937";
+let result = reg.test(str);
+console.log(result); // true
+```
+2. `()`代表子表达式，就是匹配一个模式。如：
+```
+let str = "[12.159.46.200]";
+let reg = /\d{1,2}\.1\d{2}\.\d{2}\.\d{3}/;
+let result = reg.test(str);
+console.log(result); // true
+```
+以上正则表达式为匹配一串IP地址，可以看出有几个重复的地方，就是`xx.`，一共重复出现了三次，所以可以使用`()`来定义一个子表达式，然后定义`{3}`，表示重复三次，如：
+```
+let str = "[12.159.46.200]";
+let reg = /(\d{1,3}\.){3}\d{1,3}/;
+let result = reg.test(str);
+console.log(result); // true
+```
+这回使用了`(\d{1,3}\.)`来定义一个子表达式，然后`{3}`表示重复出现3次，来匹配`xx.`或者`xxx.`；最后一个`\d{1,3}`定义最后出现的地址
+
+但是这个还不够严谨，可以定义一些规则来匹配ID地址，如书中所说：
+* 任何一个位或2位数字
+* 任何一个以1开头的3位数字
+* 任何一个以2开头/第二位数字在0~4之间的3位数字
+* 任何一个以25开头/第三位数字在0~5之间的3位数字
+```
+let str = "[12.159.46.200]";
+let reg = /(((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))/;
+let result = reg.test(str);
+console.log(result); // true
+```
+
+以上的正则表达式需要拆开来看，就比较方便看了。
+
+#### 使用`exec()`有点问题。
+
+####  第八章
+1. 回溯引用指的是模式的后半部分引用在前半部分中定义的值表达式。`\1`代表第一个子表达式`\2`代表第二个子表达式。
+2. 回溯引用和`()`配合使用。
+3. `\0`代表整个正则表达式
+##### 在JacaScript里面，需要使用$来替换`\`
+
+
+#### 第九章
+1. 向前查找，意思就是匹配它，但不包含它。表达式为`(?=xxx)`
+举个例子：
+```
+let reg1 = /.+(?=:)/;
+let reg2 = /.+(:)/;
+let str = "https://";
+let result1 = reg1.exec(str);    // https
+let result2 = reg2.exec(str);    // https:
+```
+2. 向前查找指定了一个必须匹配但不在结果中返回的模式。
+
+
+## String方法：
+|方法|描述|
+|:--|:--|
+|search|检索指定的字符串，返回所在位置的数字。如果没有找到任何匹配，则返回-1|
+```
+let reg = /\d/
+let str = "abc1"
+let result = str.search(reg)  // 3
+```
+|方法|描述|
+|:--|:--|
+|match|检索字符串内指定的值。返回的是指定的值|
+```
+let reg = /\d/
+let str = "a1b2c3"
+let result = str.match(reg)  // 1
+
+//加上g全局搜索
+let reg = /\d/g
+let str = "a1b2c3"
+let result = str.match(reg)  // "1" "2" "3"
+```
+
+|方法|描述|
+|:--|:--|
+|replace|用于替换指定的字符串|
+```
+let reg = /\d/
+let str = "a1b2c3"
+let result = str.match(reg, ",")  // a,b2c3
+
+//如果没加g，会只匹配第一个，加上之后
+let reg = /\d/g
+let str = "a1b2c3"
+let result = str.match(reg, ",")  // a,b,c,
+```
+|方法|描述|
+|:--|:--|
+|split|用于把字符串分割成字符串数组|
+```
+let str = "hello"
+let result = str.split("")  // ["h", "e", "l", "l", "o"]
+
+let str = "hello"
+let result = str.split("", 3) // ["h", "e", "l"]
+```
+
+## RegExp方法
+|方法|描述|
+|:--|:--|
+|exec|检索指定的值，并返回找到的值|
+```
+let reg = /\d/
+let str = "hello5"
+let result = reg.exec(str)  // 5 
+```
+
+|方法|描述|
+|:--|:--|
+|test|检索指定的值是否匹配某个模式|
+```
+let reg = /\d/
+let str = "hello5"
+let result = reg.test(str) // true
+
+let reg = /\d/
+let str = "hello"
+let result = reg.test(str) // false
+```
+
+String方法就是str在前，也就是str.xxx(reg)  xxx是方法
+
+RegExp方法就是reg在前，也就是reg.xxx(str)  xxx是方法
