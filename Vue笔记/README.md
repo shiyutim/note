@@ -55,7 +55,19 @@ export default {
     }
     ```
     * `true`为显示，默认为`false`。
-
+10. 点击刷新页面
+* 方法一
+```
+this.$router.go(0)
+```
+* 方法二
+```
+window.location.reload()
+```
+* 方法三
+```
+history.go(0)
+```
 # 学习笔记
 #### 使用定时器`setInterval()`
 首先在`methods`中定义好函数后，在`mounted`里面调用。
