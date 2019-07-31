@@ -202,3 +202,27 @@ let result = str.join(",") // hello,world
 ```
 4. `push()`可以添加任意数量的值，把它们添加到数组的末尾，并返回数组的长度。
 5. `pop()`从数组末尾移除最后一项，返回移除的项。
+6. `shift()`移除数组的第一项，并返回该项。
+7. `unshift()`在数组的前端添加任意项。
+8. `reverse()`方法反转数组项的顺序。
+9. `sort()`方法也会对数组进行排序，但是是按字符串进行的比较。所以需要定义一个方法。
+```
+function compare(value1, value2) {
+    if(value1 < value2) {
+        return -1
+    }else if(value > value2) {
+        return 1
+    }else {
+        return 0;
+    }
+}
+
+var values = [1, 3, 5, 10]
+values.sort(compare)
+```
+
+```
+function compare(value1, value2) {
+    return value2 - value1
+}
+```
