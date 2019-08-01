@@ -226,3 +226,15 @@ function compare(value1, value2) {
     return value2 - value1
 }
 ```
+10. `concat()`方法将参数添加到数组的末尾。
+11. `slice()`方法将返回指定参数位置的值。如果有两个参数，则返回起始和结束位置之间的项，但不包括结尾位置的项。
+```
+var colors = ["red", "yellow", "blue", "orange"];
+var colors2 = colors.slice(1); // ["yellow", "blue", "orange"]
+var colors3 = colors.slice(1, 3);  // ["yellow", "blue"]
+```
+12. `splice()`方法能够进行：
+* 删除：`splice(1, 2)`1是要删除位置，2是删除项数。
+* 插入：`splice(1, 0, "red", "green")`1是要插入的位置，0是要删除的项，剩下两个是要插入的项
+* 替换：`splice(1, 2, "red", "green")`1是起始位置，2是要删除的项，剩下两个是要替换的项
+13. `indexOf()`和`lastIndexOf()`是用来查找的。接收两个参数，要查找的项和表示查找起点位置的索引。`indexOf()`从前向后查找，`lastIndexOf()`相反。如果没找到，返回-1。
