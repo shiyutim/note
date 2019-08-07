@@ -281,3 +281,41 @@ item = arr.reduce(function(prev, cur, index, array) {
 32. `Math.random()`方法返回一个大于等于0小于1的一个随机数。
 
 #### 第六章
+1. ECMAScript中有两种属性：
+* 数据属性
+    * `Configurable`表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。
+    * `Enumerable`表示能否通过`for-in`循环返回属性。
+    * `Writable`表示能否修改属性的值
+    * `Value`包含这个属性的数据值
+
+修改属性默认的特性，必须使用`Object.defineProperty()`方法。
+```
+var person = new Object();
+Object.defineProperty(person, 'age', {
+    Vallue: '20'
+})
+```
+* 访问器属性
+    * `Configurable`表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。
+    * `Enumerable`表示能否通过`for-in`循环返回属性
+    * `Get`在读取属性时调用的函数。
+    * `Set`在写入属性时调用的函数。
+
+```
+var person = {
+    _year: 2019    //_（下划线）是一种记号，表示只能通过对象访问的属性。
+}
+Object.defineProperty(person, 'year', {
+            get: function() {
+                return this._year
+            },
+            set: function(newValue) {
+                if(newValue > 2019) {
+                    this._year = newValue;
+                    this.edition += newValue - 2019;
+                } 
+            }
+        });
+person.year = 2029
+console.log(person)
+```
