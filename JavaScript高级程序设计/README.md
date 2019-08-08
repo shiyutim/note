@@ -319,3 +319,11 @@ Object.defineProperty(person, 'year', {
 person.year = 2029
 console.log(person)
 ```
+3. `Object.defineProperties()`方法可以一次定义多个属性。
+4. `Object.getOwnPropertyDescriptor()`方法可以取得给定属性的描述符。
+5. `isPrototypeof()`方法判断对象之前是否存在关系。
+6. `Object.getPrototypeOf()`方法返回Prototype的值。
+7. `HasOwnProperty()`方法可以判断属性是否来自于实例。
+8. `Object.keys()`方法返回一个包含所有可枚举属性的字符串数组。
+9. `Object.getOwnPropertyNames()`无论是否可枚举的属性都被返回。
+10. 
