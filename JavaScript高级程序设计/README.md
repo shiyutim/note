@@ -326,4 +326,8 @@ console.log(person)
 7. `HasOwnProperty()`方法可以判断属性是否来自于实例。
 8. `Object.keys()`方法返回一个包含所有可枚举属性的字符串数组。
 9. `Object.getOwnPropertyNames()`无论是否可枚举的属性都被返回。
-10. 
+10. ECMAScript支持面向对象编程，可以采用下列模式创建对象
+* 工厂模式
+* 构造函数模式
+* 原型模式
+11. JavaScript主要通过原型链实现继承。
