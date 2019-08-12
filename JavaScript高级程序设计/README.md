@@ -332,10 +332,99 @@ console.log(person)
 * 原型模式
 11. JavaScript主要通过原型链实现继承。
 
-第七章
+#### 第七章
 1. 闭包是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。
 2. this对象是在运行时基于函数的执行环境绑定的。在全局环境中，this等于window，而当函数被作为某个对象的方法调用时，this等于那个对象。
 3. 可以通过`call()`和`apply()`改变函数的执行环境。
 4. 每个函数在被调用时都会自动取得两个特殊的变量：this和arguments。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远也不可能`直接访问`外部函数中的这两个变量。
 5. 内存泄漏。如果闭包的作用域链中保存着一个HTML元素，那么就意味着该元素将无法被销毁。可以手动把引用的变量设置为null。
 6. 初始化未经声明的变量，总是会创建一个全局变量。
+
+#### 第八章 BOM
+1. 全局变量不能通过delete操作符删除，而直接在window对象上定义的属性可以被删除。
+2. 表示窗口相对于屏幕左边和上边的位置。
+* screenLeft/screenX
+* screenTop/screenY
+```
+let leftPos = (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX;
+
+let topPos = (typeof window.screenTop == "number") ? window.screenTop : window.screenY;
+```
+3. window.moveTo(x, y)/window.moveBy(x, y) 可以对窗口进行移动。
+4. document.documenElement.clientWidth/document.documentElement.clientHeight 可以取得页面视口的信息。
+5. 对于移动设备，window.innerWidth/window.innerHeight保存着可见视口，也就是屏幕上可见页面的大小。
+6. window.resizeTo(x, y)/window.resizeBy(x, y)调整窗口的大小。
+7. `window.open()`可以打开一个特定的URL。接收四个参数：
+* 要加载的RUL
+* 窗口目标
+* 一个特性字符串
+* 表示新页面是否取代浏览器历史记录中当前加载页面的布尔值
+8. window.close()可以关闭新打开的窗口。
+9. `setTimeout()/setInterval()`定时器。第二个参数为指定的时间，因为js是单线程语言，所以经过该时间后指定的代码不一定会执行。JavaScript有一个任务队列，这些任务队列会按照他们添加到队列的顺序执行。第二个参数就是告诉过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么就会等前面的代码执行完了之后才会执行。
+10. `clearTimeout()/clearInterval()`清除定时器。
+```
+var h = setTimeout(function() {
+    console.log(1)
+}, 2000)
+
+clearTimeout(h)
+```
+11. 系统对话框
+* alert()显示确定按钮
+* confirm()显示一个确定和取消按钮。点击确定返回true，点击取消和x返回flase。这种模式经常在用户想要执行删除操作的时候使用。
+* prompt()显示输入框
+12. 
+|属性名|例子|说明|
+|:--|:--|:--:|
+|hash|"#contents"|返回URL中的hash|
+|host|"www.wrox.com:80"|返回服务器名称和端口号|
+|href|"http://www.wrox.com|返回当前加载页面的完整url。而location对象的toString()方法也返回这个值|
+|pathname|"/WileyCDA"|返回url中的目录和（或）文件名|
+|port|"8080"|返回url中指定的端口号|
+|protocol|"http:"|返回页面使用的协议|
+|search|"?q=javascript"|返回url的查询字符串|
+
+13. 返回url中的参数
+```
+function getQueryStringArgs() {
+            //取得查询字符串并去掉开头的问号
+            var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+            //保存数据的对象
+            args = [],
+            
+            //取得每一项
+            items = qs.length ? qs.split("&") : [],
+            item = null,
+            name = null,
+            value = null,
+            i = 0,
+            len = items.length;
+
+            for(i=0;i<len;i++) {
+                item = items[i].split("=");
+                name = decodeURLComponent(item[0]);
+                value = decodeURLComponent(item[1]);
+
+                if(name.length) {
+                    args[name] = value;
+                }
+            }
+            return args;
+        }
+
+        //使用
+        var args = getQueryStringArgs();
+        console.log(args["a"]);
+```
+14. window.assign()可以立即打开一个新的URL。
+15. 通过这几个方法修改url会在浏览器的历史记录里生成一条记录，因此用户通过单击*后退*按钮都会导航到前一个页面。使用`replace()`方法可以阻止这种行为，不会再历史记录里生成新记录。**调用replace方法后，用户不能回到前一个页面。**
+16. `window.reload()`方法是重新加载当前显示的页面。如果页面自上次请求以来并没有改变过，页面就会从浏览器缓存中重新加载。如果想要强制从服务器重新加载，则需要这样定义`window.reload(true)`。
+17. history对象保存着用户上网的历史记录。
+18. 使用`go()`方法可以在用户的历史记录中任意跳转。
+```
+history.go(-1)
+history.go(2)
+history.go(1)
+```
+19. back()/forward()方法可以实现后退和前进。
+20. `history.length == 0` 可以测试用户是否一开始就打开了你的页面。
