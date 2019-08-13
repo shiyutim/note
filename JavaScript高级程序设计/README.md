@@ -428,3 +428,49 @@ history.go(1)
 ```
 19. back()/forward()方法可以实现后退和前进。
 20. `history.length == 0` 可以测试用户是否一开始就打开了你的页面。
+
+#### 第十章 DOM
+1. nodeName保存的是元素的标签名
+```
+if(xxx.nodeType == 1 ) {
+    let value = xxx.nodeName
+}
+//如果xxx是元素的话，把标签名赋值给value
+```
+2. 通过节点的previousSibling和nextSibling属性可以访问同一列表中的其他节点。
+* 列表中第一节点的previousSibling的属性值为null（因为本身是第一个节点，没有在上一个节点）
+* 列表中最后一个节点的nextSibling的属性值同样为null（因为是最后一个节点，并没有在下一个节点了）。
+```
+if(somenode.nextSibling === null) {
+    //说明是最后一个节点
+    //任何操作
+} else if (somenode.previousSibling === null) {
+    //说明是第一个节点
+    //任何操作
+}
+```
+3. 父节点(parentNode)的firstChild/lastChild分别指向childNodes的第一个和最后一个节点。
+* firstChild == somenode.childNodes[0]
+* lastChild == somenode.childNodes[somenode.childNodes.length-1]
+4. `hasChildNodes()`方法在节点包含一个或多个子节点的情况下返回true
+5. `appendChild()`方法用于向childNodes()列表的末尾添加一个节点。
+6. `insertBefore()`方法用于把节点放到指定位置。接收两个参数，第一个是要插入的节点，第二个是位置。
+```
+somenode.insertBefore(newnode, somenode.firstChild)
+```
+7. `replaceChild()`方法可以替换节点。接收两个参数，第一个是要插入的节点，第二个是要替换的节点。
+8. `removeChild()`方法可以移除节点。
+9. documentElement属性始终指向html元素。
+10. document.body属性指向body
+11. document.title获取文档的标题
+12. namedItem()可以通过元素的name属性取得集合中的项
+13. 在radio中，为了确保发送给浏览器的值正确，需要radio设置相同的name。使用document.getElementsByName()可以获取。
+14. 集合API
+* `document.anchors`包含文档中所有带name特性的<a>元素
+* `document.forms`包含文档中所有的<form>元素
+* `document.images`包含文档中所有的<img>元素
+* `document.links`包含文档中所有带href的<a>元素
+15. `window.onload`在页面完全加载之后延迟执行函数。
+16. `element.tagName()`/`element.nodeName`可以获取元素的标签名。但是返回的是大写的标签名，所以最好需要转为小写：element.tagName.toLowerCase()
+17. `div.className`包含了元素的类名。
+18. `getAttribute()`返回元素的信息。
