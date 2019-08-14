@@ -474,3 +474,18 @@ somenode.insertBefore(newnode, somenode.firstChild)
 16. `element.tagName()`/`element.nodeName`可以获取元素的标签名。但是返回的是大写的标签名，所以最好需要转为小写：element.tagName.toLowerCase()
 17. `div.className`包含了元素的类名。
 18. `getAttribute()`返回元素的信息。
+19. `setAttribute()`可以设置属性和值。
+20. `removeAttribute()`可以彻底删除元素的特性。
+21. `document.createElement()`可以创建元素标签。
+22. `div.firstChild.nodeValue`可以修改文本的值（前提是文本里面有内容，或者空格）。
+23. `document.createTextNode()`创建文本节点。
+24. `normalize()`方法可以合并节点。
+25. `splitText()`可以拆分文本节点。
+26. 理解DOM的关键，就是理解DOM对性能的影响。DOM操作往往是JavaScript程序中开销最大的部分，因而访问NodeList导致的问题为最多。NodeList对象都是动态的，这就意味着每次访问NodeList对象，都会运行一次查询。所以，最好的办法就是尽量减少DOM操作。
+
+
+#### 第十一章 DOM扩展
+1. `querySelector()`方法接收一个css选择符。
+2. `querySelectorAll()`方法接收一一css选择符，并返回一个NodeList的实例。
+3. `getELementsByClassName()`返回带有指定类的NodeList。
+4. 
