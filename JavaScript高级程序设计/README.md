@@ -487,5 +487,23 @@ somenode.insertBefore(newnode, somenode.firstChild)
 #### 第十一章 DOM扩展
 1. `querySelector()`方法接收一个css选择符。
 2. `querySelectorAll()`方法接收一一css选择符，并返回一个NodeList的实例。
-3. `getELementsByClassName()`返回带有指定类的NodeList。
-4. 
+3. `getElementsByClassName()`返回带有指定类的NodeList。
+4. `classList`属性保存着类的集合。有几下几个方法
+* `add()`将给定的字符串值添加到列表中。
+* `remove()`从列表中删除给定的字符串。
+* `toggle()`如果列表有，则删除；反之则添加。
+* `contains()`表示列表中是否存在值。
+5. `document.activeElement`属性始终会引用当前获得了焦点的元素。
+6. `document.hasFocus()`方法用于确定**文档**是否获得了焦点。
+7. `readyState`属性有两个可能的值：
+* `loading`: 正在加载文档。
+* `complete`: 已经加载完文档。
+8. `document.head`。
+```
+let head = document.head || document.getElementsByTagName("head")[0]
+```
+9. `contains()`方法用于检查是否是后代节点，正确返回true。
+10. `scrollIntoView()`方法能够滚动浏览器。
+
+#### 第十二章
+1. 
