@@ -506,4 +506,28 @@ let head = document.head || document.getElementsByTagName("head")[0]
 10. `scrollIntoView()`方法能够滚动浏览器。
 
 #### 第十二章
-1. 
+1. `cssText`可以访问css中的代码，也可以覆盖。
+2. `getPropertyValue()`方法返回给定的字符串值。
+3. `removeProperty()`方法移除给定的属性。
+4. `document.defaultView`提供了`getComputedStyle()`方法，能够取得元素计算后的样式。
+
+但是IE并不支持上述方法，但是提供了另外一个相同的**属性**：`currentStyle`
+5. 元素在屏幕上所占的可见空间：（包含滚动条） 
+* `offsetHeight`元素在垂直方向上占用的空间大小。
+* `offsetWidth`元素在水平方向上占用的空间大小。
+* `offsetTop`元素的上外边框至包含元素（offsetParent）的上内边框之间的距离。
+* `offsetLeft`元素的左边距至包含元素的左内边框之间的距离。
+
+offsetParent为离其最近的具有大小的祖先元素。
+6. 客户区大小：（滚动条不计算在内，所以可以确定浏览器视口大小）
+* `clientHeight`属性是元素的高度
+* `clientWidth`属性是元素的宽度
+```
+document.body.clientHeight/document.documentElement.clientHeight
+```
+7. 滚动大小：
+* `scrollHeight`在没有滚动条的情况下，元素内容的总高度。
+* `scrollWidth`在没有滚动条的情况下，元素内容的总宽度。
+* `scrollLeft`被隐藏在内容区域左侧的像素数。
+* `scrollTop`被隐藏在内容区域上方的像素数。
+
