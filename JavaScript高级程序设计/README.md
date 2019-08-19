@@ -505,7 +505,7 @@ let head = document.head || document.getElementsByTagName("head")[0]
 9. `contains()`方法用于检查是否是后代节点，正确返回true。
 10. `scrollIntoView()`方法能够滚动浏览器。
 
-#### 第十二章
+#### 第十二章 DOM2和DOM3
 1. `cssText`可以访问css中的代码，也可以覆盖。
 2. `getPropertyValue()`方法返回给定的字符串值。
 3. `removeProperty()`方法移除给定的属性。
@@ -531,3 +531,19 @@ document.body.clientHeight/document.documentElement.clientHeight
 * `scrollLeft`被隐藏在内容区域左侧的像素数。
 * `scrollTop`被隐藏在内容区域上方的像素数。
 
+#### 第十三章 事件
+1. IE的事件流叫做冒泡，即从文档中嵌套最深层次的那个节点，逐级向上传递。
+2. Netscape Communicator团队提出事件捕获。
+3. DOM2级事件规定事件流包括三个阶段：
+* 事件捕获阶段
+* 处于目标阶段
+* 事件冒泡阶段
+4. 删除事件 `xxx.onclick = null`
+5. DOM2级定义了两个方法用于处理指定和删除事件处理程序的操作：
+* `addEventListener()`
+* `removeEventListener()`
+6. IE的事件处理程序
+* `attachEvent()`
+* `detachEvent()`
+7. 阻止事件的默认行为：`preventDefault()`
+8. 
