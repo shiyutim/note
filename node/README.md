@@ -1,4 +1,3 @@
-#### node.js 笔记
 1. 通过require() 来引入。
 2.  cd.>xxx.txt 【建立空文件】
 3. 事件
@@ -33,3 +32,20 @@ fs.readFile('xxx.js', function(error, data) {
 7. events 模块只提供了一个对象： events.EventEmitter。EventEmitter 的核心就是事件触发与事件监听器功能的封装。
 8. `toString()`方法可以用于把其他进制的文件转换为正常显示。
 9. node执行的js文件，有各自的模块作用域。可以通过exports暴露出去。
+10. 发送的HTTP回应使用`res.setHeader('Content-Type', 'text/plain; charset=utf-8');`能够转为utf-8的格式。防止乱码。
+11. `Content-Type`用来指定对应的内容，不同的资源对应的Cpntent-Type是不一样的。图片一般不需要指定编码。一般只为字符数据指定编码：`charset=utf-8`。
+
+|文件扩展名|Content-Type|
+|:--|:--|
+|.html|text/html|
+|.txt|text/plain|
+|.css|text/css|
+|.js|application/x-javascript|
+
+具体编码查询地址：`http://tool.oschina.net/commons`
+12. `fs.readdir('xxx.txt', function(err, files))`能够读取目录。
+13. `url.parse()`用来解析url路径。
+```
+// 第二个参数为true时，自动解析发送的参数
+url.parse('/xxx', true)
+```
