@@ -546,4 +546,14 @@ document.body.clientHeight/document.documentElement.clientHeight
 * `attachEvent()`
 * `detachEvent()`
 7. 阻止事件的默认行为：`preventDefault()`
-8. 
+```
+let a = document.querySelector('a')
+
+a.onclick = event => {
+    event.preventDefault()
+}
+```
+8. load事件，当页面完全加载后（包括所有图形、js文件、css文件等外部资源）就会触发window上面的load事件.
+9. unload事件，在文档被完全卸载后出发。只要用户从一个页面切换到另一个页面就会发生unload事件。
+10. resize事件，是当浏览器窗口被调到一个新的高度或宽度时，就会触发resize事件。（只要调整窗口大小就会触发，所以这里应该不要加入大量的计算代码）
+11. scroll事件，是在window对象上发生的。
