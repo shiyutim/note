@@ -34,4 +34,26 @@ img {
 @import url(xxx.css) screen and (max-width: 360px);
 ```
 3. “在针对所有设备的媒体查询中，可以使用简写语法，即省略关键字all（以及紧随其后的and）。换句话说，如果不指定关键字，则关键字就是all”
-4. 
+4. 使用媒体查询链接不同的CSS文件。浏览器会先解析符合规则的样式表，其他样式文件可以等到页面初始渲染结束后再处理。（所有文件都会下载下来，只是如果有的文件不必立即应用）
+5. 在大多数情况下可以使用这个标签
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+## 第三章 弹性布局与响应式图片
+1. 在开始时，网站的宽度大都以百分比形式定义。百分比布局使得网页宽度能够随着查看它们的屏幕窗口大小变化，因而得名**弹性布局**
+2. 在大约2005-2010年，出现了固定宽度的设计。
+3. 为了使得媒体查询断点间的平滑过渡，需要使用弹性布局。
+4. 在2015年css推出了一个新的布局模块叫“弹性盒子”flexbox。可以用来实现弹性布局。
+5. 在设置了flex的属性里，给最后一个元素设置`margin-left: auto`可以使这个元素定位在最右侧。
+6. 通过scrset切换分辨率
+```
+<img src="xxx.png" srcset="xxx.png 1.5x, xxx.png 2x">
+```
+7. srcset和sizes联合切换
+```
+<img srcset="xxx.png 450w, xxx.png 900w" sizes="(min-width: 20em) 100vw, (min-width: 50em) 50vw" src="xxx.png">
+// 450/900分别代表像素
+```
+
+
