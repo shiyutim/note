@@ -56,4 +56,26 @@ img {
 // 450/900分别代表像素
 ```
 
+## 第四章 HTML5与响应式Web设计
+1. `lang`用于声明语言的类型，告知浏览器用什么来声明。常见的有
+* lang="en"
+* lang="zh"
+* lang="zh-CN"
+2. 对于本地文件video而言，设定固定的高宽不能使他自适应，可以这样设置`max-width: 100%; height: auto;`。对于嵌入视频（其他来源），这样并不能解决问题
 
+## 第五章 CSS3新特性
+1.  `word-wrap: break-word`可以设置折行，比如url
+2. 设置截短文本，如`All you need to is ...`,需要如下设置
+```
+ {
+    width: 100%; // and width: xxxpx; 
+    overflow: hidden;                 
+    text-overflow: ellipsis;      
+    white-space: no-wrap   // 确保长出来的文本不会折行显示在外部元素中
+ }
+ ```
+ 3. 选择器伪类：
+ * first-child
+ * last-child
+ * only-child
+ * only-of-type
