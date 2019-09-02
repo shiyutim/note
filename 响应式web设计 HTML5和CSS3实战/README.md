@@ -79,3 +79,12 @@ img {
  * last-child
  * only-child
  * only-of-type
+ 4. 使用@font-face设置自定义字体
+ 5. hsl和hsla颜色
+ 
+## 第六章 CSS3高级技术
+1. text-shadow文本阴影，四个值，分别为
+    * 阴影右侧的偏移量
+    * 阴影下方的偏移量
+    * 模糊距离
+    * 颜色值
