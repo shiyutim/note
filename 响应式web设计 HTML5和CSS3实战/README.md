@@ -96,3 +96,12 @@ img {
 ## 第七章 SVG与响应式设计
 1. SVG是用于描述二维图形的语言。支持三种图像对象：矢量图形形状/图像和文本。
 2. SVG允许在代码中使用矢量点来描述二维图像。因为矢量图是使用相对点来保存数据的，所以可以缩放到任意大小而不会损失清晰度。相对于同尺寸的jpg等文件来说体积更小。
+
+## 第八章 CSS3过度丶变形和动画
+1. transition 过度 transform 变形 animation 动画
+2. transition-property 指定要过度css属性的名字，可以指定具体的名字，也可以指定all（all会过度所有可以过度的属性）
+ 
+## 第九章 表单
+1. 使用:placeholder-shown 可以给placeholder添加样式，不过需要添加前缀
+2. autocomplete浏览器自动补全功能。使用off来禁用。
+3. 表单的pattern属性支持验证 正则表达式
