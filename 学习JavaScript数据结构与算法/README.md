@@ -202,3 +202,59 @@ function decimalToBinary(decNumber, base) {
     return str
 }
 ```
+
+## 第五章 队列和双端队列
+1. 队列是遵循先进先出(FIFO)原则的一组有序的项。队列在尾部添加新元素，并从顶部移除元素。最新添加的元素必须排在队列的末尾
+2. 按照队列的原则封装了方法：
+```
+class Queue {
+    constructor () {
+        this.items = {}
+        this.count = 0       // 代表当前个数
+        this.lowestCount = 0  // 最顶部的值
+    }
+    // 队列尾部添加项
+    enqueue (element) {
+        this.items[this.count] = element
+        this.count++
+    }
+    // 移除队列的第一项
+    dequeue () {
+        if(this.isEmpty()) {
+            return undefined
+        }
+        let result = this.items[this.lowestCount]
+        delete this.items[this.lowestCount]
+        this.lowestCount++
+        return result
+    }
+    // 返回队列中第一个元素
+    peek () {
+        if(this.isEmpty()) {
+            return undefined
+        }
+        return this.items[this.lowestCount]
+    }            
+    isEmpty () {
+        return this.count-this.lowestCount === 0
+    }
+    clear () {
+        this.items = {}
+        this.count = 0
+        this.lowestCount = 0
+    }
+    size () {
+        return this.count-this.lowestCount
+    }
+    toString () {
+        if(this.isEmpty()) {
+            return undefined
+        }
+        let str = this.items[this.lowestCount]
+        for(let i=this.lowestCount+1;i<this.count;i++) {
+            str = `${str},${this.items[i]}`
+        }
+        return str
+    }            
+}
+```
