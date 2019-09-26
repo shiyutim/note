@@ -1,61 +1,66 @@
 # Vue项目笔记
-1. 默认`webpack`是不能识别`css`的，所以需要配置`loader`，`scss/less/stylus`同样也需要下载对应的`loader`文件。
-    * `npm install stylus stylus-loader --save-dev`
-    * 下载之后再`.vue`文件里，如果要写`stylus`样式，需要在`<style>`标签里面添加`lang="stylue" rel="stylesheet/stylus`。
-2. 使用`redirect`可以设置**默认**的**路径**。
+## 使用`redirect`可以重定向到别的页面。
 ```
        {
             path: '/',
             redirect: '/xxx'
         }
 ```
-3. **动态的添加类名**，下面的代码表示，在路径为`search`的时候，把类`active`动态的添加到指定的地方。
+## 动态添加类名
+下面的代码表示，在路径为`search`的时候，把类`active`动态的添加到指定的地方。
 ```
-    :class = "{active: $route.path ==  '/search'}"
+:class = "{active: $route.path ==  '/search'}"
 ```
-4. 动态的切换**路由路径**，可以给要点击的元素添加`@click`方法。
+## 动态的切换路由路径
+可以给要点击的元素添加`@click`方法。
 ```
-    @click="goTo('/path')"
-    methods: {
-        goTo(path) {
-          this.$router.replace(path);
-      }
-    }
+@click="goTo('/path')"
+methods: {
+    goTo(path) {
+      this.$router.replace(path);
+  }
+}
 ```
-5. 使用`swiper`来进行轮播图。在要使用轮播图的`Vue`文件里，如下导入文件。
+## 使用`swiper`来进行轮播图。在要使用轮播图的`Vue`文件里，如下导入文件。
 ```
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 ```
-6. 导入组件
+## 点击按钮跳转
+* 第一种方法
+`<router-link to="/xxx"></router-link>`
+* 第二种方法
 ```
-在<template>里添加如下组件:
-<OwnOne></OwnOne>
+<button @click="jump">跳转</button>
 
-在script标签里面如下：
-import OwnOne from '../../xxxx'
-export default {
-    components: {
-        OwnOne,
-    }
+jump () {
+    this.$router.push({path: '/xxx'});
+}
+jump () {
+    this.$router.push({path: "name?a=123"})或者
+    this.$router.push({path: "name", query:{a:123}})
 }
 ```
-7. 导入`vue-router`
-    * `<router-link to="/xxx"></router-link>`
-8. 返回前一页，可以使用
+* 第三种方法
+```
+$router.go(1)
+```
+## 返回前一页
 ```
 @click="$router.back()"
 ```
-9. 使用`v-show="$route.meta.xxxxx"`可以控制这个组件是否在本页面显示。配置如下：
-    * 在控制该组件的**占位符**里面添加`v-show="$route.meta.showFooter"`。
-    * 然后在引入路由路径`routes`里面添加如下代码：
-    ```
-    meta: {
-        xxxxx: true
-    }
-    ```
-    * `true`为显示，默认为`false`。
-10. 点击刷新页面
+## 使用`v-show="$route.meta.xxxxx"`可以控制这个组件是否在本页面显示。
+配置如下：
+* 在控制该组件的**占位符**里面添加`v-show="$route.meta.showFooter"`。
+* 然后在引入路由路径`routes`里面添加如下代码：
+```
+meta: {
+    xxxxx: true
+}
+```
+* `true`为显示，默认为`false`。
+
+## 点击刷新页面
 * 方法一
 ```
 this.$router.go(0)
@@ -68,37 +73,124 @@ window.location.reload()
 ```
 history.go(0)
 ```
-# 学习笔记
-#### 使用定时器`setInterval()`
-首先在`methods`中定义好函数后，在`mounted`里面调用。
-**调用方法的时候，不要加括号**;**定时器在页面关闭时一定要销毁掉，不然会一直存在**
+    
+## addClass方法
 ```
-methods: {
-    add () {
-        xxxx
+<a
+    v-for="(item, num) in navList" :key="num" href="" @click.prevent="addClass(num)"
+    :class="{lineActive:num === current}"
+>{{item.name}}</a>
+
+addClass (index) {
+  this.current = index
+}
+```
+## vue动画
+* 首先需要给要使用动画的元素嵌套一个<transition>标签
+* 然后配置name属性,可以使用`fade`
+```
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+```
+## VUE中获取固定格式日期
+
+* 首先在main.js中定义函数
+```
+function formatDate(date, fmt) {
+  date = new Date(date);
+  if (typeof(fmt) === "undefined") {
+      fmt = "yyyy-MM-dd HH:mm:ss";
+  }
+  if (/(y+)/.test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+  }
+  let o = {
+      'Y': date.getFullYear(),
+      'M+': date.getMonth() + 1,
+      'd+': date.getDate(),
+      'H+': date.getHours(),
+      'm+': date.getMinutes(),
+      's+': date.getSeconds()
+  }
+  for (let k in o) {
+      if (new RegExp(`(${k})`).test(fmt)) {
+          let str = o[k] + ''
+          fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? str : ('00' + str).substr(str.length));
+      }
+  }
+  return fmt
+};
+
+
+
+Vue.filter("FormatDate", function(date, fmt) {
+  return formatDate(date, fmt);
+});
+```
+
+这样是注册在全局里面的，所有的组件都可以使用，如：
+
+* 在某组件里，这样定义：
+```
+ <span>{{ time | FormatDate('Y-MM-d HH: mm: ss') }}</span>
+ // 2019-09-25 22: 41: 52
+```
+## 使用拦截守卫，进行登录拦截
+requireAuth 属性作用是表明该路由是否需要登录验证
+```
+{
+    path: '/forum',
+      component: Forum,
+      meta: {
+        requireAuth: true    // 这里定义是否需要拦截
+      },
+      beforeEnter: (to, from, next) => {
+        if (to.meta.requireAuth) {  // 判断跳转的路由是否需要登录
+          const cookie = document.cookie
+          if (cookie) {
+            next()
+          } else {
+            window.alert('请登录')
+            next(false)
+          }
+        } else {
+          next()
+        }
+      }
+ }
+```
+
+---
+
+1. `<style>`标签里面添加`scoped`属性，可以设置这个标签只对当前组件生效。如果不设置就会影响引入了这个组件的父组件。
+2. `.prevent`用来阻止默认事件。
+3. `$route.query.xxx`获取url参数
+4. `$route.params.xxx` 路由参数
+5. . 默认`webpack`是不能识别`css`的，所以需要配置`loader`，`scss/less/stylus`同样也需要下载对应的`loader`文件。
+    * `npm install stylus stylus-loader`
+    * 下载之后再`.vue`文件里，如果要写`stylus`样式，需要在`<style>`标签里面添加`lang="stylus"
+6. 获取DOM元素的**位置信息**
+```
+<p ref="selectLi"></p>
+
+this.$refs.selectLi.getBoundingClientRect().top
+```
+7. router/index.js路由配置文件
+路由配置文件里面的`@`代表 `webpack.base.conf.js`里面resolve 里面配置的文件名。**这样使用@就代表了src**
+```
+ alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src'),
     }
-},
-mounted () {
-    this.add();
-    var timer = setInterval(this.add, 1000);
-}
-beforeDestroy() {
-    clearTnterval(this.timer)
-}
 ```
 
-#### 使用方法后不能更新视图
-可以使用`Vue.set()`方法。
-```
-Vue.set(this.xxx, 0, {
-    name: 'xxx',
-    xxxx: xxxx
-})
-```
-#### 跨域问题
-通过在index.js文件里面通过设置model.export = {}设置代理。
-
-
+8. “dependencies”/ "devDependencise"
+* dependencies 里面是项目上线后需要的依赖
+* devDependencise 里面是生产环境后需要的依赖
 
 
 # Vue-cli(脚手架)
