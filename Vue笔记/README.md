@@ -164,6 +164,57 @@ requireAuth 属性作用是表明该路由是否需要登录验证
  }
 ```
 
+## 获取元素高度
+```
+//获取高度值
+var height= this.$refs.text.offsetHeight; //100
+
+
+//获取元素样式值,element 为元素ref="element"
+var heightCss = window.getComputedStyle(this.$refs.element).height; // 100px
+
+
+//获取元素内联样式值
+var heightStyle =this.$refs.element.style.height; // 100px
+```
+##### 添加
+在`methods`定义一个方法，可以通过点击事件触发
+```
+methods: {
+        saveStorage () {
+           localStorage.setItem('test', '123') //  第一个值为key，第二个值为value，value可以是变量
+        }
+    }
+```
+触发后，打开控制台的**Application**选项卡，点击**Storage**下的**Local Storage**可以看到右侧已经添加进入了相应的值。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190930212345332.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDYyMzA0MA==,size_16,color_FFFFFF,t_70)
+
+##### 获取
+在写一个方法用来获取
+```
+methods: {
+       getStorage () {
+           const info = localStorage.getItem('test')
+           console.log(info)
+       }
+   }
+```
+调用此方法后，可以看到控制台输出了存储后的值
+
+##### 删除
+```
+methods: {
+       removeStorage () {
+           localStorage.removeItem('test')
+       }
+   }
+```
+调用此方法后，发现选项卡里面储存的key为`test`的值已经没了
+
+---
+**在储存变量的时候，记得要使用JSON.stringify()方法，在获取的时候要使用JSON.parse()方法**
+
+
 ---
 
 1. `<style>`标签里面添加`scoped`属性，可以设置这个标签只对当前组件生效。如果不设置就会影响引入了这个组件的父组件。
