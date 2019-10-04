@@ -41,3 +41,8 @@ src表示引用资源，替换当前元素，用在img，script，iframe上，sr
 5. 将渲染树每个节点绘制到屏幕
 
 ---
+#### 页面导入样式时，使用link和@import有什么区别？
+1. @import 是css提供的语法规则，只有导入样式表的作用；link是html标签，不仅可以加载css文件，还可以定义rss、rel连接属性等。
+2. 加载页面时，link标签引入的css被同时加载，而@import加载的样式等到页面加载完之后才加载
+3. @import 是css2.1才有的语法，所以IE5+才能识别，而link作为html标签不存在兼容性的问题
+4. 可以通过js操作DOM，插入link标签来改变样式；而无法通过@import的方式插入样式
