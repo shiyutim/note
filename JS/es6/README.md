@@ -284,7 +284,7 @@ obj['bar'] // 'abc'
 ```
 
 3. 函数的 name 属性可以获取函数名。bind 方法创造的函数，name 属性返回`bound`加上原函数的名字。如果对象的方法是一个 Symbol 值，那么 name 属性返回的是 Symbol 值的描述。
-4. 相等运算符==会自动转换数据类型。严格相等运算符===不会转换。
+4. 相等运算符`==`会自动转换数据类型。严格相等运算符`===`不会转换。
 5. Object.is()可以比较两个值是否严格相等。
 
 ```
@@ -311,3 +311,20 @@ let obj4 = Object.assign({}, Obj2, obj3)
 
 7. 如果有多个同名属性，则后面的会覆盖前面的。
 8. Object.assign()方法实行的是浅复制，而不是深复制。也就是说，如果源对象的某个属性的值是**对象**，那么目标对象复制得到的是**这个对象的引用**。而且修改对象会改变原来对象的内容。
+9. 为对象添加方法:
+
+```
+Object.assign(SomeClass.prototype, {
+    someMethods() {},
+    someMethods() {},
+})
+```
+
+10. `Object.getOwnPropertyDescriptor()`能够获取该属性的描述对象。如果对象的 enumerable（可枚举）为 false，就表示某些操作会忽略当前属性。
+11. Object.**proto**代替方案：
+
+- Object.setPrototypeOf() （写操作）
+- Object.getPrototypeOf() （读操作）
+- Object.create() （生成操作）
+
+12.
