@@ -217,5 +217,118 @@ Authorization: OLS:32pnW+rxXwSMkePCo3dIjfmyzvg=
 - Host 会告知服务器，请求的资源所处的互联网主机名和端口号。如果相同的 ip 地址下部署运行多个域名，那么服务器就无法理解是哪个域名对应的请求。所以就需要 host 来指出请求的主机名。
 - If-XXX 这种样式的请求首部字段，都可称为条件请求。服务器接收到附带条件的请求后，只有判断指定条件为真时，才会执行请求。
 - If-Modified-Since 会告知服务器，在指定的值之后更新过资源，则处理请求。如果在之后没有更新过，则返回状态码 304。
+- If-Unmodified-Since 与 If-Modified-Since 相反
 - If-None-Match 跟 If-Match 相反
 - If-Range 字段若是跟 ETag 值或更新的日期时间匹配一致，那么就作为范围请求处理。否则返回全体资源。
+- Max-Forwards 请求经过多台代理服务器进行转发时，每转发一次，Max-Forwards 的值就减 1，当为 0 时，就会返回响应。
+- Proxy-Authorization 接收到代理服务器发来的认证质询时，客户端会发送包含首部字段 Proxy-Authorization 的请求，以告知服务器认证所需要的信息。
+  - 这个行为发生在客户端和代理之间。
+  - 客户端与服务器之间的认证，使用 Authorization 可起到相同的作用
+- Range 指定范围的资源请求。
+  - 能够处理请求返回状态码 206
+  - 无法处理该范围请求，返回 200 及全部资源
+
+```
+Range: bytes=5001-10000
+```
+
+- Referer 告知服务器请求资源的原始 URI（路径）。
+- TE 会告知服务器能够处理响应的**传输编码方式**及相对优先级。
+- User-Agent 会将创建请求的浏览器和用户代理名称等信息传达给服务器。
+  - 如果经过代理，那么中间也很可能被添加代理服务器的名称。
+
+6. 响应首部字段
+
+- Accept-Ranges 用来告知服务器**是否能处理范围请求**。
+  - 指定两种值，可处理为`bytes`，反之则为`none`。
+- Age 能够告知客户端，源服务器在多久前创建了响应。单位为秒。
+
+```
+Age: 1941638
+```
+
+- ETag 能告知客户端实体标识。将资源以字符串形式做唯一标识的方式。当资源更新时，ETag 值也需要更新。
+- Location 可以将响应接收方引导至某个与请求 URI 位置不同的资源。
+- Proxy-Authenticate 会把由代理服务器所要求的认证信息发送给客户端。
+- Retry-After 告知客户端盖在多久之后再次发送请求。
+- Server 告知客户端当前服务器上安装的 HTTP 服务器应用程序的信息。
+- Vary 可对缓存进行控制，如果指定字段的值，与源服务器字段的值相同，则直接从缓存中返回响应。反之，则需要先从源服务器端获取资源后才能作为响应返回。
+
+```
+Vary: Accept-Encoding
+```
+
+- 首部字段 WWW-Authenticate 用于 HTTP 认证访问。他会告知客户端适用访问请求 URI 所指定资源的认证方案（Basic 或 Digest）和带参数提示的质询。
+
+7. 实体首部字段
+
+- Allow 通知客户端能够支持 Request 指定资源的所有 HTTP 方法。
+- Content-Type 指定内容编码方式。内容编码是指在不丢失实体信息的情况下，所进行的压缩。
+- Content-Language 实体主体使用的语言。
+- Content-length 表明了实体主体部分 的大小。
+- Content-location 表示报文主体返回资源对应的 URI
+- Content-MD5 是一串由 MD5 算法生成的值，其目的在于检查报文主体在传输过程中是否保持完整，以及确认传输到达。
+
+```
+Content-MD5: d0c827071e3b6ca84004e4734b36537b
+```
+
+- Content-Range 范围请求。
+
+```
+
+```
+
+- Content-Type 实体主体内对象的媒体类型。
+
+```
+Content-Type: text/html; charset=utf-8
+```
+
+- Expires 会将资源失效的日期告知客户端。
+
+```
+Expires: Sat, 09 Nov 2019 07:47:32 GMT
+```
+
+- Last-Modified 指明资源最终修改的时间。
+
+```
+Last-Modified: Sat, 09 Nov 2019 07:42:52 GMT
+```
+
+8. Cookie 的工作机制是用户识别及状态管理。web 网站为了管理客户的状态会通过 web 浏览器，把一些数据临时写入用户的计算机内。接着当用户访问该 web 网站时，可通过通信方式取回之前存放的 Cookie
+
+- expires 指定浏览器可发送 Cookie 的有效期。
+- path 可用于限制指定 Cookie 的发送范围的文件目录。
+- domain 如：指定 example.com，除了 example.com 外，www.example.com 或 www2.example.com 等都可以发送 Cookie。
+  - 因此，除了针对具体指定的多个域名发送 cookie 外，不指定 domain 属性显得更安全。
+- secure 属性用于限制 web 页面仅在 https 安全连接时，才可以发送 cookie。
+  - 当省略时，不论 http 和 https 都会对 cookie 进行回收。
+- HttpOnly 它使 jsvascript 脚本无法获得 Cookie。其主要目的是为了防止跨站脚本攻击（Cross-site-scriping, XSS）对 Cookie 的信息窃取。
+  - 进行设置后，web 页面内还可以对 Cookie 进行读取操作，但使用 JavaScript 的`document.cookie`就无法读取附加 httponly 属性后的内容了。因此，也就无法在 XSS 中利用 js 劫持 Cookie 了。
+
+9. 其他首部字段。http 首部字段是可以自行扩展的。所以在 web 服务器和浏览器的应用上，会出现各种非标准的首部字段。，`X-XSS-Protection`, `DNT`, `P3P`。
+
+- X-Frame-Options 属于 http 相应首部，用于控制网站内容在其他 web 网站的 Frame 标签内的显示问题。主要为了防止点击劫持（clickjacking）。
+  - DENY：拒绝
+  - SAMEORIGIN：仅同源域名下的页面匹配时许可。
+
+```
+x-frame-options: SAMEORIGIN
+```
+
+- x-xss-protection 针对跨站脚本攻击(XSS)的一种对策，用户控制浏览器 XSS 防护机制的开关。
+  - 0：将 XSS 过滤设置成无效状态
+  - 1：将 XSS 过滤设置成有效状态
+- DNT （do noet track）为拒绝个人信息被收集，是表示拒绝被精准广告追踪的一种方法。
+  - 0：同意被追踪
+  - 1：拒绝被追踪
+- P3P 可以让 web 网站上的个人隐私变成一种仅供程序可理解的形式，以达到保护用户隐私的目的。
+-
+
+10. 在 http 的多种协议中，通过给非标准参数加上前缀 X-，用来区别于标准参数。
+
+## 第七章
+
+1.
