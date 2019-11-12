@@ -332,3 +332,29 @@ let dedupe = array => {
 - forEach(): 使用回调函数遍历每个成员
 6. set的遍历顺序就是插入的顺序，能够按照顺序调用。
 7. 扩展运算符（`...`）内部使用for...of循环。
+8. WeakSet结构与set类似，不过有两个区别：
+- WeakSet的成员只能是对象，不能是其他的值。
+- WeakSet中的对象引用都是弱引用，垃圾回收机制不考虑WeakSet对该对象的引用。
+9. WeakSet有三个方法：
+- WeakSet.prototype.add(value)
+- WeakSet.prototype.delete(value)
+- WeakSet.prototype.has(value)
+10. Map结构的键可以是各种类型的值。
+11. Map的键实际上是和内存地址绑定的，只要内存地址不一样，就视为两个键。这就解决了同名属性碰撞的问题，我们扩展别人的库时，如果使用对象作为键名，不用担心自己的属性与原作者的属性同名。
+12. Map结构的方法：
+- set(key, value)： set方法设置key所对应的键值。如果有值则更新，没有则创建
+- get(key): 读取key对应的键值，如果找不到，则返回undefined
+- has(key): 返回一个布尔值，表示某个键是否存在
+- delete(key): 返回一个布尔值，如果删除失败，返回`false`
+- delete(key): 删除某个键
+- clear()： 清除所有成员。
+13. Map的遍历方法：
+- keys(): 返回键名的遍历器
+- values(): 返回键值的遍历器
+- entries(): 返回所有成员的遍历器
+- forEach(): 遍历Map的所有成员。按插入顺序遍历。
+。。。
+---
+
+## 第十二章
+1. 
