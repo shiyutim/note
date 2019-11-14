@@ -357,4 +357,34 @@ let dedupe = array => {
 ---
 
 ## 第十二章
-1. 
+1. proxy用于修改某些操作的默认行为，可以理解成在目标对象前架设一个*拦截层*，外界对该对象的访问都必须通过这层拦截。
+2. es6原声提供Proxy构造函数，用于生成proxy实例。`let proxy = new Proxy(target, handler)`。target表示所要拦截都目标对象，handler也是一个对象，用来定制拦截行为。
+
+## 第十三章
+
+
+## 第十四章
+1. promise 是异步编程的一种解决方案。Promise是一个对象，从它可以获取异步操作的消息。
+2. promise有三种状态。只有异步操作的结果可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。
+- `Pending` 进行中
+- `Fulfilled` 已成功
+- `Rejected` 已失败
+3. 一旦状态改变，就不会再变。Promise状态的状态改变只有两种可能，从Pending变为Fulfilled和从Pending变为Rejected。
+4. Promise可以将异步操作以同步操作的流程表达出来，避免来层层嵌套的回调函数。
+5. 一个新的Promise实例：
+```
+let promise = new Promise((resolve, reject) => {
+    if(/*   异步操作成功  */) {
+        resolve(value)
+    }else {
+        reject(error)
+    }
+})
+```
+6.一般来说，调用resolve和reject后，Promise的使命就完成了，后续操作应该放在then方法里面，而不是直接写在resolve和reject后面。所以，**最好在他们前面加上return语句，这样就不会产生意外。**
+```
+new Promise((resolve, reject) => {
+    return resolve(1)
+})
+```
+7. Promise对象的错误具有冒泡性质，会一直向后传递，直到被捕获为止。也就是说，错误总是会被下一个catch语句捕获。
