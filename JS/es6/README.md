@@ -388,3 +388,52 @@ new Promise((resolve, reject) => {
 })
 ```
 7. Promise对象的错误具有冒泡性质，会一直向后传递，直到被捕获为止。也就是说，错误总是会被下一个catch语句捕获。
+8. Promise.all()方法用于将多个Promise对象封装成一个新都Promise实例。
+9. Promise的状态有两种情况：
+- 只有所有参数的状态都变为`fulfilled`，才会返回`fulfilled`。
+- 只要有一个被`rejected`,就会返回`rejected`.
+10. Primise.race()方法也是将多个Promise实例转包装成一个新都Promise实例。但是**只要有一个实例率先改变状态，就会改变状态。**
+```
+// 可以设置一个5秒超时响应。如果5秒后没有响应返回，则返回一个错误
+let p = Promise.race([
+    Promise.resovle(...),
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(request timeout)
+        }, 5000)
+    })
+])
+```
+11. Promise.resolve()可以将现有对象转换为Promise对象。
+12. Promise.resolve是在本轮“事件循环结束”时调用，而不是在下一轮“事件循环”开始时执行。
+```
+setTimeout(() => {
+    console.log('three')
+})
+
+Promise.resolve().then(res => {
+    console.log('two')
+})
+
+console.log('one')
+
+
+// 'one'
+// 'two'
+// 'three'
+
+setTimeout() 是在下一轮 事件循环 开始时执行的，Promise.resolve是在本轮 事件循环 结束时执行，console.log 则是立即执行。
+```
+13. Promise.reject返回一个rejected状态的Promise实例。
+
+
+## 第十八章
+1. async函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行当时候，一旦遇到await就会先返回，等到异步操作成功，再接着执行函数体内后面当语句。
+
+## 第二十二章
+
+## 第二十三章
+
+## 第二十四章
+
+## 第二十五章
