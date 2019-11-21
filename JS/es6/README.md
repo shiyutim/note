@@ -428,9 +428,73 @@ setTimeout() 是在下一轮 事件循环 开始时执行的，Promise.resolve�
 
 
 ## 第十八章
-1. async函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行当时候，一旦遇到await就会先返回，等到异步操作成功，再接着执行函数体内后面当语句。
+1. async函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行当时候，一旦遇到await就会先返回，等到异步操作成功，再接着执行函数体内后面的语句。
+2. async函数有多种使用形式：
+```
+async function foo() {}
+
+const foo = async function() {}
+
+let obj = { async foo () {}}
+obj.foo.then()
+
+const foo = async () => {}
+```
+3. 如果await语句后面的Promise变为reject，那么整个async函数都会中断执行，可以使用catch进行捕获。
+```
+async function f() {
+    await Promise.reject(error)
+    .catch(err => throw err)
+    
+    return await Promise.resolve('hello world')
+}
+```
+4. 多个await命令后面的异步操作如果不存在继发关系，最好让他们同时触发。因为只有执行完第一个后，才会执行第二个，这样比较耗时。
+```
+// 写法一
+let [foo, bar] = await Promise.all([xxx, xxx])
+
+// 写法二
+let fooP = getFoo()
+let barP = getBar()
+
+let foo = await fooP
+let bar = await Bar
+
+// 这样就会同时触发，节省程序执行时间
+
+```
 
 ## 第二十二章
+1. 在ES6之前，社区有一些模块加载方案，最主要的有CommonJS和AMD两种。前者用于服务器，后者用于浏览器。
+2. 模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。
+```
+export let first = 'first'
+export let second = 'second'
+
+// 或者
+let first = 'first'
+let second = 'second'
+
+export {first, second}    // 优先采用这种写法 一目了然
+```
+3. import命令在编译阶段执行，所以是最早执行的。
+4. 可以整体加载：`import * as xxx`
+```javascript
+// test.js
+let first = 'first'
+let second = 'second'
+
+export {first, second}
+
+// 
+import * as core from '../test
+
+core.first
+core.second
+```
+5. export default 相对于 export 来说，可以省略`{}`，但是只能使用一次。
+6. require是运行时加载模块。到底加载哪一个模块只有在运行时才能够知道。
 
 ## 第二十三章
 
