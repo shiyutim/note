@@ -206,3 +206,36 @@ const addHandler = document.body.addEventListener ? ... : ...
 ## 第九章
 1. 网站提速中的重要一条规则，就是减少页面渲染所需的http请求数，特别是针对那些首次访问网站的用户。一个简单的方式就是把部分文件和代码合并成一个外链文件。
 2. JavaScript压缩指的是把JavaScript文件中所有与运行无关的部分进行剥离的过程。剥离的内容包括注释和不必要的空白字符。
+
+
+## 第十章
+1. 可以使用手动插入代码的方式来记录代码的运行时间。
+```javascript
+const Timer = {
+    _data: {},
+    
+    start: key => {
+        Timer._data[key] = +new Data()
+    },
+    
+    stop: key => {
+        let time = TImer._data[key]
+        if(time) {
+            Timer._data[key] = +new Data() - time
+        }
+    },
+    
+    getTime: key => {
+        return Timer._data[key]
+    }
+}
+
+Timer.start('create')
+for(let i=0;i<1000;i++) {
+    element = document.createElement('div')
+}
+Timer.stop('create')
+
+console.log(Timer.getTime('create'))
+```
+2. 传统上，浏览器限制每次请求只能发出一个脚本请求。这样做是为了管理文件之间的依赖关系。脚本之间存在间隙就说明脚本被阻塞了。**有些浏览器的解决办法是允许并行下载，但阻塞运行**。虽然这样做能使文件下载得更快，但页面渲染仍然会被阻塞，直到所有脚本都被执行。
