@@ -1,0 +1,63 @@
+ 1.登录之前需要进入 xampp/mysql/bin文件夹里。
+启动需要输入：mysql -u root -p  提示输入密码，有密码的话输入。如果没有密码可以直接按enter进入。
+输入 exit 或 quit 退出；
+    2.进入目录。
+启动  mysqld --consle
+关闭 mysqldadmin -urrot shutdown
+3.输入 SHOW DATABASES;  列出mysql数据库管理系统的数据库列表。
+4.输入 SHOW TABLES; 显示指定数据库的所有表，但是使用该命令之前需要使用use命令来选择要操作的数据库。
+5.创建数据库
+（1）首先进入数据库
+（2）然后输入 create DATABASE XXXXX;
+6.删除数据库 
+drop database xxxxx;
+7.选择数据库
+use xxxxxx;
+8.所有的数据库名，表名，表字段都是区分大小写的。所以在使用SQL命令时需要输入正确的名称
+9.desc xxxxx 查看表
+
+10.创建数据表实例：
+CREATE TABLE IF NOT EXISTS `runoob_tbl`(
+`runoob_id` INT UNSIGNED AUTO_INCREMENT,
+`runoob_title` VARCHAR(100) NOT NULL,
+ `runoob_author` VARCHAR(40) NOT NULL,
+ `submission_date` DATE,
+PRIMARY KEY ( `runoob_id` )
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+解析:
+如果你不想字段为 NULL 可以设置字段的属性为 NOT NULL， 在操作数据库时如果输入该字段的数据为NULL ，就会报错。
+AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。
+PRIMARY KEY关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。
+ENGINE 设置存储引擎，CHARSET 设置编码。
+11.删除数据表： DROP TABLES XXXXXX;
+
+删除表内数据，用 delete。格式为：
+delete from 表名 where 删除条件;
+实例：删除学生表内姓名为张三的记录。
+delete from  student where  T_name = "张三";
+清除表内数据，保存表结构，用 truncate。格式为：
+truncate table 表名;
+实例：清除学生表内的所有数据。
+truncate  table  student;
+删除表用 drop，就是啥都没了。格式为：
+drop  table  表名;
+实例：删除学生表。
+drop table student;
+（1）当你不再需要该表时， 用 drop;
+（2）当你仍要保留该表，但要删除所有记录时， 用 truncate;
+（3）当你要删除部分记录时， 用 delete。
+
+12.向mysql数据表插入数据可以使用 INSERT INTO sql语法：
+INSERT INTO table_name ( field1, field2,...fieldN )
+                       VALUES
+                       ( value1, value2,...valueN );
+例：INSERT INTO runoob_tbl 
+    -> (runoob_title, runoob_author, submission_date)
+    -> VALUES
+    -> ("学习 PHP", "菜鸟教程", NOW());java
+读取数据： select * from runoob_tbl;
+
+
+
+13. select * from 表名 WHERE 列名=“xxx”；  选取值为xxx的表；
+14.BINARY  放在 WHERE后面用来区分 后面字符串大小写的。

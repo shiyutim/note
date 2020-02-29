@@ -1,0 +1,25 @@
+1-3章
+1.进入浏览器输入一个网址。然后切回fiddler，左侧选中一个网址，然后点击右侧 Inspertors ---Raw， 就可以在下方看到信息了。
+2. 方法一：   file --- Capture Traffic（F12） 【开始和停止抓包】
+ 方法二： 点击 左下角 Capturing 。
+3.请求是Get方法的时候，没有body主体内容。
+4.查看fiddler端口号： Iools---options---Connections。
+5.fiddler的工作原理：作为中间的代理服务器。
+代理服务器具有以下功能：
+（1 共享网络
+（2 提高了访问速度
+（3 突破了访问限制
+（4 隐藏身份
+6.fiddler使用代理地址，启动的时候修改Internet选项中的代理端口，但fiddler退出的时候，它会自动取消代理。如果非正常退出，造成无法访问网页的情况，解决办法是重新启动fiddler。
+7.查看Internet选项代理设置：
+控制面板---Internet属性---连接---局域网设置---高级
+地址：127.0.0.1 端口号： 8888
+8.捕获https
+Iools---options--Https---Decrypt Https traffic
+9.Tunnerl to  是https验证
+可以通过Rules ---Hide CONNECTs 进行隐藏
+10查看证书：
+Iools---Https---Actions---open windows Certificate Manager
+11GET一帮用于获取/查询 信息。
+POST 一帮用于更新资源信息。
+

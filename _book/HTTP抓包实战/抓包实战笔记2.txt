@@ -1,0 +1,26 @@
+1.HTTP缓存是指当web请求抵达缓存时，如果本地有缓存的副本，就可以从本地储存设备而不是从服务器中提取这个文档。
+2.伪装客户端：
+Rules---User-Agent
+3.HTTP协议头中的Referer 主要用来让服务器判断来源页面，既用户是从哪个页面来的。
+4.打开一个页面，浏览器需要发送很多个请求
+首先输入网址后，浏览器会发送一个HTTP请求去获取页面布局的HTML，叫做父请求。
+分析的过程中，如果发现HTML中引用了很多其他的文件，浏览器就会再次发送很多HTTP请求，去获取这些文件，这叫做子请求。
+5.选择请求：
+Fiddler选择子请求，找到父请求，右键选择Select---Child Requests【C】
+Fiddler选择父请求，找到子请求，Select---Parent Requests【P】
+6.设置全局断点： Rules---Automatic Breakpoint---Before Request 【F11】
+取消 Rules---Automatic Breakpoint---Disabled【shift+F11】
+7.修改HTTP请求设置单个断点： 左下角输入： bpu + 网址 如： bpu www.baidu.com
+消除断点：输入 bpu即可
+修改HTTP响应设置单个断点： 左下角 输入： bpafter + 网址
+8.修改HTTP请求：
+（1 启动F11
+（2 打开浏览器输入网址
+（3 F12取消断点
+（4  选中需要修改的HTTP请求，选中Inspectors，使用Raw选项卡
+（5 修改 GET/HOST 里面的URL网址
+（6 修改后 单击 下面绿色的Run to Completion
+9.缓存的优点： 
+（1 减少了冗余的数据传输，节省了传输时间
+（2 减少了服务器的负担，大大提高了网站的性能
+（3 加快了客户端加载网页的速度
