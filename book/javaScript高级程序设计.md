@@ -1,11 +1,20 @@
 # JavaScript高级程序设计笔记
 ## 第一章
-1. JavaScript诞生于1995年。
-2. 一个完整的JavaScript应由以下三个不同的部分组成
+1. JavaScript 诞生于 1995 年。
+2. 一个完整的 JavaScript 应由以下三个不同的部分组成
     * 核心（JavaScript）**提供核心语言功能**
     * 文档对象模型（DOM）**提供访问和操作网页内容的方法和接口**
     * 浏览器对象模型（BOM）**提供与浏览器交互的方法和接口**
-    
+3.  ECMA-262 是这门语言的基础。我们常见的 Web 浏览器只是 ECMAScript 实现可能的**宿主环境之一**。其他宿主环境还有 Node.js 。
+4. ECMA-262 标准规定了以下内容：
+    - 语法
+    - 类型
+    - 语句
+    - 关键字
+    - 保留字
+    - 操作符
+    - 对象
+5. ECMAScript 就是对实现该标准规定的各个方面内容的语言的描述。 JavaScript 实现了 ECMAScript。
 ## 第二章
 1. `<script>`标签：
     * `async`属性：表示**应该立即下载脚本**，但不影响页面中的其他操作，如下载其他资源或等在加载其他脚本等。只对外部脚本文件有效。**脚本不会按照先后顺序执行**
@@ -33,8 +42,9 @@
     * boolean
 
    一种复杂数据类型：
-   * object
-
+   
+* object
+    
 6. 使用`typeof`可以判断数据的类型，用法为
 ```
 var message = "hello world";
@@ -562,10 +572,13 @@ document.body.clientHeight/document.documentElement.clientHeight
 10. resize事件，是当浏览器窗口被调到一个新的高度或宽度时，就会触发resize事件。（只要调整窗口大小就会触发，所以这里应该不要加入大量的计算代码）
 11. scroll事件，是在window对象上发生的。
 12. blur：在元素失去焦点时触发
+    
     * 不会冒泡
 13. focus：在元素获得焦点时触发
+    
     * 不会冒泡
 14. focusin：在元素失去焦点时触发
+    
     * 但是冒泡
 15. focusout: 在元素失去焦点时触发
 16. 鼠标与滚轮事件
