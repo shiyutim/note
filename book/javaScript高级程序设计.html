@@ -242,25 +242,32 @@
 </li>
 <li>&#x5305;&#x542B;&#x5728;<code>&lt;script&gt;</code>&#x6807;&#x7B7E;&#x5185;&#x7684;JS&#x4EE3;&#x7801;&#x5C06;<strong>&#x4ECE;&#x4E0A;&#x81F3;&#x4E0B;</strong>&#x4F9D;&#x6B21;&#x89E3;&#x91CA;&#x3002;
  &#x5728;&#x89E3;&#x91CA;&#x5668;&#x5BF9;<code>&lt;script&gt;</code>&#x5185;&#x90E8;&#x7684;&#x4EE3;&#x7801;&#x6C42;&#x503C;&#x5B8C;&#x6BD5;&#x524D;&#xFF0C;<strong>&#x9875;&#x9762;&#x4E2D;&#x7684;&#x5176;&#x4F59;&#x5185;&#x5BB9;&#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x52A0;&#x8F7D;&#x6216;&#x663E;&#x793A;</strong></li>
-<li>&#x56E0;&#x4E3A;&#x6D4F;&#x89C8;&#x5668;&#x5728;&#x9047;&#x5230;<code>&lt;body&gt;</code>&#x6807;&#x7B7E;&#x65F6;&#xFF0C;&#x624D;&#x5F00;&#x59CB;&#x5448;&#x73B0;&#x5185;&#x5BB9;&#xFF0C;&#x6240;&#x4EE5;&#x5E94;&#x8BE5;&#x628A;<code>&lt;script&gt;</code>&#x6807;&#x7B7E;<strong>&#x653E;&#x5230;&#x9875;&#x9762;&#x5185;&#x5BB9;&#x5E95;&#x90E8;</strong>&#x3002;</li>
-<li>&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x52A0;&#x8F7D;JS&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF1A;<ul>
-<li>&#x53EF;&#x7EF4;&#x62A4;&#x6027;</li>
-<li>&#x53EF;&#x7F13;&#x5B58;</li>
-<li>&#x9002;&#x5E94;&#x672A;&#x6765;</li>
+<li>&#x5728;&#x89E3;&#x6790;&#x5916;&#x90E8; JavaScript &#x6587;&#x4EF6;&#xFF08;&#x5305;&#x62EC;&#x4E0B;&#x8F7D;&#x8BE5;&#x6587;&#x4EF6;&#xFF09;&#x65F6;&#xFF0C;&#x9875;&#x9762;&#x7684;&#x5904;&#x7406;&#x4E5F;&#x4F1A;&#x6682;&#x65F6;&#x505C;&#x6B62;&#x3002;</li>
+<li>&#x5E26;&#x6709; <code>src</code> &#x5C5E;&#x6027;&#x7684; <script> 元素不应该在其 <script></script> &#x91CC;&#x9762;&#x6DFB;&#x52A0;&#x4EFB;&#x4F55; JavaScript &#x4EE3;&#x7801;&#x3002;&#x5982;&#x679C;&#x5305;&#x542B;&#x4E86;&#x4EE3;&#x7801;&#xFF0C; <strong>&#x5219;&#x53EA;&#x4F1A;&#x4E0B;&#x8F7D;&#x5E76;&#x6267;&#x884C;&#x5916;&#x90E8;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C; &#x5D4C;&#x5165;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x88AB;&#x5FFD;&#x7565;</strong>&#x3002;</li>
+<li>&#x901A;&#x8FC7; <script> 元素的 <code>src</code> 属性还可以包含来自<strong>外部域</strong>的 JavaScript 文件（JSONP）。</li>
+<li>只要不存在 defer 和 async 属性，浏览器都会按照 script 元素在页面中出现的先后顺序对它们依次进行解析。在解析完第一个 script  元素后， 才会解析第二个。</li>
+<li>因为浏览器必须等到全部 JavaScript 代码都被下载、解析和执行完成后，才开始呈现内容（浏览器在遇到 body 标签时才开始呈现内容。所以应该把<code>&lt;script&gt;</code>标签<strong>放到页面内容底部</strong>。</li>
+<li>使用外部加载JS脚本文件：<ul>
+<li>可维护性</li>
+<li>可缓存  （如果有两个以上的页面都使用同一个文件，那么这个文件只需要下载一次）</li>
+<li>适应未来</li>
 </ul>
 </li>
+<li><code>&lt;noscript&gt;</code> 元素用以在不支持 JavaScript 的浏览器中显示替代的内容。 包含在 <code>&lt;noscript&gt;</code> 元素中的内容只有在下列情况下才会显示出来： <pre><code> -  浏览器不支持脚本
+ -  浏览器支持脚本， 但脚本被禁用
+</code></pre></li>
 </ol>
-<h2 id="&#x7B2C;&#x4E09;&#x7AE0;">&#x7B2C;&#x4E09;&#x7AE0;</h2>
+<h2>第三章</h2>
 <ol>
-<li>JS&#x4E2D;&#x7684;&#x4E00;&#x5207;&#x90FD;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;</li>
-<li>&#x6807;&#x8BC6;&#x7B26;&#x89C4;&#x5219;&#xFF1A;<ul>
-<li>&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;/&#x4E0B;&#x5212;&#x7EBF;&#x6216;&#x4E00;&#x4E2A;&#x7F8E;&#x5143;&#x7B26;&#x53F7;</li>
-<li>&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#x53EF;&#x4EE5;&#x662F;&#x5B57;&#x6BCD;/&#x4E0B;&#x5212;&#x7EBF;/&#x7F8E;&#x5143;&#x7B26;&#x53F7;&#x6216;&#x6570;&#x5B57;</li>
+<li>JS中的一切都区分大小写</li>
+<li>标识符规则：<ul>
+<li>第一个字符必须是一个字母/下划线或一个美元符号</li>
+<li>其他字符可以是字母/下划线/美元符号或数字</li>
 </ul>
 </li>
-<li>ECMA&#x7684;&#x53D8;&#x91CF;&#x662F;&#x677E;&#x6563;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x3002;</li>
-<li>&#x4F7F;&#x7528;var&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x6210;&#x4E3A;&#x8BE5;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x9000;&#x51FA;&#x51FD;&#x6570;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x3002;</li>
-<li><p>ECMA&#x4E2D;&#x6709;5&#x79CD;&#x7B80;&#x5355;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;</p>
+<li>ECMA的变量是松散类型的，也就是说可以用来保存任何类型的数据。</li>
+<li>使用var定义的变量，成为该作用域中的局部变量。也就是说退出函数后，这个变量会被销毁。</li>
+<li><p>ECMA中有5种简单数据类型：</p>
 <ul>
 <li>undefined</li>
 <li>Null</li>
@@ -268,97 +275,97 @@
 <li>string</li>
 <li>boolean</li>
 </ul>
-<p>&#x4E00;&#x79CD;&#x590D;&#x6742;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;</p>
+<p>一种复杂数据类型：</p>
 </li>
 <li><p>object</p>
 </li>
-<li><p>&#x4F7F;&#x7528;<code>typeof</code>&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x6CD5;&#x4E3A;</p>
+<li><p>使用<code>typeof</code>可以判断数据的类型，用法为</p>
 <pre><code>var message = &quot;hello world&quot;;
 console.log(typeof message) //string
 </code></pre></li>
-<li>&#x5982;&#x679C;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x51C6;&#x5907;&#x5728;&#x5C06;&#x6765;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x597D;&#x5C06;&#x8BE5;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x4E3A;null&#x3002;&#x8FD9;&#x6837;&#x53EA;&#x8981;&#x68C0;&#x67E5;null&#x503C;&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x76F8;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x4FDD;&#x5B58;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x4E86;&#x3002;<pre><code>if(car != null) {
- //&#x67D0;&#x4E9B;&#x64CD;&#x4F5C;
+<li>如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为null。这样只要检查null值就可以知道相应的变量是否已经保存了一个对象的引用了。<pre><code>if(car != null) {
+ //某些操作
 }
 </code></pre></li>
-<li>&#x4F7F;&#x7528;<code>Boolean()</code>&#x53EF;&#x4EE5;&#x8F6C;&#x6362;&#x5BF9;&#x5E94;&#x7684;boolean&#x503C;&#x3002;<pre><code>var message = &quot;hello world&quot;
+<li>使用<code>Boolean()</code>可以转换对应的boolean值。<pre><code>var message = &quot;hello world&quot;
 if (message) {
  console.log(&quot;value is true&quot;)
 }
 </code></pre></li>
-<li>&#x4FDD;&#x5B58;&#x6D6E;&#x70B9;&#x6570;&#x503C;&#x9700;&#x8981;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x662F;&#x4FDD;&#x5B58;&#x6574;&#x6570;&#x503C;&#x7684;&#x4E24;&#x500D;&#x3002;</li>
-<li>ECMA&#x80FD;&#x591F;&#x8868;&#x793A;&#x7684;&#x6700;&#x5C0F;&#x6570;&#x503C;&#x4FDD;&#x5B58;&#x5728;<code>Number.MIN_VALUE</code>&#x4E2D;&#x3002;&#x6700;&#x5927;&#x6570;&#x503C;&#x4FDD;&#x5B58;&#x5728;<code>Number.MAX_VALUE</code>&#x4E2D;&#x3002;</li>
-<li>&#x4F7F;&#x7528;<code>isFinite()</code>&#x53EF;&#x4EE5;&#x6D4B;&#x8BD5;&#x8FD9;&#x4E2A;&#x6570;&#x662F;&#x5426;&#x5728;&#x6700;&#x5927;&#x6216;&#x6700;&#x5C0F;&#x6570;&#x7684;&#x4E2D;&#x95F4;&#x3002;<code>true</code>&#x4E3A;&#x5B58;&#x5728;&#xFF0C;<code>false</code>&#x4E3A;&#x4E0D;&#x5B58;&#x5728;&#x3002;</li>
-<li>NaN(Not a number)&#x5373;&#x975E;&#x6570;&#x503C;&#xFF0C;&#x7528;&#x4E8E;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x672C;&#x6765;&#x8981;&#x8FD4;&#x56DE;&#x6570;&#x503C;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x6570;&#x503C;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x4F1A;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x4E86;&#x3002;</li>
-<li><code>isNaN()</code>&#x7528;&#x6765;&#x5224;&#x65AD;<strong>&#x662F;&#x5426;&#x4E0D;&#x662F;&#x6570;&#x503C;</strong>&#x3002;</li>
-<li><p>&#x6709;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x628A;&#x975E;&#x6570;&#x503C;&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x503C;&#xFF1A;</p>
+<li>保存浮点数值需要的内存空间是保存整数值的两倍。</li>
+<li>ECMA能够表示的最小数值保存在<code>Number.MIN_VALUE</code>中。最大数值保存在<code>Number.MAX_VALUE</code>中。</li>
+<li>使用<code>isFinite()</code>可以测试这个数是否在最大或最小数的中间。<code>true</code>为存在，<code>false</code>为不存在。</li>
+<li>NaN(Not a number)即非数值，用于表示一个本来要返回数值的操作数没有返回数值的情况。因为这样就不会抛出错误了。</li>
+<li><code>isNaN()</code>用来判断<strong>是否不是数值</strong>。</li>
+<li><p>有三个函数可以把非数值转换为数值：</p>
 <ul>
 <li>Number()</li>
 <li>parseInt()</li>
 <li>parseFloat()</li>
 </ul>
-<p>Number()&#x53EF;&#x4EE5;&#x8F6C;&#x6362;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#xFF0C;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x5219;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x628A;<strong>&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6362;&#x6210;&#x6570;&#x503C;</strong>&#x3002;</p>
-<p>&#x7531;&#x4E8E;Number()&#x51FD;&#x6570;&#x5728;&#x8F6C;&#x6362;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x4E14;&#x4E0D;&#x591F;&#x5408;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x5904;&#x7406;&#x6574;&#x6570;&#x7684;&#x65F6;&#x5019;&#x66F4;&#x5E38;&#x7528;&#x7684;&#x662F;<code>parseInt()</code>&#x51FD;&#x6570;&#x3002;&#x6B64;&#x51FD;&#x6570;&#x5728;&#x8F6C;&#x6362;&#x65F6;&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x662F;&#x770B;&#x5176;&#x662F;&#x5426;&#x7B26;&#x5408;&#x6570;&#x503C;&#x6A21;&#x5F0F;&#x3002;&#x5B83;&#x4F1A;&#x5FFD;&#x7565;&#x524D;&#x9762;&#x7684;&#x7A7A;&#x683C;&#xFF0C;&#x76F4;&#x81F3;&#x627E;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x683C;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p>Number()可以转换任意类型，其他两个则专门用于把<strong>字符串转换成数值</strong>。</p>
+<p>由于Number()函数在转换字符串时比较复杂且不够合理，因此处理整数的时候更常用的是<code>parseInt()</code>函数。此函数在转换时，更多的是看其是否符合数值模式。它会忽略前面的空格，直至找到第一个非空格字符串。</p>
 <pre><code>var num = parseInt(&quot;1234blue&quot;)  // 1234
-</code></pre><p>&#x5BF9;&#x4E8E;&#x591A;&#x8FDB;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x53C2;&#x6570;</p>
+</code></pre><p>对于多进制，可以提供参数</p>
 <pre><code>var num = parseInt(&quot;0xAF&quot;, 16);
-</code></pre><p><strong>&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x89E3;&#x6790;&#x7684;&#x90FD;&#x662F;&#x5341;&#x8FDB;&#x5236;&#x6570;&#x503C;&#xFF0C;&#x56E0;&#x6B64;&#x59CB;&#x7EC8;&#x5C06;10&#x4F5C;&#x4E3A;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x975E;&#x5E38;&#x5FC5;&#x8981;&#x7684;</strong></p>
-<p><code>parseFloat()</code>&#x53EA;&#x80FD;&#x89E3;&#x6790;10&#x8FDB;&#x5236;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x80FD;&#x89E3;&#x6790;&#x4E00;&#x4E2A;&#x5C0F;&#x6570;&#x70B9;&#x7684;&#x6570;&#x503C;&#x3002;</p>
+</code></pre><p><strong>多数情况下，我们要解析的都是十进制数值，因此始终将10作为第二个参数是非常必要的</strong></p>
+<p><code>parseFloat()</code>只能解析10进制值，并且只能解析一个小数点的数值。</p>
 <pre><code>var num = parseFloat(&quot;22.34.5&quot;) // 22.34
 </code></pre></li>
-<li><p><code>\r</code>&#x4E3A;&#x56DE;&#x8F66;&#xFF0C;<code>\n</code>&#x4E3A;&#x6362;&#x884C;  </p>
+<li><p><code>\r</code>为回车，<code>\n</code>为换行  </p>
 </li>
-<li>&#x4EFB;&#x610F;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBF;&#x95EE;&#x5176;<code>length</code>&#x7684;&#x5C5E;&#x6027;&#x53D6;&#x5F97;&#xFF1A;<pre><code>var str = &quot;hello world&quot;;
+<li>任意长度的字符串可以通过访问其<code>length</code>的属性取得：<pre><code>var str = &quot;hello world&quot;;
 console.log(str.length)  // 11
 </code></pre></li>
-<li><p>&#x8981;&#x628A;&#x4E00;&#x4E2A;&#x503C;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>toString()</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<li><p>要把一个值转换为字符串可以使用<code>toString()</code>方法。</p>
 <pre><code>var boolean = true
 var stringBoolean = boolean.toString()  // &quot;true&quot;
-</code></pre><p>&#x8FD8;&#x6709;&#x4E00;&#x4E2A;<code>String()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x5BF9;null&#x548C;undefined&#x8FD4;&#x56DE;&#x4ED6;&#x672C;&#x8EAB;</p>
+</code></pre><p>还有一个<code>String()</code>方法，此方法对null和undefined返回他本身</p>
 <pre><code>var value;
 console.log(String(value) // undefined
 </code></pre></li>
-<li><p>&#x6309;&#x4F4D;&#x975E;&#xFF0C;&#x7528;&#x6CE2;&#x6D6A;&#x7EBF;&#xFF08;~&#xFF09;&#x8868;&#x793A;&#xFF0C;&#x8FD4;&#x56DE;&#x6570;&#x503C;&#x7684;&#x53CD;&#x7801;&#x3002;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#xFF1A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x8D1F;&#x503C;&#x51CF;1.</p>
+<li><p>按位非，用波浪线（~）表示，返回数值的反码。其实就是：操作数的负值减1.</p>
 <pre><code>var num = 25;
 console.log(~num)   // -26
 
-//&#x7B49;&#x540C;&#x4E8E;
+//等同于
 var num1 = 25;
 var num2 = -num - 1;
 console.log(num2)  // -26
 </code></pre></li>
-<li><p>&#x903B;&#x8F91;&#x4E0E;&#x64CD;&#x4F5C;&#x7B26;&#xFF08;&amp;&amp;&#xFF09;,&#x89C4;&#x5219;&#x4E3A;&#xFF1A;</p>
+<li><p>逻辑与操作符（&amp;&amp;）,规则为：</p>
 <ul>
-<li>&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x4E2A;&#x8FD0;&#x7B97;&#x5B50;&#x7684;&#x5E03;&#x5C14;&#x503C;&#x4E3A;true&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x7B2C;&#x4E8C;&#x4E2A;&#x8FD0;&#x7B97;&#x5B50;&#x7684;&#x503C;&#x3002;</li>
-<li>&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x4E2A;&#x8FD0;&#x7B97;&#x5B50;&#x7684;&#x5E03;&#x5C14;&#x503C;&#x4E3A;false&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x8FD0;&#x7B97;&#x5B50;&#x7684;&#x503C;&#x3002;</li>
+<li>如果第一个运算子的布尔值为true，则返回第二个运算子的值。</li>
+<li>如果第一个运算子的布尔值为false，则返回第一个运算子的值。</li>
 </ul>
 </li>
-<li><p>+&#x6CD5;&#x64CD;&#x4F5C;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&#xFF1A;</p>
+<li><p>+法操作有时候会拼接字符串，如：</p>
 <pre><code>var num1 = 5;
 var num2 = 10;
 var message = &quot;The number is&quot; + num1 + num2 
 console.log(message) // The number is 510
-</code></pre><p>&#x60F3;&#x8981;&#x6B63;&#x786E;&#x7684;&#x8BA1;&#x7B97;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x52A0;&#x4E2A;&#x62EC;&#x53F7;&#xFF0C;&#x5982;:</p>
+</code></pre><p>想要正确的计算值，可以加个括号，如:</p>
 <pre><code>var num1 = 5;
 var num2 = 10;
 var message = &quot;The number is&quot; + (num1 + num2 )
 console.log(message) // The number is 15
 </code></pre></li>
-<li><p><code>==</code>&#x8868;&#x793A;&#x76F8;&#x7B49;&#xFF0C;<code>===</code>&#x8868;&#x793A;&#x5168;&#x7B49;&#x3002;&#x89C4;&#x5219;&#x4E3A;&#xFF1A;</p>
+<li><p><code>==</code>表示相等，<code>===</code>表示全等。规则为：</p>
 <ul>
-<li>== &#x5728;&#x6BD4;&#x8F83;&#x524D;&#x4F1A;&#x5148;&#x8F6C;&#x6362;&#x7C7B;&#x578B;&#x3002;</li>
-<li>=== &#x76F4;&#x63A5;&#x6BD4;&#x8F83;&#xFF0C;&#x4E0D;&#x4F1A;&#x8F6C;&#x6362;&#x7C7B;&#x578B;&#xFF0C;&#x6BD4;&#x8F83;&#x4E25;&#x683C;</li>
+<li>== 在比较前会先转换类型。</li>
+<li>=== 直接比较，不会转换类型，比较严格</li>
 </ul>
-<pre><code>var result1 = (&quot;55&quot; == 55)  // true &#x8F6C;&#x6362;&#x4E4B;&#x540E;&#x76F8;&#x7B49;
-var result1 = (&quot;55&quot; === 55)  // false &#x56E0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#xFF0C;&#x8FD4;&#x56DE;false
+<pre><code>var result1 = (&quot;55&quot; == 55)  // true 转换之后相等
+var result1 = (&quot;55&quot; === 55)  // false 因数据类型不同，返回false
 </code></pre></li>
-<li><p>&#x6761;&#x4EF6;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E09;&#x5143;&#x8868;&#x8FBE;&#x5F0F;<code>xx?xx:xx</code></p>
+<li><p>条件操作符，也就是三元表达式<code>xx?xx:xx</code></p>
 <pre><code>var max = (num1 &gt; num2) ? num1 : num2
-//&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;max&#x4E2D;&#x50A8;&#x5B58;&#x4E00;&#x4E2A;&#x6700;&#x5927;&#x7684;&#x503C;
+//以上代码max中储存一个最大的值
 </code></pre></li>
 </ol>
-<h2 id="&#x7B2C;&#x56DB;&#x7AE0;">&#x7B2C;&#x56DB;&#x7AE0;</h2>
+<h2>第四章</h2>
 <ol>
-<li><p>&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x590D;&#x5236;<strong>&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x7684;&#x503C;</strong>&#xFF0C;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x503C;&#xFF0C;&#x4E24;&#x8005;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#xFF0C;&#x5982;&#xFF1A;</p>
+<li><p>一个变量从另一个变量复制<strong>基本类型的值</strong>，会创建一个新值，两者不会影响，如：</p>
 <pre><code> var num1 = 5;
  var num2 = num1;
 
@@ -366,52 +373,52 @@ var result1 = (&quot;55&quot; === 55)  // false &#x56E0;&#x6570;&#x636E;&#x7C7B;
  console.log(num1)  // 10
  console.log(num2)  // 5
 </code></pre></li>
-<li><p>&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x590D;&#x5236;<strong>&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x503C;</strong>&#xFF1B;&#x800C;&#x4E24;&#x4E2A;&#x7684;&#x6307;&#x9488;&#x90FD;&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;&#x6539;&#x53D8;&#x4E00;&#x4E2A;&#x4F1A;&#x5F71;&#x54CD;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x3002;&#x5982;&#xFF1A;</p>
+<li><p>一个变量从另一个变量复制<strong>引用类型的值</strong>；而两个的指针都指向同一个对象。改变一个会影响另外一个。如：</p>
 <pre><code> var obj1 = new Object();
  var obj2 = obj1;
 
  obj1.name = &quot;tim&quot;;
  console.log(obj2.name)  // tim
 </code></pre></li>
-<li>&#x4F7F;&#x7528;<code>instanceof</code>&#x53EF;&#x4EE5;&#x68C0;&#x6D4B;&#x4E00;&#x4E2A;&#x503C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#xFF1A;<pre><code> var person = new Object();
+<li>使用<code>instanceof</code>可以检测一个值的类型，如：<pre><code> var person = new Object();
  console.log(person instanceof Object); // true
 </code></pre></li>
-<li>&#x67D0;&#x4E2A;&#x6267;&#x884C;&#x73AF;&#x5883;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x6539;&#x73AF;&#x5883;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x540C;&#x65F6;&#x5176;&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x4E5F;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x3002;</li>
-<li>&#x5168;&#x5C40;&#x73AF;&#x5883;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;window&#x5BF9;&#x8C61;&#x3002;&#x5176;&#x6267;&#x884C;&#x73AF;&#x5883;&#x76F4;&#x5230;&#x5E94;&#x7528;&#x9000;&#x51FA;&#x540E;&#xFF0C;&#x624D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x3002;</li>
-<li>&#x5185;&#x90E8;&#x73AF;&#x5883;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x8BBF;&#x95EE;&#x6240;&#x6709;&#x7684;&#x5916;&#x90E8;&#x73AF;&#x5883;&#xFF0C;&#x4F46;&#x5916;&#x90E8;&#x73AF;&#x5883;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x5185;&#x90E8;&#x73AF;&#x5883;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;&#x3002;</li>
-<li><p>&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5C31;&#x8FD1;&#x539F;&#x5219;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x5C40;&#x90E8;&#x73AF;&#x5883;&#x5185;&#x80FD;&#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x5C31;&#x53D6;&#x5C40;&#x90E8;&#x7684;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x8BBF;&#x95EE;&#x4E0D;&#x5230;&#xFF0C;&#x4F1A;&#x9010;&#x7EA7;&#x5411;&#x4E0A;&#x641C;&#x7D22;&#x3002;</p>
+<li>某个执行环境中的代码执行完毕后，改环境被销毁，同时其中保存的变量和函数定义也会被销毁。</li>
+<li>全局环境被认为是window对象。其执行环境直到应用退出后，才会被销毁。</li>
+<li>内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数。</li>
+<li><p>访问数据就近原则，如果在局部环境内能访问到，就取局部的值，如果访问不到，会逐级向上搜索。</p>
 <pre><code> var color = &quot;blue&quot;;
  function getColor() {
      var color = &quot;red&quot;;
      return color;
  }
  console.log(getColor());  // red
-</code></pre><p> &#x5982;&#x679C;&#x60F3;&#x8981;&#x8BBF;&#x95EE;&#x5230;&#x5168;&#x5C40;&#x7684;color&#xFF0C;&#x9700;&#x8981;&#x8FD9;&#x6837;&#x5199;</p>
+</code></pre><p> 如果想要访问到全局的color，需要这样写</p>
 <pre><code> {
      return window.color
  }
  console.log(getColor()) // blue
 </code></pre></li>
-<li><p>JavaScript&#x5177;&#x6709;&#x81EA;&#x52A8;&#x5783;&#x573E;&#x6536;&#x96C6;&#x673A;&#x5236;&#x3002;&#x5176;&#x539F;&#x7406;&#x662F;&#xFF1A; &#x627E;&#x51FA;&#x90A3;&#x4E9B;&#x4E0D;&#x518D;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x91CA;&#x653E;&#x5176;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4F1A;&#x6309;&#x7167;&#x56FA;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5468;&#x671F;&#x6027;&#x7684;&#x6267;&#x884C;&#x8FD9;&#x4E00;&#x64CD;&#x4F5C;&#x3002;</p>
+<li><p>JavaScript具有自动垃圾收集机制。其原理是： 找出那些不再继续使用的变量，然后释放其占用的内存。为此，垃圾收集器会按照固定的时间间隔周期性的执行这一操作。</p>
 </li>
-<li>JS&#x4E2D;&#x6700;&#x5E38;&#x7528;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x65B9;&#x5F0F;&#x662F;&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x3002;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x7ED9;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x53D8;&#x91CF;&#x52A0;&#x4E0A;&#x6807;&#x8BB0;&#x3002;&#x7136;&#x540E;&#x53BB;&#x6389;&#x6807;&#x8BB0;&#x3002;<strong>&#x518D;&#x88AB;&#x52A0;&#x4E0A;&#x6807;&#x8BB0;&#x7684;&#x53D8;&#x91CF;</strong>&#x89C6;&#x4E3A;<strong>&#x51C6;&#x5907;&#x5220;&#x9664;&#x7684;&#x53D8;&#x91CF;</strong>&#x3002;&#x6700;&#x540E;&#xFF0C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5B8C;&#x6210;&#x5185;&#x5B58;&#x6E05;&#x9664;&#x5DE5;&#x4F5C;&#x3002;</li>
-<li>&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x4E0D;&#x592A;&#x5E38;&#x89C1;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B56;&#x7565;&#x53EB;&#x505A;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x3002;&#x610F;&#x601D;&#x4E3A;&#x8DDF;&#x8E2A;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x503C;&#x88AB;&#x5F15;&#x7528;&#x7684;&#x6B21;&#x6570;&#x3002;</li>
+<li>JS中最常用的垃圾收集方式是标记清除。垃圾收集器在运行的时候会给内存中的所有变量加上标记。然后去掉标记。<strong>再被加上标记的变量</strong>视为<strong>准备删除的变量</strong>。最后，垃圾收集器完成内存清除工作。</li>
+<li>另外一种不太常见的垃圾收集策略叫做引用计数。意思为跟踪记录每个值被引用的次数。</li>
 </ol>
-<h4 id="&#x7B2C;&#x4E94;&#x7AE0;-&#x5F15;&#x7528;&#x7C7B;&#x578B;">&#x7B2C;&#x4E94;&#x7AE0; &#x5F15;&#x7528;&#x7C7B;&#x578B;</h4>
+<h4>第五章 引用类型</h4>
 <ol>
-<li>&#x65B0;&#x5BF9;&#x8C61;&#x662F;&#x4F7F;&#x7528;new&#x64CD;&#x4F5C;&#x7B26;&#x540E;&#x8DDF;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6765;&#x521B;&#x5EFA;&#x7684;&#x3002;&#x6784;&#x9020;&#x51FD;&#x6570;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8BE5;&#x51FD;&#x6570;&#x662F;&#x51FA;&#x4E8E;<strong>&#x521B;&#x5EFA;&#x65B0;&#x5BF9;&#x8C61;</strong>&#x7684;&#x76EE;&#x7684;&#x800C;&#x5B9A;&#x4E49;&#x7684;&#x3002;</li>
-<li><code>Array.isArray()</code>&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F;&#x6570;&#x7EC4;<pre><code> var list = []
+<li>新对象是使用new操作符后跟一个构造函数来创建的。构造函数本身就是一个函数，只不过该函数是出于<strong>创建新对象</strong>的目的而定义的。</li>
+<li><code>Array.isArray()</code>可以判断是不是数组<pre><code> var list = []
  Array.isArray(list)    // true
 </code></pre></li>
-<li><code>join()</code>&#x65B9;&#x6CD5;&#x80FD;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x5206;&#x9694;&#x7B26;&#x6765;&#x6784;&#x5EFA;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;<pre><code> let str = [&quot;hello&quot;, &quot;world&quot;];
+<li><code>join()</code>方法能使用不同的分隔符来构建这个字符串。<pre><code> let str = [&quot;hello&quot;, &quot;world&quot;];
  let result = str.join(&quot;,&quot;) // hello,world
 </code></pre></li>
-<li><code>push()</code>&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x628A;&#x5B83;&#x4EEC;&#x6DFB;&#x52A0;&#x5230;&#x6570;&#x7EC4;&#x7684;&#x672B;&#x5C3E;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#x3002;</li>
-<li><code>pop()</code>&#x4ECE;&#x6570;&#x7EC4;&#x672B;&#x5C3E;&#x79FB;&#x9664;&#x6700;&#x540E;&#x4E00;&#x9879;&#xFF0C;&#x8FD4;&#x56DE;&#x79FB;&#x9664;&#x7684;&#x9879;&#x3002;</li>
-<li><code>shift()</code>&#x79FB;&#x9664;&#x6570;&#x7EC4;&#x7684;&#x7B2C;&#x4E00;&#x9879;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x8BE5;&#x9879;&#x3002;</li>
-<li><code>unshift()</code>&#x5728;&#x6570;&#x7EC4;&#x7684;&#x524D;&#x7AEF;&#x6DFB;&#x52A0;&#x4EFB;&#x610F;&#x9879;&#x3002;</li>
-<li><code>reverse()</code>&#x65B9;&#x6CD5;&#x53CD;&#x8F6C;&#x6570;&#x7EC4;&#x9879;&#x7684;&#x987A;&#x5E8F;&#x3002;</li>
-<li><p><code>sort()</code>&#x65B9;&#x6CD5;&#x4E5F;&#x4F1A;&#x5BF9;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x4F46;&#x662F;&#x662F;&#x6309;&#x5B57;&#x7B26;&#x4E32;&#x8FDB;&#x884C;&#x7684;&#x6BD4;&#x8F83;&#x3002;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
+<li><code>push()</code>可以添加任意数量的值，把它们添加到数组的末尾，并返回数组的长度。</li>
+<li><code>pop()</code>从数组末尾移除最后一项，返回移除的项。</li>
+<li><code>shift()</code>移除数组的第一项，并返回该项。</li>
+<li><code>unshift()</code>在数组的前端添加任意项。</li>
+<li><code>reverse()</code>方法反转数组项的顺序。</li>
+<li><p><code>sort()</code>方法也会对数组进行排序，但是是按字符串进行的比较。所以需要定义一个方法。</p>
 <pre><code> function compare(value1, value2) {
      if(value1 &lt; value2) {
          return -1
@@ -428,32 +435,32 @@ var result1 = (&quot;55&quot; === 55)  // false &#x56E0;&#x6570;&#x636E;&#x7C7B;
      return value2 - value1
  }
 </code></pre></li>
-<li><code>concat()</code>&#x65B9;&#x6CD5;&#x5C06;&#x53C2;&#x6570;&#x6DFB;&#x52A0;&#x5230;&#x6570;&#x7EC4;&#x7684;&#x672B;&#x5C3E;&#x3002;</li>
-<li><code>slice()</code>&#x65B9;&#x6CD5;&#x5C06;&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x3002;&#x5982;&#x679C;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x8D77;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#x4E4B;&#x95F4;&#x7684;&#x9879;&#xFF0C;&#x4F46;&#x4E0D;&#x5305;&#x62EC;&#x7ED3;&#x5C3E;&#x4F4D;&#x7F6E;&#x7684;&#x9879;&#x3002;<pre><code>var colors = [&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;, &quot;orange&quot;];
+<li><code>concat()</code>方法将参数添加到数组的末尾。</li>
+<li><code>slice()</code>方法将返回指定参数位置的值。如果有两个参数，则返回起始和结束位置之间的项，但不包括结尾位置的项。<pre><code>var colors = [&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;, &quot;orange&quot;];
 var colors2 = colors.slice(1); // [&quot;yellow&quot;, &quot;blue&quot;, &quot;orange&quot;]
 var colors3 = colors.slice(1, 3);  // [&quot;yellow&quot;, &quot;blue&quot;]
 </code></pre></li>
-<li><code>splice()</code>&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x8FDB;&#x884C;&#xFF1A;<ul>
-<li>&#x5220;&#x9664;&#xFF1A;<code>splice(1, 2)</code>1&#x662F;&#x8981;&#x5220;&#x9664;&#x4F4D;&#x7F6E;&#xFF0C;2&#x662F;&#x5220;&#x9664;&#x9879;&#x6570;&#x3002;</li>
-<li>&#x63D2;&#x5165;&#xFF1A;<code>splice(1, 0, &quot;red&quot;, &quot;green&quot;)</code>1&#x662F;&#x8981;&#x63D2;&#x5165;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;0&#x662F;&#x8981;&#x5220;&#x9664;&#x7684;&#x9879;&#xFF0C;&#x5269;&#x4E0B;&#x4E24;&#x4E2A;&#x662F;&#x8981;&#x63D2;&#x5165;&#x7684;&#x9879;</li>
-<li>&#x66FF;&#x6362;&#xFF1A;<code>splice(1, 2, &quot;red&quot;, &quot;green&quot;)</code>1&#x662F;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;2&#x662F;&#x8981;&#x5220;&#x9664;&#x7684;&#x9879;&#xFF0C;&#x5269;&#x4E0B;&#x4E24;&#x4E2A;&#x662F;&#x8981;&#x66FF;&#x6362;&#x7684;&#x9879;</li>
+<li><code>splice()</code>方法能够进行：<ul>
+<li>删除：<code>splice(1, 2)</code>1是要删除位置，2是删除项数。</li>
+<li>插入：<code>splice(1, 0, &quot;red&quot;, &quot;green&quot;)</code>1是要插入的位置，0是要删除的项，剩下两个是要插入的项</li>
+<li>替换：<code>splice(1, 2, &quot;red&quot;, &quot;green&quot;)</code>1是起始位置，2是要删除的项，剩下两个是要替换的项</li>
 </ul>
 </li>
-<li><code>indexOf()</code>&#x548C;<code>lastIndexOf()</code>&#x662F;&#x7528;&#x6765;&#x67E5;&#x627E;&#x7684;&#x3002;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8981;&#x67E5;&#x627E;&#x7684;&#x9879;&#x548C;&#x8868;&#x793A;&#x67E5;&#x627E;&#x8D77;&#x70B9;&#x4F4D;&#x7F6E;&#x7684;&#x7D22;&#x5F15;&#x3002;<code>indexOf()</code>&#x4ECE;&#x524D;&#x5411;&#x540E;&#x67E5;&#x627E;&#xFF0C;<code>lastIndexOf()</code>&#x76F8;&#x53CD;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x627E;&#x5230;&#xFF0C;&#x8FD4;&#x56DE;-1&#x3002;</li>
-<li>&#x8FED;&#x4EE3;&#x65B9;&#x6CD5;<ul>
-<li><code>every()</code>,&#x5BF9;&#x6BCF;&#x4E00;&#x9879;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF0C;&#x5982;&#x679C;&#x90FD;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#xFF0C;&#x8FD4;&#x56DE;true,&#x5426;&#x5219;&#x8FD4;&#x56DE;false</li>
-<li><code>some()</code>&#xFF0C;&#x5BF9;&#x6BCF;&#x4E00;&#x9879;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF0C;&#x53EA;&#x8981;&#x5176;&#x4E2D;&#x4E00;&#x9879;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#xFF0C;&#x5C31;&#x8FD4;&#x56DE;true&#x3002;</li>
-<li><code>filter()</code>&#xFF0C;&#x5BF9;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x904D;&#x5386;&#xFF0C;&#x8FD4;&#x56DE;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#x503C;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5BF9;&#x67E5;&#x8BE2;&#x7B26;&#x5408;&#x67D0;&#x4E9B;&#x6761;&#x4EF6;&#x7684;&#x6570;&#x7EC4;&#x9879;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</li>
-<li><code>map()</code>&#xFF0C;&#x80FD;&#x591F;&#x5BF9;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#x8FDB;&#x884C;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
-<li><code>forEach()</code>&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x5BF9;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#x8FD0;&#x884C;&#x4F20;&#x5165;&#x7684;&#x51FD;&#x6570;&#x3002;</li>
+<li><code>indexOf()</code>和<code>lastIndexOf()</code>是用来查找的。接收两个参数，要查找的项和表示查找起点位置的索引。<code>indexOf()</code>从前向后查找，<code>lastIndexOf()</code>相反。如果没找到，返回-1。</li>
+<li>迭代方法<ul>
+<li><code>every()</code>,对每一项进行判断，如果都符合条件，返回true,否则返回false</li>
+<li><code>some()</code>，对每一项进行判断，只要其中一项符合条件，就返回true。</li>
+<li><code>filter()</code>，对数组进行遍历，返回符合条件的值。这个方法对查询符合某些条件的数组项非常有用。</li>
+<li><code>map()</code>，能够对数组中的每一项进行相对应的操作。</li>
+<li><code>forEach()</code>方法能够对数组中的每一项运行传入的函数。</li>
 </ul>
 </li>
-<li>&#x9012;&#x5F52;&#x65B9;&#x6CD5;&#xFF1A;<ul>
-<li><code>reduce()</code>,&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x3002;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x6C42;&#x548C;<ul>
-<li><code>prev</code>&#x524D;&#x4E00;&#x4E2A;&#x503C;</li>
-<li><code>cur</code>&#x5F53;&#x524D;&#x503C;</li>
-<li><code>index</code>&#x9879;&#x7684;&#x7D22;&#x5F15;</li>
-<li><code>array</code>&#x6570;&#x7EC4;&#x5BF9;&#x8C61;<pre><code>let arr = [1, 45, 3, 54, 25, 3];
+<li>递归方法：<ul>
+<li><code>reduce()</code>,这个方法接收四个参数。可以用来求和<ul>
+<li><code>prev</code>前一个值</li>
+<li><code>cur</code>当前值</li>
+<li><code>index</code>项的索引</li>
+<li><code>array</code>数组对象<pre><code>let arr = [1, 45, 3, 54, 25, 3];
 let item = 0;
 item = arr.reduce(function(prev, cur, index, array) {
 return prev + cur
@@ -461,63 +468,63 @@ return prev + cur
 </code></pre></li>
 </ul>
 </li>
-<li><code>reduceRight()</code>&#xFF0C;&#x65B9;&#x6CD5;&#x76F8;&#x540C;&#xFF0C;&#x904D;&#x5386;&#x65B9;&#x5411;&#x76F8;&#x53CD;&#x3002;</li>
+<li><code>reduceRight()</code>，方法相同，遍历方向相反。</li>
 </ul>
 </li>
-<li><code>Date.now()</code>&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x65F6;&#x95F4;&#x6233;&#x3002;&#x4F7F;&#x7528;<code>+new Date()</code>&#x65B9;&#x6CD5;&#x540C;&#x6837;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#x3002;</li>
-<li>&#x4F7F;&#x7528;&#x4E0D;&#x5E26;&#x5706;&#x62EC;&#x53F7;&#x7684;&#x51FD;&#x6570;&#x540D;&#x662F;&#x8BBF;&#x95EE;&#x51FD;&#x6570;&#x6307;&#x9488;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x3002;</li>
-<li>&#x5982;&#x679C;&#x521B;&#x5EFA;&#x4E86;&#x4E24;&#x4E2A;&#x540C;&#x540D;&#x51FD;&#x6570;&#xFF0C;<strong>&#x7B2C;&#x4E8C;&#x4E2A;&#x4F1A;&#x8986;&#x76D6;&#x6389;&#x7B2C;&#x4E00;&#x4E2A;</strong></li>
-<li>&#x51FD;&#x6570;&#x7684;<code>length</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;&#x3002;</li>
-<li><code>apply()/call()/bind()</code>&#x80FD;&#x591F;&#x6539;&#x53D8;this&#x7684;&#x6307;&#x5411;&#x3002;</li>
-<li><code>.toFixed(2)</code>&#x8F6C;&#x6362;&#x5C0F;&#x6570;&#x70B9;&#x540E;&#x4E24;&#x4F4D;&#x3002;</li>
-<li><code>toExponential(2)</code>&#x8FD4;&#x56DE;&#x4EE5;&#x6307;&#x6570;&#x8868;&#x793A;&#x6CD5;&#x8868;&#x793A;&#x7684;&#x6570;&#x503C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x3002;</li>
-<li><code>toPrecision(2)</code>&#x8FD4;&#x56DE;&#x6700;&#x5408;&#x9002;&#x7684;&#x683C;&#x5F0F;&#x3002;</li>
-<li><code>charAt()</code>&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x3002;</li>
-<li><code>concat()</code>&#x53EF;&#x4EE5;&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#x3002;<blockquote>
-<p>&#x867D;&#x7136;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x8DF5;&#x4E2D;&#x4F7F;&#x7528;&#x66F4;&#x591A;&#x7684;&#x8FD8;&#x662F;<code>+</code>&#xFF0C;&#x4F7F;&#x7528;<code>+</code>&#x5728;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x90FD;&#x6BD4;&#x4F7F;&#x7528;<code>concat()</code>&#x65B9;&#x6CD5;&#x8981;&#x7B80;&#x4FBF;&#x6613;&#x884C;&#x3002;</p>
+<li><code>Date.now()</code>获取当前的时间戳。使用<code>+new Date()</code>方法同样能获取到。</li>
+<li>使用不带圆括号的函数名是访问函数指针，而不是调用函数。</li>
+<li>如果创建了两个同名函数，<strong>第二个会覆盖掉第一个</strong></li>
+<li>函数的<code>length</code>属性定义了函数参数的个数。</li>
+<li><code>apply()/call()/bind()</code>能够改变this的指向。</li>
+<li><code>.toFixed(2)</code>转换小数点后两位。</li>
+<li><code>toExponential(2)</code>返回以指数表示法表示的数值的字符串形式。</li>
+<li><code>toPrecision(2)</code>返回最合适的格式。</li>
+<li><code>charAt()</code>返回指定位置的值。</li>
+<li><code>concat()</code>可以拼接字符串。<blockquote>
+<p>虽然这个方法是专门用来拼接字符串的方法，但在实践中使用更多的还是<code>+</code>，使用<code>+</code>在大多数情况下都比使用<code>concat()</code>方法要简便易行。</p>
 </blockquote>
 </li>
-<li><code>trim()</code>&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x8FD4;&#x56DE;&#x53BB;&#x6389;&#x524D;&#x7F6E;&#x548C;&#x540E;&#x7F6E;&#x7684;&#x7A7A;&#x683C;&#x4E4B;&#x540E;&#x7684;&#x503C;&#x3002;</li>
-<li><code>toUpperCase()</code>&#x8F6C;&#x6362;&#x5927;&#x5199;<code>toLowerCase()</code>&#x8F6C;&#x6362;&#x5C0F;&#x5199;</li>
-<li><code>split()</code>&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x5C06;&#x6307;&#x5B9A;&#x7684;&#x5206;&#x9694;&#x7B26;&#x628A;&#x5B57;&#x7B26;&#x4E32;&#x5206;&#x5272;&#x3002;</li>
-<li><code>localeCompare()</code>&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x7279;&#x5B9A;&#x7684;&#x503C;&#x3002;</li>
-<li><code>Math.max()</code>&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x6570;&#x7EC4;&#x7684;&#x6700;&#x5927;&#x503C;&#x3002;<code>Math.min()</code>&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x6570;&#x7EC4;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x3002;</li>
-<li>&#x820D;&#x5165;&#x65B9;&#x6CD5;<ul>
-<li><code>Math.ceil()</code>&#x5411;&#x4E0A;&#x820D;&#x5165;</li>
-<li><code>Math.floor()</code>&#x5411;&#x4E0B;&#x820D;&#x5165;</li>
-<li><code>Math.round()</code>&#x6807;&#x51C6;&#x820D;&#x5165;</li>
+<li><code>trim()</code>方法能够返回去掉前置和后置的空格之后的值。</li>
+<li><code>toUpperCase()</code>转换大写<code>toLowerCase()</code>转换小写</li>
+<li><code>split()</code>方法能够将指定的分隔符把字符串分割。</li>
+<li><code>localeCompare()</code>方法能够比较两个字符串，然后返回特定的值。</li>
+<li><code>Math.max()</code>返回指定数组的最大值。<code>Math.min()</code>返回指定数组的最小值。</li>
+<li>舍入方法<ul>
+<li><code>Math.ceil()</code>向上舍入</li>
+<li><code>Math.floor()</code>向下舍入</li>
+<li><code>Math.round()</code>标准舍入</li>
 </ul>
 </li>
-<li><code>Math.random()</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;0&#x5C0F;&#x4E8E;1&#x7684;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x6570;&#x3002;</li>
+<li><code>Math.random()</code>方法返回一个大于等于0小于1的一个随机数。</li>
 </ol>
-<h4 id="&#x7B2C;&#x516D;&#x7AE0;">&#x7B2C;&#x516D;&#x7AE0;</h4>
+<h4>第六章</h4>
 <ol>
-<li><p>ECMAScript&#x4E2D;&#x6709;&#x4E24;&#x79CD;&#x5C5E;&#x6027;&#xFF1A;</p>
+<li><p>ECMAScript中有两种属性：</p>
 <ul>
-<li><p>&#x6570;&#x636E;&#x5C5E;&#x6027;</p>
+<li><p>数据属性</p>
 <ul>
-<li><code>Configurable</code>&#x8868;&#x793A;&#x80FD;&#x5426;&#x901A;&#x8FC7;delete&#x5220;&#x9664;&#x5C5E;&#x6027;&#x4ECE;&#x800C;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF0C;&#x80FD;&#x5426;&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6216;&#x8005;&#x80FD;&#x5426;&#x628A;&#x5C5E;&#x6027;&#x4FEE;&#x6539;&#x4E3A;&#x8BBF;&#x95EE;&#x5668;&#x5C5E;&#x6027;&#x3002;</li>
-<li><code>Enumerable</code>&#x8868;&#x793A;&#x80FD;&#x5426;&#x901A;&#x8FC7;<code>for-in</code>&#x5FAA;&#x73AF;&#x8FD4;&#x56DE;&#x5C5E;&#x6027;&#x3002;</li>
-<li><code>Writable</code>&#x8868;&#x793A;&#x80FD;&#x5426;&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x7684;&#x503C;</li>
-<li><code>Value</code>&#x5305;&#x542B;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x503C;</li>
+<li><code>Configurable</code>表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。</li>
+<li><code>Enumerable</code>表示能否通过<code>for-in</code>循环返回属性。</li>
+<li><code>Writable</code>表示能否修改属性的值</li>
+<li><code>Value</code>包含这个属性的数据值</li>
 </ul>
-<p>&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x9ED8;&#x8BA4;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;<code>Object.defineProperty()</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<p>修改属性默认的特性，必须使用<code>Object.defineProperty()</code>方法。</p>
 <pre><code>var person = new Object();
-Object.defineProperty(person, &apos;age&apos;, {
-  Vallue: &apos;20&apos;
+Object.defineProperty(person, &#39;age&#39;, {
+  Vallue: &#39;20&#39;
 })
 </code></pre></li>
-<li><p>&#x8BBF;&#x95EE;&#x5668;&#x5C5E;&#x6027;</p>
+<li><p>访问器属性</p>
 <ul>
-<li><code>Configurable</code>&#x8868;&#x793A;&#x80FD;&#x5426;&#x901A;&#x8FC7;delete&#x5220;&#x9664;&#x5C5E;&#x6027;&#x4ECE;&#x800C;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF0C;&#x80FD;&#x5426;&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6216;&#x8005;&#x80FD;&#x5426;&#x628A;&#x5C5E;&#x6027;&#x4FEE;&#x6539;&#x4E3A;&#x8BBF;&#x95EE;&#x5668;&#x5C5E;&#x6027;&#x3002;</li>
-<li><code>Enumerable</code>&#x8868;&#x793A;&#x80FD;&#x5426;&#x901A;&#x8FC7;<code>for-in</code>&#x5FAA;&#x73AF;&#x8FD4;&#x56DE;&#x5C5E;&#x6027;</li>
-<li><code>Get</code>&#x5728;&#x8BFB;&#x53D6;&#x5C5E;&#x6027;&#x65F6;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</li>
-<li><code>Set</code>&#x5728;&#x5199;&#x5165;&#x5C5E;&#x6027;&#x65F6;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</li>
+<li><code>Configurable</code>表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。</li>
+<li><code>Enumerable</code>表示能否通过<code>for-in</code>循环返回属性</li>
+<li><code>Get</code>在读取属性时调用的函数。</li>
+<li><code>Set</code>在写入属性时调用的函数。</li>
 </ul>
 <pre><code>var person = {
-  _year: 2019    //_&#xFF08;&#x4E0B;&#x5212;&#x7EBF;&#xFF09;&#x662F;&#x4E00;&#x79CD;&#x8BB0;&#x53F7;&#xFF0C;&#x8868;&#x793A;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x8BBF;&#x95EE;&#x7684;&#x5C5E;&#x6027;&#x3002;
+  _year: 2019    //_（下划线）是一种记号，表示只能通过对象访问的属性。
 }
-Object.defineProperty(person, &apos;year&apos;, {
+Object.defineProperty(person, &#39;year&#39;, {
           get: function() {
               return this._year
           },
@@ -533,32 +540,32 @@ console.log(person)
 </code></pre></li>
 </ul>
 </li>
-<li><code>Object.defineProperties()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</li>
-<li><code>Object.getOwnPropertyDescriptor()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x53D6;&#x5F97;&#x7ED9;&#x5B9A;&#x5C5E;&#x6027;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x3002;</li>
-<li><code>isPrototypeof()</code>&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x4E4B;&#x524D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x5173;&#x7CFB;&#x3002;</li>
-<li><code>Object.getPrototypeOf()</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;Prototype&#x7684;&#x503C;&#x3002;</li>
-<li><code>HasOwnProperty()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x5C5E;&#x6027;&#x662F;&#x5426;&#x6765;&#x81EA;&#x4E8E;&#x5B9E;&#x4F8B;&#x3002;</li>
-<li><code>Object.keys()</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x6240;&#x6709;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x7EC4;&#x3002;</li>
-<li><code>Object.getOwnPropertyNames()</code>&#x65E0;&#x8BBA;&#x662F;&#x5426;&#x53EF;&#x679A;&#x4E3E;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x88AB;&#x8FD4;&#x56DE;&#x3002;</li>
-<li>ECMAScript&#x652F;&#x6301;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x4E0B;&#x5217;&#x6A21;&#x5F0F;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;</li>
-<li>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</li>
-<li>&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;</li>
-<li>&#x539F;&#x578B;&#x6A21;&#x5F0F;</li>
-<li>JavaScript&#x4E3B;&#x8981;&#x901A;&#x8FC7;&#x539F;&#x578B;&#x94FE;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#x3002;</li>
+<li><code>Object.defineProperties()</code>方法可以一次定义多个属性。</li>
+<li><code>Object.getOwnPropertyDescriptor()</code>方法可以取得给定属性的描述符。</li>
+<li><code>isPrototypeof()</code>方法判断对象之前是否存在关系。</li>
+<li><code>Object.getPrototypeOf()</code>方法返回Prototype的值。</li>
+<li><code>HasOwnProperty()</code>方法可以判断属性是否来自于实例。</li>
+<li><code>Object.keys()</code>方法返回一个包含所有可枚举属性的字符串数组。</li>
+<li><code>Object.getOwnPropertyNames()</code>无论是否可枚举的属性都被返回。</li>
+<li>ECMAScript支持面向对象编程，可以采用下列模式创建对象</li>
+<li>工厂模式</li>
+<li>构造函数模式</li>
+<li>原型模式</li>
+<li>JavaScript主要通过原型链实现继承。</li>
 </ol>
-<h4 id="&#x7B2C;&#x4E03;&#x7AE0;">&#x7B2C;&#x4E03;&#x7AE0;</h4>
+<h4>第七章</h4>
 <ol>
-<li>&#x95ED;&#x5305;&#x662F;&#x6307;&#x6709;&#x6743;&#x8BBF;&#x95EE;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x51FD;&#x6570;&#x3002;&#x521B;&#x5EFA;&#x95ED;&#x5305;&#x7684;&#x5E38;&#x89C1;&#x65B9;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x521B;&#x5EFA;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x3002;</li>
-<li>this&#x5BF9;&#x8C61;&#x662F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x57FA;&#x4E8E;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x7ED1;&#x5B9A;&#x7684;&#x3002;&#x5728;&#x5168;&#x5C40;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;this&#x7B49;&#x4E8E;window&#xFF0C;&#x800C;&#x5F53;&#x51FD;&#x6570;&#x88AB;&#x4F5C;&#x4E3A;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#xFF0C;this&#x7B49;&#x4E8E;&#x90A3;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</li>
-<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>call()</code>&#x548C;<code>apply()</code>&#x6539;&#x53D8;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x3002;</li>
-<li>&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x53D6;&#x5F97;&#x4E24;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x53D8;&#x91CF;&#xFF1A;this&#x548C;arguments&#x3002;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x5728;&#x641C;&#x7D22;&#x8FD9;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x53EA;&#x4F1A;&#x641C;&#x7D22;&#x5230;&#x5176;&#x6D3B;&#x52A8;&#x5BF9;&#x8C61;&#x4E3A;&#x6B62;&#xFF0C;&#x56E0;&#x6B64;&#x6C38;&#x8FDC;&#x4E5F;&#x4E0D;&#x53EF;&#x80FD;<code>&#x76F4;&#x63A5;&#x8BBF;&#x95EE;</code>&#x5916;&#x90E8;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x8FD9;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x3002;</li>
-<li>&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x3002;&#x5982;&#x679C;&#x95ED;&#x5305;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x4E2D;&#x4FDD;&#x5B58;&#x7740;&#x4E00;&#x4E2A;HTML&#x5143;&#x7D20;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x610F;&#x5473;&#x7740;&#x8BE5;&#x5143;&#x7D20;&#x5C06;&#x65E0;&#x6CD5;&#x88AB;&#x9500;&#x6BC1;&#x3002;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x628A;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x8BBE;&#x7F6E;&#x4E3A;null&#x3002;</li>
-<li>&#x521D;&#x59CB;&#x5316;&#x672A;&#x7ECF;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x603B;&#x662F;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3002;</li>
+<li>闭包是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。</li>
+<li>this对象是在运行时基于函数的执行环境绑定的。在全局环境中，this等于window，而当函数被作为某个对象的方法调用时，this等于那个对象。</li>
+<li>可以通过<code>call()</code>和<code>apply()</code>改变函数的执行环境。</li>
+<li>每个函数在被调用时都会自动取得两个特殊的变量：this和arguments。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远也不可能<code>直接访问</code>外部函数中的这两个变量。</li>
+<li>内存泄漏。如果闭包的作用域链中保存着一个HTML元素，那么就意味着该元素将无法被销毁。可以手动把引用的变量设置为null。</li>
+<li>初始化未经声明的变量，总是会创建一个全局变量。</li>
 </ol>
-<h4 id="&#x7B2C;&#x516B;&#x7AE0;-bom">&#x7B2C;&#x516B;&#x7AE0; BOM</h4>
+<h4>第八章 BOM</h4>
 <ol>
-<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;delete&#x64CD;&#x4F5C;&#x7B26;&#x5220;&#x9664;&#xFF0C;&#x800C;&#x76F4;&#x63A5;&#x5728;window&#x5BF9;&#x8C61;&#x4E0A;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x88AB;&#x5220;&#x9664;&#x3002;</li>
-<li><p>&#x8868;&#x793A;&#x7A97;&#x53E3;&#x76F8;&#x5BF9;&#x4E8E;&#x5C4F;&#x5E55;&#x5DE6;&#x8FB9;&#x548C;&#x4E0A;&#x8FB9;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<li>全局变量不能通过delete操作符删除，而直接在window对象上定义的属性可以被删除。</li>
+<li><p>表示窗口相对于屏幕左边和上边的位置。</p>
 <ul>
 <li>screenLeft/screenX</li>
 <li><p>screenTop/screenY</p>
@@ -568,50 +575,50 @@ let topPos = (typeof window.screenTop == &quot;number&quot;) ? window.screenTop 
 </code></pre></li>
 </ul>
 </li>
-<li>window.moveTo(x, y)/window.moveBy(x, y) &#x53EF;&#x4EE5;&#x5BF9;&#x7A97;&#x53E3;&#x8FDB;&#x884C;&#x79FB;&#x52A8;&#x3002;</li>
-<li>document.documenElement.clientWidth/document.documentElement.clientHeight &#x53EF;&#x4EE5;&#x53D6;&#x5F97;&#x9875;&#x9762;&#x89C6;&#x53E3;&#x7684;&#x4FE1;&#x606F;&#x3002;</li>
-<li>&#x5BF9;&#x4E8E;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#xFF0C;window.innerWidth/window.innerHeight&#x4FDD;&#x5B58;&#x7740;&#x53EF;&#x89C1;&#x89C6;&#x53E3;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5C4F;&#x5E55;&#x4E0A;&#x53EF;&#x89C1;&#x9875;&#x9762;&#x7684;&#x5927;&#x5C0F;&#x3002;</li>
-<li>window.resizeTo(x, y)/window.resizeBy(x, y)&#x8C03;&#x6574;&#x7A97;&#x53E3;&#x7684;&#x5927;&#x5C0F;&#x3002;</li>
-<li><code>window.open()</code>&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x7684;URL&#x3002;&#x63A5;&#x6536;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;<ul>
-<li>&#x8981;&#x52A0;&#x8F7D;&#x7684;RUL</li>
-<li>&#x7A97;&#x53E3;&#x76EE;&#x6807;</li>
-<li>&#x4E00;&#x4E2A;&#x7279;&#x6027;&#x5B57;&#x7B26;&#x4E32;</li>
-<li>&#x8868;&#x793A;&#x65B0;&#x9875;&#x9762;&#x662F;&#x5426;&#x53D6;&#x4EE3;&#x6D4F;&#x89C8;&#x5668;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x4E2D;&#x5F53;&#x524D;&#x52A0;&#x8F7D;&#x9875;&#x9762;&#x7684;&#x5E03;&#x5C14;&#x503C;</li>
+<li>window.moveTo(x, y)/window.moveBy(x, y) 可以对窗口进行移动。</li>
+<li>document.documenElement.clientWidth/document.documentElement.clientHeight 可以取得页面视口的信息。</li>
+<li>对于移动设备，window.innerWidth/window.innerHeight保存着可见视口，也就是屏幕上可见页面的大小。</li>
+<li>window.resizeTo(x, y)/window.resizeBy(x, y)调整窗口的大小。</li>
+<li><code>window.open()</code>可以打开一个特定的URL。接收四个参数：<ul>
+<li>要加载的RUL</li>
+<li>窗口目标</li>
+<li>一个特性字符串</li>
+<li>表示新页面是否取代浏览器历史记录中当前加载页面的布尔值</li>
 </ul>
 </li>
-<li>window.close()&#x53EF;&#x4EE5;&#x5173;&#x95ED;&#x65B0;&#x6253;&#x5F00;&#x7684;&#x7A97;&#x53E3;&#x3002;</li>
-<li><code>setTimeout()/setInterval()</code>&#x5B9A;&#x65F6;&#x5668;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x6307;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x56E0;&#x4E3A;js&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x8BED;&#x8A00;&#xFF0C;&#x6240;&#x4EE5;&#x7ECF;&#x8FC7;&#x8BE5;&#x65F6;&#x95F4;&#x540E;&#x6307;&#x5B9A;&#x7684;&#x4EE3;&#x7801;&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x6267;&#x884C;&#x3002;JavaScript&#x6709;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x961F;&#x5217;&#xFF0C;&#x8FD9;&#x4E9B;&#x4EFB;&#x52A1;&#x961F;&#x5217;&#x4F1A;&#x6309;&#x7167;&#x4ED6;&#x4EEC;&#x6DFB;&#x52A0;&#x5230;&#x961F;&#x5217;&#x7684;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x544A;&#x8BC9;&#x8FC7;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x628A;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x6DFB;&#x52A0;&#x5230;&#x961F;&#x5217;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x961F;&#x5217;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6DFB;&#x52A0;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF1B;&#x5982;&#x679C;&#x961F;&#x5217;&#x4E0D;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x7B49;&#x524D;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x5B8C;&#x4E86;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x3002;</li>
-<li><p><code>clearTimeout()/clearInterval()</code>&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<li>window.close()可以关闭新打开的窗口。</li>
+<li><code>setTimeout()/setInterval()</code>定时器。第二个参数为指定的时间，因为js是单线程语言，所以经过该时间后指定的代码不一定会执行。JavaScript有一个任务队列，这些任务队列会按照他们添加到队列的顺序执行。第二个参数就是告诉过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么就会等前面的代码执行完了之后才会执行。</li>
+<li><p><code>clearTimeout()/clearInterval()</code>清除定时器。</p>
 <pre><code>var h = setTimeout(function() {
     console.log(1)
 }, 2000)
 
 clearTimeout(h)
 </code></pre></li>
-<li>&#x7CFB;&#x7EDF;&#x5BF9;&#x8BDD;&#x6846;<ul>
-<li>alert()&#x663E;&#x793A;&#x786E;&#x5B9A;&#x6309;&#x94AE;</li>
-<li>confirm()&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x786E;&#x5B9A;&#x548C;&#x53D6;&#x6D88;&#x6309;&#x94AE;&#x3002;&#x70B9;&#x51FB;&#x786E;&#x5B9A;&#x8FD4;&#x56DE;true&#xFF0C;&#x70B9;&#x51FB;&#x53D6;&#x6D88;&#x548C;x&#x8FD4;&#x56DE;flase&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x7ECF;&#x5E38;&#x5728;&#x7528;&#x6237;&#x60F3;&#x8981;&#x6267;&#x884C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x3002;</li>
-<li>prompt()&#x663E;&#x793A;&#x8F93;&#x5165;&#x6846;</li>
+<li>系统对话框<ul>
+<li>alert()显示确定按钮</li>
+<li>confirm()显示一个确定和取消按钮。点击确定返回true，点击取消和x返回flase。这种模式经常在用户想要执行删除操作的时候使用。</li>
+<li>prompt()显示输入框</li>
 </ul>
 </li>
-<li><p>| &#x5C5E;&#x6027;&#x540D;   | &#x4F8B;&#x5B50;                 |                             &#x8BF4;&#x660E;                             |
+<li><p>| 属性名   | 例子                 |                             说明                             |
 | :------- | :------------------- | :----------------------------------------------------------: |
-| hash     | &quot;#contents&quot;          |                       &#x8FD4;&#x56DE;URL&#x4E2D;&#x7684;hash                        |
-| host     | &quot;www.wrox.com:80&quot;    |                    &#x8FD4;&#x56DE;&#x670D;&#x52A1;&#x5668;&#x540D;&#x79F0;&#x548C;&#x7AEF;&#x53E3;&#x53F7;                    |
-| href     | &quot;<a href="http://www.wrox.com" target="_blank">http://www.wrox.com</a> | &#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x52A0;&#x8F7D;&#x9875;&#x9762;&#x7684;&#x5B8C;&#x6574;url&#x3002;&#x800C;location&#x5BF9;&#x8C61;&#x7684;toString()&#x65B9;&#x6CD5;&#x4E5F;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x503C; |
-| pathname | &quot;/WileyCDA&quot;          |                &#x8FD4;&#x56DE;url&#x4E2D;&#x7684;&#x76EE;&#x5F55;&#x548C;&#xFF08;&#x6216;&#xFF09;&#x6587;&#x4EF6;&#x540D;                 |
-| port     | &quot;8080&quot;               |                    &#x8FD4;&#x56DE;url&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#x53F7;                     |
-| protocol | &quot;http:&quot;              |                      &#x8FD4;&#x56DE;&#x9875;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x534F;&#x8BAE;                      |
-| search   | &quot;?q=javascript&quot;      |                     &#x8FD4;&#x56DE;url&#x7684;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;                      |</p>
+| hash     | &quot;#contents&quot;          |                       返回URL中的hash                        |
+| host     | &quot;www.wrox.com:80&quot;    |                    返回服务器名称和端口号                    |
+| href     | &quot;<a href="http://www.wrox.com">http://www.wrox.com</a> | 返回当前加载页面的完整url。而location对象的toString()方法也返回这个值 |
+| pathname | &quot;/WileyCDA&quot;          |                返回url中的目录和（或）文件名                 |
+| port     | &quot;8080&quot;               |                    返回url中指定的端口号                     |
+| protocol | &quot;http:&quot;              |                      返回页面使用的协议                      |
+| search   | &quot;?q=javascript&quot;      |                     返回url的查询字符串                      |</p>
 </li>
-<li><p>&#x8FD4;&#x56DE;url&#x4E2D;&#x7684;&#x53C2;&#x6570;</p>
+<li><p>返回url中的参数</p>
 <pre><code>function getQueryStringArgs() {
-            //&#x53D6;&#x5F97;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x5E76;&#x53BB;&#x6389;&#x5F00;&#x5934;&#x7684;&#x95EE;&#x53F7;
+            //取得查询字符串并去掉开头的问号
             var qs = (location.search.length &gt; 0 ? location.search.substring(1) : &quot;&quot;),
-            //&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x7684;&#x5BF9;&#x8C61;
+            //保存数据的对象
             args = [],
 
-            //&#x53D6;&#x5F97;&#x6BCF;&#x4E00;&#x9879;
+            //取得每一项
             items = qs.length ? qs.split(&quot;&amp;&quot;) : [],
             item = null,
             name = null,
@@ -631,196 +638,196 @@ clearTimeout(h)
             return args;
         }
 
-        //&#x4F7F;&#x7528;
+        //使用
         var args = getQueryStringArgs();
         console.log(args[&quot;a&quot;]);
 </code></pre></li>
-<li>window.assign()&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x65B0;&#x7684;URL&#x3002;</li>
-<li>&#x901A;&#x8FC7;&#x8FD9;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x4FEE;&#x6539;url&#x4F1A;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x91CC;&#x751F;&#x6210;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#xFF0C;&#x56E0;&#x6B64;&#x7528;&#x6237;&#x901A;&#x8FC7;&#x5355;&#x51FB;<em>&#x540E;&#x9000;</em>&#x6309;&#x94AE;&#x90FD;&#x4F1A;&#x5BFC;&#x822A;&#x5230;&#x524D;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x3002;&#x4F7F;&#x7528;<code>replace()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x963B;&#x6B62;&#x8FD9;&#x79CD;&#x884C;&#x4E3A;&#xFF0C;&#x4E0D;&#x4F1A;&#x518D;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x91CC;&#x751F;&#x6210;&#x65B0;&#x8BB0;&#x5F55;&#x3002;<strong>&#x8C03;&#x7528;replace&#x65B9;&#x6CD5;&#x540E;&#xFF0C;&#x7528;&#x6237;&#x4E0D;&#x80FD;&#x56DE;&#x5230;&#x524D;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x3002;</strong></li>
-<li><code>window.reload()</code>&#x65B9;&#x6CD5;&#x662F;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x5F53;&#x524D;&#x663E;&#x793A;&#x7684;&#x9875;&#x9762;&#x3002;&#x5982;&#x679C;&#x9875;&#x9762;&#x81EA;&#x4E0A;&#x6B21;&#x8BF7;&#x6C42;&#x4EE5;&#x6765;&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x8FC7;&#xFF0C;&#x9875;&#x9762;&#x5C31;&#x4F1A;&#x4ECE;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x4E2D;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x5F3A;&#x5236;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x8FD9;&#x6837;&#x5B9A;&#x4E49;<code>window.reload(true)</code>&#x3002;</li>
-<li>history&#x5BF9;&#x8C61;&#x4FDD;&#x5B58;&#x7740;&#x7528;&#x6237;&#x4E0A;&#x7F51;&#x7684;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x3002;</li>
-<li>&#x4F7F;&#x7528;<code>go()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x7528;&#x6237;&#x7684;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x4E2D;&#x4EFB;&#x610F;&#x8DF3;&#x8F6C;&#x3002;<pre><code>history.go(-1)
+<li>window.assign()可以立即打开一个新的URL。</li>
+<li>通过这几个方法修改url会在浏览器的历史记录里生成一条记录，因此用户通过单击<em>后退</em>按钮都会导航到前一个页面。使用<code>replace()</code>方法可以阻止这种行为，不会再历史记录里生成新记录。<strong>调用replace方法后，用户不能回到前一个页面。</strong></li>
+<li><code>window.reload()</code>方法是重新加载当前显示的页面。如果页面自上次请求以来并没有改变过，页面就会从浏览器缓存中重新加载。如果想要强制从服务器重新加载，则需要这样定义<code>window.reload(true)</code>。</li>
+<li>history对象保存着用户上网的历史记录。</li>
+<li>使用<code>go()</code>方法可以在用户的历史记录中任意跳转。<pre><code>history.go(-1)
 history.go(2)
 history.go(1)
 </code></pre></li>
-<li>back()/forward()&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x540E;&#x9000;&#x548C;&#x524D;&#x8FDB;&#x3002;</li>
-<li><code>history.length == 0</code> &#x53EF;&#x4EE5;&#x6D4B;&#x8BD5;&#x7528;&#x6237;&#x662F;&#x5426;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x6253;&#x5F00;&#x4E86;&#x4F60;&#x7684;&#x9875;&#x9762;&#x3002;</li>
+<li>back()/forward()方法可以实现后退和前进。</li>
+<li><code>history.length == 0</code> 可以测试用户是否一开始就打开了你的页面。</li>
 </ol>
-<h4 id="&#x7B2C;&#x5341;&#x7AE0;-dom">&#x7B2C;&#x5341;&#x7AE0; DOM</h4>
+<h4>第十章 DOM</h4>
 <ol>
-<li>nodeName&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x5143;&#x7D20;&#x7684;&#x6807;&#x7B7E;&#x540D;<pre><code> if(xxx.nodeType == 1 ) {
+<li>nodeName保存的是元素的标签名<pre><code> if(xxx.nodeType == 1 ) {
      let value = xxx.nodeName
  }
- //&#x5982;&#x679C;xxx&#x662F;&#x5143;&#x7D20;&#x7684;&#x8BDD;&#xFF0C;&#x628A;&#x6807;&#x7B7E;&#x540D;&#x8D4B;&#x503C;&#x7ED9;value
+ //如果xxx是元素的话，把标签名赋值给value
 </code></pre></li>
-<li>&#x901A;&#x8FC7;&#x8282;&#x70B9;&#x7684;previousSibling&#x548C;nextSibling&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x540C;&#x4E00;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x3002;<ul>
-<li>&#x5217;&#x8868;&#x4E2D;&#x7B2C;&#x4E00;&#x8282;&#x70B9;&#x7684;previousSibling&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4E3A;null&#xFF08;&#x56E0;&#x4E3A;&#x672C;&#x8EAB;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6CA1;&#x6709;&#x5728;&#x4E0A;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF09;</li>
-<li>&#x5217;&#x8868;&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;nextSibling&#x7684;&#x5C5E;&#x6027;&#x503C;&#x540C;&#x6837;&#x4E3A;null&#xFF08;&#x56E0;&#x4E3A;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5728;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E86;&#xFF09;&#x3002;<pre><code>if(somenode.nextSibling === null) {
-  //&#x8BF4;&#x660E;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x8282;&#x70B9;
-  //&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;
+<li>通过节点的previousSibling和nextSibling属性可以访问同一列表中的其他节点。<ul>
+<li>列表中第一节点的previousSibling的属性值为null（因为本身是第一个节点，没有在上一个节点）</li>
+<li>列表中最后一个节点的nextSibling的属性值同样为null（因为是最后一个节点，并没有在下一个节点了）。<pre><code>if(somenode.nextSibling === null) {
+  //说明是最后一个节点
+  //任何操作
 } else if (somenode.previousSibling === null) {
-  //&#x8BF4;&#x660E;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;
-  //&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;
+  //说明是第一个节点
+  //任何操作
 }
 </code></pre></li>
 </ul>
 </li>
-<li>&#x7236;&#x8282;&#x70B9;(parentNode)&#x7684;firstChild/lastChild&#x5206;&#x522B;&#x6307;&#x5411;childNodes&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x548C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;<ul>
+<li>父节点(parentNode)的firstChild/lastChild分别指向childNodes的第一个和最后一个节点。<ul>
 <li>firstChild == somenode.childNodes[0]</li>
 <li>lastChild == somenode.childNodes[somenode.childNodes.length-1]</li>
 </ul>
 </li>
-<li><code>hasChildNodes()</code>&#x65B9;&#x6CD5;&#x5728;&#x8282;&#x70B9;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x8FD4;&#x56DE;true</li>
-<li><code>appendChild()</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5411;childNodes()&#x5217;&#x8868;&#x7684;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;</li>
-<li><code>insertBefore()</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x628A;&#x8282;&#x70B9;&#x653E;&#x5230;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x3002;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x8981;&#x63D2;&#x5165;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x4F4D;&#x7F6E;&#x3002;<pre><code> somenode.insertBefore(newnode, somenode.firstChild)
+<li><code>hasChildNodes()</code>方法在节点包含一个或多个子节点的情况下返回true</li>
+<li><code>appendChild()</code>方法用于向childNodes()列表的末尾添加一个节点。</li>
+<li><code>insertBefore()</code>方法用于把节点放到指定位置。接收两个参数，第一个是要插入的节点，第二个是位置。<pre><code> somenode.insertBefore(newnode, somenode.firstChild)
 </code></pre></li>
-<li><code>replaceChild()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x8282;&#x70B9;&#x3002;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x8981;&#x63D2;&#x5165;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x8981;&#x66FF;&#x6362;&#x7684;&#x8282;&#x70B9;&#x3002;</li>
-<li><code>removeChild()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x79FB;&#x9664;&#x8282;&#x70B9;&#x3002;</li>
-<li>documentElement&#x5C5E;&#x6027;&#x59CB;&#x7EC8;&#x6307;&#x5411;html&#x5143;&#x7D20;&#x3002;</li>
-<li>document.body&#x5C5E;&#x6027;&#x6307;&#x5411;body</li>
-<li>document.title&#x83B7;&#x53D6;&#x6587;&#x6863;&#x7684;&#x6807;&#x9898;</li>
-<li>namedItem()&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5143;&#x7D20;&#x7684;name&#x5C5E;&#x6027;&#x53D6;&#x5F97;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x9879;</li>
-<li>&#x5728;radio&#x4E2D;&#xFF0C;&#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x53D1;&#x9001;&#x7ED9;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x503C;&#x6B63;&#x786E;&#xFF0C;&#x9700;&#x8981;radio&#x8BBE;&#x7F6E;&#x76F8;&#x540C;&#x7684;name&#x3002;&#x4F7F;&#x7528;document.getElementsByName()&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x3002;</li>
-<li>&#x96C6;&#x5408;API<ul>
-<li><code>document.anchors</code>&#x5305;&#x542B;&#x6587;&#x6863;&#x4E2D;&#x6240;&#x6709;&#x5E26;name&#x7279;&#x6027;&#x7684;<code>&lt;a&gt;</code>&#x5143;&#x7D20;</li>
-<li><code>document.forms</code>&#x5305;&#x542B;&#x6587;&#x6863;&#x4E2D;&#x6240;&#x6709;&#x7684;<code>&lt;form&gt;</code>&#x5143;&#x7D20;</li>
-<li><code>document.images</code>&#x5305;&#x542B;&#x6587;&#x6863;&#x4E2D;&#x6240;&#x6709;&#x7684;<code>&lt;img&gt;</code>&#x5143;&#x7D20;</li>
-<li><code>document.links</code>&#x5305;&#x542B;&#x6587;&#x6863;&#x4E2D;&#x6240;&#x6709;&#x5E26;href&#x7684;<code>&lt;a&gt;</code>&#x5143;&#x7D20;</li>
-<li><code>window.onload</code>&#x5728;&#x9875;&#x9762;&#x5B8C;&#x5168;&#x52A0;&#x8F7D;&#x4E4B;&#x540E;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#x51FD;&#x6570;&#x3002;</li>
+<li><code>replaceChild()</code>方法可以替换节点。接收两个参数，第一个是要插入的节点，第二个是要替换的节点。</li>
+<li><code>removeChild()</code>方法可以移除节点。</li>
+<li>documentElement属性始终指向html元素。</li>
+<li>document.body属性指向body</li>
+<li>document.title获取文档的标题</li>
+<li>namedItem()可以通过元素的name属性取得集合中的项</li>
+<li>在radio中，为了确保发送给浏览器的值正确，需要radio设置相同的name。使用document.getElementsByName()可以获取。</li>
+<li>集合API<ul>
+<li><code>document.anchors</code>包含文档中所有带name特性的<code>&lt;a&gt;</code>元素</li>
+<li><code>document.forms</code>包含文档中所有的<code>&lt;form&gt;</code>元素</li>
+<li><code>document.images</code>包含文档中所有的<code>&lt;img&gt;</code>元素</li>
+<li><code>document.links</code>包含文档中所有带href的<code>&lt;a&gt;</code>元素</li>
+<li><code>window.onload</code>在页面完全加载之后延迟执行函数。</li>
 </ul>
 </li>
-<li><code>element.tagName()</code>/<code>element.nodeName</code>&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x7684;&#x6807;&#x7B7E;&#x540D;&#x3002;&#x4F46;&#x662F;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x5927;&#x5199;&#x7684;&#x6807;&#x7B7E;&#x540D;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x597D;&#x9700;&#x8981;&#x8F6C;&#x4E3A;&#x5C0F;&#x5199;&#xFF1A;element.tagName.toLowerCase()</li>
-<li><code>div.className</code>&#x5305;&#x542B;&#x4E86;&#x5143;&#x7D20;&#x7684;&#x7C7B;&#x540D;&#x3002;</li>
-<li><code>getAttribute()</code>&#x8FD4;&#x56DE;&#x5143;&#x7D20;&#x7684;&#x4FE1;&#x606F;&#x3002;</li>
-<li><code>setAttribute()</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x548C;&#x503C;&#x3002;</li>
-<li><code>removeAttribute()</code>&#x53EF;&#x4EE5;&#x5F7B;&#x5E95;&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x7279;&#x6027;&#x3002;</li>
-<li><code>document.createElement()</code>&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x5143;&#x7D20;&#x6807;&#x7B7E;&#x3002;</li>
-<li><code>div.firstChild.nodeValue</code>&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x6587;&#x672C;&#x7684;&#x503C;&#xFF08;&#x524D;&#x63D0;&#x662F;&#x6587;&#x672C;&#x91CC;&#x9762;&#x6709;&#x5185;&#x5BB9;&#xFF0C;&#x6216;&#x8005;&#x7A7A;&#x683C;&#xFF09;&#x3002;</li>
-<li><code>document.createTextNode()</code>&#x521B;&#x5EFA;&#x6587;&#x672C;&#x8282;&#x70B9;&#x3002;</li>
-<li><code>normalize()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5408;&#x5E76;&#x8282;&#x70B9;&#x3002;</li>
-<li><code>splitText()</code>&#x53EF;&#x4EE5;&#x62C6;&#x5206;&#x6587;&#x672C;&#x8282;&#x70B9;&#x3002;</li>
-<li>&#x7406;&#x89E3;DOM&#x7684;&#x5173;&#x952E;&#xFF0C;&#x5C31;&#x662F;&#x7406;&#x89E3;DOM&#x5BF9;&#x6027;&#x80FD;&#x7684;&#x5F71;&#x54CD;&#x3002;DOM&#x64CD;&#x4F5C;&#x5F80;&#x5F80;&#x662F;JavaScript&#x7A0B;&#x5E8F;&#x4E2D;&#x5F00;&#x9500;&#x6700;&#x5927;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x56E0;&#x800C;&#x8BBF;&#x95EE;NodeList&#x5BFC;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x4E3A;&#x6700;&#x591A;&#x3002;NodeList&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x52A8;&#x6001;&#x7684;&#xFF0C;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#x6BCF;&#x6B21;&#x8BBF;&#x95EE;NodeList&#x5BF9;&#x8C61;&#xFF0C;&#x90FD;&#x4F1A;&#x8FD0;&#x884C;&#x4E00;&#x6B21;&#x67E5;&#x8BE2;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6700;&#x597D;&#x7684;&#x529E;&#x6CD5;&#x5C31;&#x662F;&#x5C3D;&#x91CF;&#x51CF;&#x5C11;DOM&#x64CD;&#x4F5C;&#x3002;</li>
+<li><code>element.tagName()</code>/<code>element.nodeName</code>可以获取元素的标签名。但是返回的是大写的标签名，所以最好需要转为小写：element.tagName.toLowerCase()</li>
+<li><code>div.className</code>包含了元素的类名。</li>
+<li><code>getAttribute()</code>返回元素的信息。</li>
+<li><code>setAttribute()</code>可以设置属性和值。</li>
+<li><code>removeAttribute()</code>可以彻底删除元素的特性。</li>
+<li><code>document.createElement()</code>可以创建元素标签。</li>
+<li><code>div.firstChild.nodeValue</code>可以修改文本的值（前提是文本里面有内容，或者空格）。</li>
+<li><code>document.createTextNode()</code>创建文本节点。</li>
+<li><code>normalize()</code>方法可以合并节点。</li>
+<li><code>splitText()</code>可以拆分文本节点。</li>
+<li>理解DOM的关键，就是理解DOM对性能的影响。DOM操作往往是JavaScript程序中开销最大的部分，因而访问NodeList导致的问题为最多。NodeList对象都是动态的，这就意味着每次访问NodeList对象，都会运行一次查询。所以，最好的办法就是尽量减少DOM操作。</li>
 </ol>
-<h4 id="&#x7B2C;&#x5341;&#x4E00;&#x7AE0;-dom&#x6269;&#x5C55;">&#x7B2C;&#x5341;&#x4E00;&#x7AE0; DOM&#x6269;&#x5C55;</h4>
+<h4>第十一章 DOM扩展</h4>
 <ol>
-<li><code>querySelector()</code>&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4E00;&#x4E2A;css&#x9009;&#x62E9;&#x7B26;&#x3002;</li>
-<li><code>querySelectorAll()</code>&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4E00;&#x4E00;css&#x9009;&#x62E9;&#x7B26;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;NodeList&#x7684;&#x5B9E;&#x4F8B;&#x3002;</li>
-<li><code>getElementsByClassName()</code>&#x8FD4;&#x56DE;&#x5E26;&#x6709;&#x6307;&#x5B9A;&#x7C7B;&#x7684;NodeList&#x3002;</li>
-<li><code>classList</code>&#x5C5E;&#x6027;&#x4FDD;&#x5B58;&#x7740;&#x7C7B;&#x7684;&#x96C6;&#x5408;&#x3002;&#x6709;&#x51E0;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;<ul>
-<li><code>add()</code>&#x5C06;&#x7ED9;&#x5B9A;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x6DFB;&#x52A0;&#x5230;&#x5217;&#x8868;&#x4E2D;&#x3002;</li>
-<li><code>remove()</code>&#x4ECE;&#x5217;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x7ED9;&#x5B9A;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</li>
-<li><code>toggle()</code>&#x5982;&#x679C;&#x5217;&#x8868;&#x6709;&#xFF0C;&#x5219;&#x5220;&#x9664;&#xFF1B;&#x53CD;&#x4E4B;&#x5219;&#x6DFB;&#x52A0;&#x3002;</li>
-<li><code>contains()</code>&#x8868;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x503C;&#x3002;</li>
+<li><code>querySelector()</code>方法接收一个css选择符。</li>
+<li><code>querySelectorAll()</code>方法接收一一css选择符，并返回一个NodeList的实例。</li>
+<li><code>getElementsByClassName()</code>返回带有指定类的NodeList。</li>
+<li><code>classList</code>属性保存着类的集合。有几下几个方法<ul>
+<li><code>add()</code>将给定的字符串值添加到列表中。</li>
+<li><code>remove()</code>从列表中删除给定的字符串。</li>
+<li><code>toggle()</code>如果列表有，则删除；反之则添加。</li>
+<li><code>contains()</code>表示列表中是否存在值。</li>
 </ul>
 </li>
-<li><code>document.activeElement</code>&#x5C5E;&#x6027;&#x59CB;&#x7EC8;&#x4F1A;&#x5F15;&#x7528;&#x5F53;&#x524D;&#x83B7;&#x5F97;&#x4E86;&#x7126;&#x70B9;&#x7684;&#x5143;&#x7D20;&#x3002;</li>
-<li><code>document.hasFocus()</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x786E;&#x5B9A;<strong>&#x6587;&#x6863;</strong>&#x662F;&#x5426;&#x83B7;&#x5F97;&#x4E86;&#x7126;&#x70B9;&#x3002;</li>
-<li><code>readyState</code>&#x5C5E;&#x6027;&#x6709;&#x4E24;&#x4E2A;&#x53EF;&#x80FD;&#x7684;&#x503C;&#xFF1A;<ul>
-<li><code>loading</code>: &#x6B63;&#x5728;&#x52A0;&#x8F7D;&#x6587;&#x6863;&#x3002;</li>
-<li><code>complete</code>: &#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x5B8C;&#x6587;&#x6863;&#x3002;</li>
+<li><code>document.activeElement</code>属性始终会引用当前获得了焦点的元素。</li>
+<li><code>document.hasFocus()</code>方法用于确定<strong>文档</strong>是否获得了焦点。</li>
+<li><code>readyState</code>属性有两个可能的值：<ul>
+<li><code>loading</code>: 正在加载文档。</li>
+<li><code>complete</code>: 已经加载完文档。</li>
 </ul>
 </li>
-<li><code>document.head</code>&#x3002;<pre><code> let head = document.head || document.getElementsByTagName(&quot;head&quot;)[0]
+<li><code>document.head</code>。<pre><code> let head = document.head || document.getElementsByTagName(&quot;head&quot;)[0]
 </code></pre></li>
-<li><code>contains()</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x662F;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#xFF0C;&#x6B63;&#x786E;&#x8FD4;&#x56DE;true&#x3002;</li>
-<li><code>scrollIntoView()</code>&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x6EDA;&#x52A8;&#x6D4F;&#x89C8;&#x5668;&#x3002;</li>
+<li><code>contains()</code>方法用于检查是否是后代节点，正确返回true。</li>
+<li><code>scrollIntoView()</code>方法能够滚动浏览器。</li>
 </ol>
-<h4 id="&#x7B2C;&#x5341;&#x4E8C;&#x7AE0;-dom2&#x548C;dom3">&#x7B2C;&#x5341;&#x4E8C;&#x7AE0; DOM2&#x548C;DOM3</h4>
+<h4>第十二章 DOM2和DOM3</h4>
 <ol>
-<li><code>cssText</code>&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;css&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8986;&#x76D6;&#x3002;</li>
-<li><code>getPropertyValue()</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7ED9;&#x5B9A;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x3002;</li>
-<li><code>removeProperty()</code>&#x65B9;&#x6CD5;&#x79FB;&#x9664;&#x7ED9;&#x5B9A;&#x7684;&#x5C5E;&#x6027;&#x3002;</li>
-<li><code>document.defaultView</code>&#x63D0;&#x4F9B;&#x4E86;<code>getComputedStyle()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x80FD;&#x591F;&#x53D6;&#x5F97;&#x5143;&#x7D20;&#x8BA1;&#x7B97;&#x540E;&#x7684;&#x6837;&#x5F0F;&#x3002;</li>
+<li><code>cssText</code>可以访问css中的代码，也可以覆盖。</li>
+<li><code>getPropertyValue()</code>方法返回给定的字符串值。</li>
+<li><code>removeProperty()</code>方法移除给定的属性。</li>
+<li><code>document.defaultView</code>提供了<code>getComputedStyle()</code>方法，能够取得元素计算后的样式。</li>
 </ol>
-<p>&#x4F46;&#x662F;IE&#x5E76;&#x4E0D;&#x652F;&#x6301;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#x7684;<strong>&#x5C5E;&#x6027;</strong>&#xFF1A;<code>currentStyle</code></p>
+<p>但是IE并不支持上述方法，但是提供了另外一个相同的<strong>属性</strong>：<code>currentStyle</code></p>
 <ol>
-<li>&#x5143;&#x7D20;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x6240;&#x5360;&#x7684;&#x53EF;&#x89C1;&#x7A7A;&#x95F4;&#xFF1A;&#xFF08;&#x5305;&#x542B;&#x6EDA;&#x52A8;&#x6761;&#xFF09; <ul>
-<li><code>offsetHeight</code>&#x5143;&#x7D20;&#x5728;&#x5782;&#x76F4;&#x65B9;&#x5411;&#x4E0A;&#x5360;&#x7528;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#x3002;</li>
-<li><code>offsetWidth</code>&#x5143;&#x7D20;&#x5728;&#x6C34;&#x5E73;&#x65B9;&#x5411;&#x4E0A;&#x5360;&#x7528;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#x3002;</li>
-<li><code>offsetTop</code>&#x5143;&#x7D20;&#x7684;&#x4E0A;&#x5916;&#x8FB9;&#x6846;&#x81F3;&#x5305;&#x542B;&#x5143;&#x7D20;&#xFF08;offsetParent&#xFF09;&#x7684;&#x4E0A;&#x5185;&#x8FB9;&#x6846;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x3002;</li>
-<li><code>offsetLeft</code>&#x5143;&#x7D20;&#x7684;&#x5DE6;&#x8FB9;&#x8DDD;&#x81F3;&#x5305;&#x542B;&#x5143;&#x7D20;&#x7684;&#x5DE6;&#x5185;&#x8FB9;&#x6846;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x3002;</li>
+<li>元素在屏幕上所占的可见空间：（包含滚动条） <ul>
+<li><code>offsetHeight</code>元素在垂直方向上占用的空间大小。</li>
+<li><code>offsetWidth</code>元素在水平方向上占用的空间大小。</li>
+<li><code>offsetTop</code>元素的上外边框至包含元素（offsetParent）的上内边框之间的距离。</li>
+<li><code>offsetLeft</code>元素的左边距至包含元素的左内边框之间的距离。</li>
 </ul>
 </li>
 </ol>
-<p>offsetParent&#x4E3A;&#x79BB;&#x5176;&#x6700;&#x8FD1;&#x7684;&#x5177;&#x6709;&#x5927;&#x5C0F;&#x7684;&#x7956;&#x5148;&#x5143;&#x7D20;&#x3002;</p>
+<p>offsetParent为离其最近的具有大小的祖先元素。</p>
 <ol>
-<li>&#x5BA2;&#x6237;&#x533A;&#x5927;&#x5C0F;&#xFF1A;&#xFF08;&#x6EDA;&#x52A8;&#x6761;&#x4E0D;&#x8BA1;&#x7B97;&#x5728;&#x5185;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x6D4F;&#x89C8;&#x5668;&#x89C6;&#x53E3;&#x5927;&#x5C0F;&#xFF09;<ul>
-<li><code>clientHeight</code>&#x5C5E;&#x6027;&#x662F;&#x5143;&#x7D20;&#x7684;&#x9AD8;&#x5EA6;</li>
-<li><code>clientWidth</code>&#x5C5E;&#x6027;&#x662F;&#x5143;&#x7D20;&#x7684;&#x5BBD;&#x5EA6;<pre><code>document.body.clientHeight/document.documentElement.clientHeight
+<li>客户区大小：（滚动条不计算在内，所以可以确定浏览器视口大小）<ul>
+<li><code>clientHeight</code>属性是元素的高度</li>
+<li><code>clientWidth</code>属性是元素的宽度<pre><code>document.body.clientHeight/document.documentElement.clientHeight
 </code></pre></li>
 </ul>
 </li>
-<li>&#x6EDA;&#x52A8;&#x5927;&#x5C0F;&#xFF1A;<ul>
-<li><code>scrollHeight</code>&#x5728;&#x6CA1;&#x6709;&#x6EDA;&#x52A8;&#x6761;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5143;&#x7D20;&#x5185;&#x5BB9;&#x7684;&#x603B;&#x9AD8;&#x5EA6;&#x3002;</li>
-<li><code>scrollWidth</code>&#x5728;&#x6CA1;&#x6709;&#x6EDA;&#x52A8;&#x6761;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5143;&#x7D20;&#x5185;&#x5BB9;&#x7684;&#x603B;&#x5BBD;&#x5EA6;&#x3002;</li>
-<li><code>scrollLeft</code>&#x88AB;&#x9690;&#x85CF;&#x5728;&#x5185;&#x5BB9;&#x533A;&#x57DF;&#x5DE6;&#x4FA7;&#x7684;&#x50CF;&#x7D20;&#x6570;&#x3002;</li>
-<li><code>scrollTop</code>&#x88AB;&#x9690;&#x85CF;&#x5728;&#x5185;&#x5BB9;&#x533A;&#x57DF;&#x4E0A;&#x65B9;&#x7684;&#x50CF;&#x7D20;&#x6570;&#x3002;</li>
+<li>滚动大小：<ul>
+<li><code>scrollHeight</code>在没有滚动条的情况下，元素内容的总高度。</li>
+<li><code>scrollWidth</code>在没有滚动条的情况下，元素内容的总宽度。</li>
+<li><code>scrollLeft</code>被隐藏在内容区域左侧的像素数。</li>
+<li><code>scrollTop</code>被隐藏在内容区域上方的像素数。</li>
 </ul>
 </li>
 </ol>
-<h4 id="&#x7B2C;&#x5341;&#x4E09;&#x7AE0;-&#x4E8B;&#x4EF6;">&#x7B2C;&#x5341;&#x4E09;&#x7AE0; &#x4E8B;&#x4EF6;</h4>
+<h4>第十三章 事件</h4>
 <ol>
-<li>IE&#x7684;&#x4E8B;&#x4EF6;&#x6D41;&#x53EB;&#x505A;&#x5192;&#x6CE1;&#xFF0C;&#x5373;&#x4ECE;&#x6587;&#x6863;&#x4E2D;&#x5D4C;&#x5957;&#x6700;&#x6DF1;&#x5C42;&#x6B21;&#x7684;&#x90A3;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x9010;&#x7EA7;&#x5411;&#x4E0A;&#x4F20;&#x9012;&#x3002;</li>
-<li>Netscape Communicator&#x56E2;&#x961F;&#x63D0;&#x51FA;&#x4E8B;&#x4EF6;&#x6355;&#x83B7;&#x3002;</li>
-<li>DOM2&#x7EA7;&#x4E8B;&#x4EF6;&#x89C4;&#x5B9A;&#x4E8B;&#x4EF6;&#x6D41;&#x5305;&#x62EC;&#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;<ul>
-<li>&#x4E8B;&#x4EF6;&#x6355;&#x83B7;&#x9636;&#x6BB5;</li>
-<li>&#x5904;&#x4E8E;&#x76EE;&#x6807;&#x9636;&#x6BB5;</li>
-<li>&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#x9636;&#x6BB5;</li>
+<li>IE的事件流叫做冒泡，即从文档中嵌套最深层次的那个节点，逐级向上传递。</li>
+<li>Netscape Communicator团队提出事件捕获。</li>
+<li>DOM2级事件规定事件流包括三个阶段：<ul>
+<li>事件捕获阶段</li>
+<li>处于目标阶段</li>
+<li>事件冒泡阶段</li>
 </ul>
 </li>
-<li>&#x5220;&#x9664;&#x4E8B;&#x4EF6; <code>xxx.onclick = null</code></li>
-<li>DOM2&#x7EA7;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x6307;&#x5B9A;&#x548C;&#x5220;&#x9664;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;<ul>
+<li>删除事件 <code>xxx.onclick = null</code></li>
+<li>DOM2级定义了两个方法用于处理指定和删除事件处理程序的操作：<ul>
 <li><code>addEventListener()</code></li>
 <li><code>removeEventListener()</code></li>
 </ul>
 </li>
-<li>IE&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x7A0B;&#x5E8F;<ul>
+<li>IE的事件处理程序<ul>
 <li><code>attachEvent()</code></li>
 <li><code>detachEvent()</code></li>
 </ul>
 </li>
-<li><p>&#x963B;&#x6B62;&#x4E8B;&#x4EF6;&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF1A;<code>preventDefault()</code></p>
-<pre><code> let a = document.querySelector(&apos;a&apos;)
+<li><p>阻止事件的默认行为：<code>preventDefault()</code></p>
+<pre><code> let a = document.querySelector(&#39;a&#39;)
 
  a.onclick = event =&gt; {
      event.preventDefault()
  }
 </code></pre></li>
-<li>load&#x4E8B;&#x4EF6;&#xFF0C;&#x5F53;&#x9875;&#x9762;&#x5B8C;&#x5168;&#x52A0;&#x8F7D;&#x540E;&#xFF08;&#x5305;&#x62EC;&#x6240;&#x6709;&#x56FE;&#x5F62;&#x3001;js&#x6587;&#x4EF6;&#x3001;css&#x6587;&#x4EF6;&#x7B49;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#xFF09;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;window&#x4E0A;&#x9762;&#x7684;load&#x4E8B;&#x4EF6;.</li>
-<li>unload&#x4E8B;&#x4EF6;&#xFF0C;&#x5728;&#x6587;&#x6863;&#x88AB;&#x5B8C;&#x5168;&#x5378;&#x8F7D;&#x540E;&#x51FA;&#x53D1;&#x3002;&#x53EA;&#x8981;&#x7528;&#x6237;&#x4ECE;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x5207;&#x6362;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x5C31;&#x4F1A;&#x53D1;&#x751F;unload&#x4E8B;&#x4EF6;&#x3002;</li>
-<li>resize&#x4E8B;&#x4EF6;&#xFF0C;&#x662F;&#x5F53;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x88AB;&#x8C03;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9AD8;&#x5EA6;&#x6216;&#x5BBD;&#x5EA6;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;resize&#x4E8B;&#x4EF6;&#x3002;&#xFF08;&#x53EA;&#x8981;&#x8C03;&#x6574;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x5E94;&#x8BE5;&#x4E0D;&#x8981;&#x52A0;&#x5165;&#x5927;&#x91CF;&#x7684;&#x8BA1;&#x7B97;&#x4EE3;&#x7801;&#xFF09;</li>
-<li>scroll&#x4E8B;&#x4EF6;&#xFF0C;&#x662F;&#x5728;window&#x5BF9;&#x8C61;&#x4E0A;&#x53D1;&#x751F;&#x7684;&#x3002;</li>
-<li><p>blur&#xFF1A;&#x5728;&#x5143;&#x7D20;&#x5931;&#x53BB;&#x7126;&#x70B9;&#x65F6;&#x89E6;&#x53D1;</p>
+<li>load事件，当页面完全加载后（包括所有图形、js文件、css文件等外部资源）就会触发window上面的load事件.</li>
+<li>unload事件，在文档被完全卸载后出发。只要用户从一个页面切换到另一个页面就会发生unload事件。</li>
+<li>resize事件，是当浏览器窗口被调到一个新的高度或宽度时，就会触发resize事件。（只要调整窗口大小就会触发，所以这里应该不要加入大量的计算代码）</li>
+<li>scroll事件，是在window对象上发生的。</li>
+<li><p>blur：在元素失去焦点时触发</p>
 <ul>
-<li>&#x4E0D;&#x4F1A;&#x5192;&#x6CE1;</li>
+<li>不会冒泡</li>
 </ul>
 </li>
-<li><p>focus&#xFF1A;&#x5728;&#x5143;&#x7D20;&#x83B7;&#x5F97;&#x7126;&#x70B9;&#x65F6;&#x89E6;&#x53D1;</p>
+<li><p>focus：在元素获得焦点时触发</p>
 <ul>
-<li>&#x4E0D;&#x4F1A;&#x5192;&#x6CE1;</li>
+<li>不会冒泡</li>
 </ul>
 </li>
-<li><p>focusin&#xFF1A;&#x5728;&#x5143;&#x7D20;&#x5931;&#x53BB;&#x7126;&#x70B9;&#x65F6;&#x89E6;&#x53D1;</p>
+<li><p>focusin：在元素失去焦点时触发</p>
 <ul>
-<li>&#x4F46;&#x662F;&#x5192;&#x6CE1;</li>
+<li>但是冒泡</li>
 </ul>
 </li>
-<li>focusout: &#x5728;&#x5143;&#x7D20;&#x5931;&#x53BB;&#x7126;&#x70B9;&#x65F6;&#x89E6;&#x53D1;</li>
-<li>&#x9F20;&#x6807;&#x4E0E;&#x6EDA;&#x8F6E;&#x4E8B;&#x4EF6;<ul>
-<li>click&#xFF1A;&#x5728;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x4E3B;&#x9F20;&#x6807;&#x6309;&#x94AE;&#x6216;&#x8005;&#x6309;&#x4E0B;&#x56DE;&#x8F66;&#x65F6;&#x89E6;&#x53D1;</li>
-<li>dblclick&#xFF1A;&#x5728;&#x7528;&#x6237;&#x53CC;&#x51FB;&#x9F20;&#x6807;&#x6309;&#x94AE;&#x65F6;&#x89E6;&#x53D1;</li>
-<li>mousedown&#xFF1A;&#x5728;&#x7528;&#x6237;&#x6309;&#x4E0B;&#x4E86;&#x4EFB;&#x610F;&#x9F20;&#x6807;&#x6309;&#x94AE;&#x65F6;&#x89E6;&#x53D1;&#xFF0C;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x952E;&#x76D8;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</li>
-<li>mouseenter&#xFF1A;&#x5728;&#x9F20;&#x6807;&#x5149;&#x6807;&#x4ECE;&#x5143;&#x7D20;&#x5916;&#x90E8;&#x9996;&#x6B21;&#x79FB;&#x52A8;&#x5230;&#x5143;&#x7D20;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#x65F6;&#x89E6;&#x53D1;&#x3002;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x4E0D;&#x5192;&#x6CE1;&#x3002;</li>
-<li>mouseleave&#xFF1A;&#x5728;&#x4F4D;&#x4E8E;&#x5143;&#x7D20;&#x4E0A;&#x65B9;&#x7684;&#x9F20;&#x6807;&#x5149;&#x6807;&#x79FB;&#x52A8;&#x5230;&#x5143;&#x7D20;&#x8303;&#x56F4;&#x4E4B;&#x5916;&#x65F6;&#x89E6;&#x53D1;&#x3002;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x4E0D;&#x5192;&#x6CE1;&#x3002;</li>
-<li>mousemove&#xFF1A;&#x5F53;&#x9F20;&#x6807;&#x6307;&#x9488;&#x5728;&#x5143;&#x7D20;&#x5185;&#x90E8;&#x79FB;&#x52A8;&#x65F6;&#x91CD;&#x590D;&#x5730;&#x89E6;&#x53D1;&#x3002;</li>
-<li>mouseout&#xFF1A;&#x5728;&#x9F20;&#x6807;&#x6307;&#x9488;&#x4F4D;&#x4E8E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x4E0A;&#x65B9;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x6237;&#x5C06;&#x5176;&#x79FB;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x65F6;&#x89E6;&#x53D1;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x53EF;&#x80FD;&#x662F;&#x5916;&#x90E8;&#x5143;&#x7D20;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x5185;&#x90E8;&#x5143;&#x7D20;&#x3002;</li>
-<li>mouseover&#xFF1A;&#x5728;&#x9F20;&#x6807;&#x6307;&#x9488;&#x4F4D;&#x4E8E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5916;&#x90E8;&#xFF0C;&#x7528;&#x6237;&#x5C06;&#x5176;&#x9996;&#x6B21;&#x79FB;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x8FB9;&#x754C;&#x4E4B;&#x5185;&#x65F6;&#x89E6;&#x53D1;&#x3002;</li>
-<li>mouseup&#xFF1A;&#x5728;&#x7528;&#x6237;&#x91CA;&#x653E;&#x9F20;&#x6807;&#x6309;&#x94AE;&#x65F6;&#x89E6;&#x53D1;&#x3002;</li>
+<li>focusout: 在元素失去焦点时触发</li>
+<li>鼠标与滚轮事件<ul>
+<li>click：在用户点击主鼠标按钮或者按下回车时触发</li>
+<li>dblclick：在用户双击鼠标按钮时触发</li>
+<li>mousedown：在用户按下了任意鼠标按钮时触发，不能通过键盘触发这个事件。</li>
+<li>mouseenter：在鼠标光标从元素外部首次移动到元素范围之内时触发。这个事件不冒泡。</li>
+<li>mouseleave：在位于元素上方的鼠标光标移动到元素范围之外时触发。这个事件不冒泡。</li>
+<li>mousemove：当鼠标指针在元素内部移动时重复地触发。</li>
+<li>mouseout：在鼠标指针位于一个元素的上方，然后用户将其移入另一个元素时触发。另一个元素可能是外部元素，也可能是内部元素。</li>
+<li>mouseover：在鼠标指针位于一个元素外部，用户将其首次移入另一个元素边界之内时触发。</li>
+<li>mouseup：在用户释放鼠标按钮时触发。</li>
 </ul>
 </li>
-<li>mousewheel&#xFF1A;&#x6EDA;&#x8F6E;&#x4E8B;&#x4EF6;&#x3002;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x8DDF;&#x8E2A;&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#x3002;</li>
+<li>mousewheel：滚轮事件。这个事件跟踪鼠标滚轮。</li>
 </ol>
-
+</script></li></ol>
                                 
                                 </section>
                             
@@ -863,7 +870,7 @@ history.go(1)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript 高级程序设计","level":"1.2","depth":1,"next":{"title":"图解HTTP","level":"1.3","depth":1,"path":"book/图解HTTP.md","ref":"book/图解HTTP.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"book/javaScript高级程序设计.md","mtime":"2020-04-08T14:33:25.772Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-08T15:19:09.031Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript 高级程序设计","level":"1.2","depth":1,"next":{"title":"图解HTTP","level":"1.3","depth":1,"path":"book/图解HTTP.md","ref":"book/图解HTTP.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"book/javaScript高级程序设计.md","mtime":"2020-04-09T12:37:56.216Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-09T12:38:41.500Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
