@@ -254,7 +254,7 @@
 </ul>
 </li>
 <li><code>&lt;noscript&gt;</code> 元素用以在不支持 JavaScript 的浏览器中显示替代的内容。 包含在 <code>&lt;noscript&gt;</code> 元素中的内容只有在下列情况下才会显示出来： <pre><code> -  浏览器不支持脚本
- -  浏览器支持脚本， 但脚本被禁用
+     -  浏览器支持脚本， 但脚本被禁用
 </code></pre></li>
 </ol>
 <h2>第三章</h2>
@@ -276,22 +276,36 @@
 <li>boolean</li>
 </ul>
 <p>一种复杂数据类型：</p>
-</li>
-<li><p>object</p>
+<ul>
+<li>object</li>
+</ul>
 </li>
 <li><p>使用<code>typeof</code>可以判断数据的类型，用法为</p>
-<pre><code>var message = &quot;hello world&quot;;
+</li>
+</ol>
+<pre><code class="lang-javascript">var message = &quot;hello world&quot;;
 console.log(typeof message) //string
-</code></pre></li>
-<li>如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为null。这样只要检查null值就可以知道相应的变量是否已经保存了一个对象的引用了。<pre><code>if(car != null) {
+function fun() {}
+console.log(typeof 1) // number
+console.log(typeof &#39;1&#39;)  // string
+console.log(typeof fun)  // function
+console.log(typeof undefined)  // undefined
+console.log(typeof null)  // object 因为 null 被认为是一个空的对象引用
+console.log(typeof [])  // object
+console.log(typeof {})  // object
+</code></pre>
+<ol>
+<li>如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为null。这样只要检查null值就可以知道相应的变量是否已经保存了一个对象的引用了。<pre><code class="lang-javascript">if(car != null) {
  //某些操作
 }
-</code></pre></li>
-<li>使用<code>Boolean()</code>可以转换对应的boolean值。<pre><code>var message = &quot;hello world&quot;
+</code></pre>
+</li>
+<li>使用<code>Boolean()</code>可以转换对应的boolean值。<pre><code class="lang-javascript">var message = &quot;hello world&quot;
 if (message) {
  console.log(&quot;value is true&quot;)
 }
-</code></pre></li>
+</code></pre>
+</li>
 <li>保存浮点数值需要的内存空间是保存整数值的两倍。</li>
 <li>ECMA能够表示的最小数值保存在<code>Number.MIN_VALUE</code>中。最大数值保存在<code>Number.MAX_VALUE</code>中。</li>
 <li>使用<code>isFinite()</code>可以测试这个数是否在最大或最小数的中间。<code>true</code>为存在，<code>false</code>为不存在。</li>
@@ -305,63 +319,87 @@ if (message) {
 </ul>
 <p>Number()可以转换任意类型，其他两个则专门用于把<strong>字符串转换成数值</strong>。</p>
 <p>由于Number()函数在转换字符串时比较复杂且不够合理，因此处理整数的时候更常用的是<code>parseInt()</code>函数。此函数在转换时，更多的是看其是否符合数值模式。它会忽略前面的空格，直至找到第一个非空格字符串。</p>
-<pre><code>var num = parseInt(&quot;1234blue&quot;)  // 1234
-</code></pre><p>对于多进制，可以提供参数</p>
-<pre><code>var num = parseInt(&quot;0xAF&quot;, 16);
-</code></pre><p><strong>多数情况下，我们要解析的都是十进制数值，因此始终将10作为第二个参数是非常必要的</strong></p>
+<pre><code class="lang-javascript">var num = parseInt(&quot;1234blue&quot;)  // 1234
+</code></pre>
+<p>对于多进制，可以提供参数</p>
+<pre><code class="lang-javascript">var num = parseInt(&quot;0xAF&quot;, 16);
+</code></pre>
+<p><strong>多数情况下，我们要解析的都是十进制数值，因此始终将10作为第二个参数是非常必要的</strong></p>
 <p><code>parseFloat()</code>只能解析10进制值，并且只能解析一个小数点的数值。</p>
-<pre><code>var num = parseFloat(&quot;22.34.5&quot;) // 22.34
-</code></pre></li>
+<pre><code class="lang-javascript">var num = parseFloat(&quot;22.34.5&quot;) // 22.34
+</code></pre>
+</li>
 <li><p><code>\r</code>为回车，<code>\n</code>为换行  </p>
 </li>
-<li>任意长度的字符串可以通过访问其<code>length</code>的属性取得：<pre><code>var str = &quot;hello world&quot;;
+<li>任意长度的字符串可以通过访问其<code>length</code>的属性取得：<pre><code class="lang-javascript">var str = &quot;hello world&quot;;
 console.log(str.length)  // 11
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>要把一个值转换为字符串可以使用<code>toString()</code>方法。</p>
-<pre><code>var boolean = true
+<pre><code class="lang-javascript">var boolean = true
 var stringBoolean = boolean.toString()  // &quot;true&quot;
-</code></pre><p>还有一个<code>String()</code>方法，此方法对null和undefined返回他本身</p>
-<pre><code>var value;
+</code></pre>
+<p>还有一个<code>String()</code>方法，此方法对null和undefined返回他本身</p>
+<pre><code class="lang-javascript">var value;
 console.log(String(value) // undefined
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>按位非，用波浪线（~）表示，返回数值的反码。其实就是：操作数的负值减1.</p>
-<pre><code>var num = 25;
+<pre><code class="lang-javascript">var num = 25;
 console.log(~num)   // -26
 
 //等同于
 var num1 = 25;
 var num2 = -num - 1;
 console.log(num2)  // -26
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>逻辑与操作符（&amp;&amp;）,规则为：</p>
 <ul>
 <li>如果第一个运算子的布尔值为true，则返回第二个运算子的值。</li>
 <li>如果第一个运算子的布尔值为false，则返回第一个运算子的值。</li>
 </ul>
 </li>
+<li><p>如果第一个操作数是对象，则返回第二个操作数。</p>
+<ul>
+<li>如果第二个操作数是对象，则只有在第一个操作数的求值结果为 true 的情况下才会返回该对象。</li>
+<li>如果两个操作数都是对象，则返回第二个操作数。</li>
+</ul>
+</li>
 <li><p>+法操作有时候会拼接字符串，如：</p>
-<pre><code>var num1 = 5;
+<pre><code class="lang-javascript">var num1 = 5;
 var num2 = 10;
 var message = &quot;The number is&quot; + num1 + num2 
 console.log(message) // The number is 510
-</code></pre><p>想要正确的计算值，可以加个括号，如:</p>
-<pre><code>var num1 = 5;
+</code></pre>
+<p>想要正确的计算值，可以加个括号，如:</p>
+<pre><code class="lang-javascript">var num1 = 5;
 var num2 = 10;
 var message = &quot;The number is&quot; + (num1 + num2 )
 console.log(message) // The number is 15
-</code></pre></li>
+</code></pre>
+</li>
 <li><p><code>==</code>表示相等，<code>===</code>表示全等。规则为：</p>
 <ul>
 <li>== 在比较前会先转换类型。</li>
-<li>=== 直接比较，不会转换类型，比较严格</li>
 </ul>
-<pre><code>var result1 = (&quot;55&quot; == 55)  // true 转换之后相等
-var result1 = (&quot;55&quot; === 55)  // false 因数据类型不同，返回false
-</code></pre></li>
+</li>
+<li><p>=== 直接比较，不会转换类型，比较严格</p>
+<pre><code class="lang-javascript">  var result1 = (&quot;55&quot; == 55)  // true 转换之后相等
+  var result1 = (&quot;55&quot; === 55)  // false 因数据类型不同，返回false
+</code></pre>
+</li>
+<li><p>NaN 与任何操作数进行关系比较，都会返回 false。</p>
+</li>
 <li><p>条件操作符，也就是三元表达式<code>xx?xx:xx</code></p>
-<pre><code>var max = (num1 &gt; num2) ? num1 : num2
+<pre><code class="lang-javascript">var max = (num1 &gt; num2) ? num1 : num2
 //以上代码max中储存一个最大的值
-</code></pre></li>
+</code></pre>
+</li>
+<li><p>for..in  可以用来枚举对象的属性。</p>
+</li>
+<li><p>如果定义两个同名函数，则取后者。</p>
+</li>
 </ol>
 <h2>第四章</h2>
 <ol>
@@ -870,7 +908,7 @@ history.go(1)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript 高级程序设计","level":"1.2","depth":1,"next":{"title":"图解HTTP","level":"1.3","depth":1,"path":"book/图解HTTP.md","ref":"book/图解HTTP.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"book/javaScript高级程序设计.md","mtime":"2020-04-09T12:37:56.216Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-09T12:38:41.500Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript 高级程序设计","level":"1.2","depth":1,"next":{"title":"图解HTTP","level":"1.3","depth":1,"path":"book/图解HTTP.md","ref":"book/图解HTTP.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"book/javaScript高级程序设计.md","mtime":"2020-04-10T15:14:14.349Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-10T15:16:00.363Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

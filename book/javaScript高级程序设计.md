@@ -32,7 +32,7 @@
     * 适应未来
 9. `<noscript>` 元素用以在不支持 JavaScript 的浏览器中显示替代的内容。 包含在 `<noscript>` 元素中的内容只有在下列情况下才会显示出来： 
     	-  浏览器不支持脚本
-    	-  浏览器支持脚本， 但脚本被禁用
+        	-  浏览器支持脚本， 但脚本被禁用
 
 ## 第三章
 1. JS中的一切都区分大小写
@@ -50,21 +50,30 @@
 
    一种复杂数据类型：
    
-* object
-  
+   - object
+   
 6. 使用`typeof`可以判断数据的类型，用法为
-```
+
+``` javascript
 var message = "hello world";
 console.log(typeof message) //string
+function fun() {}
+console.log(typeof 1) // number
+console.log(typeof '1')  // string
+console.log(typeof fun)  // function
+console.log(typeof undefined)  // undefined
+console.log(typeof null)  // object 因为 null 被认为是一个空的对象引用
+console.log(typeof [])  // object
+console.log(typeof {})  // object
 ```
 7. 如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为null。这样只要检查null值就可以知道相应的变量是否已经保存了一个对象的引用了。
-```
+```javascript
 if(car != null) {
     //某些操作
 }
 ```
 8. 使用`Boolean()`可以转换对应的boolean值。
-```
+```javascript
 var message = "hello world"
 if (message) {
     console.log("value is true")
@@ -83,41 +92,41 @@ if (message) {
     Number()可以转换任意类型，其他两个则专门用于把**字符串转换成数值**。
 
     由于Number()函数在转换字符串时比较复杂且不够合理，因此处理整数的时候更常用的是`parseInt()`函数。此函数在转换时，更多的是看其是否符合数值模式。它会忽略前面的空格，直至找到第一个非空格字符串。
-    ```
+    ```javascript
     var num = parseInt("1234blue")  // 1234
     ```
     对于多进制，可以提供参数
-    ```
+    ```javascript
     var num = parseInt("0xAF", 16);
     ```
 
     **多数情况下，我们要解析的都是十进制数值，因此始终将10作为第二个参数是非常必要的**
 
     `parseFloat()`只能解析10进制值，并且只能解析一个小数点的数值。
-    ```
+    ```javascript
     var num = parseFloat("22.34.5") // 22.34
     ```
 
 15. `\r`为回车，`\n`为换行  
 16. 任意长度的字符串可以通过访问其`length`的属性取得：
-```
+```javascript
 var str = "hello world";
 console.log(str.length)  // 11
 ```
 17. 要把一个值转换为字符串可以使用`toString()`方法。
-    ```
+    ```javascript
     var boolean = true
     var stringBoolean = boolean.toString()  // "true"
     ```
 
     还有一个`String()`方法，此方法对null和undefined返回他本身
-    ```
+    ```javascript
     var value;
     console.log(String(value) // undefined
     ```
 
 18. 按位非，用波浪线（~）表示，返回数值的反码。其实就是：操作数的负值减1.
-    ```
+    ```javascript
     var num = 25;
     console.log(~num)   // -26
 
@@ -130,36 +139,48 @@ console.log(str.length)  // 11
 19. 逻辑与操作符（&&）,规则为：
     * 如果第一个运算子的布尔值为true，则返回第二个运算子的值。
     * 如果第一个运算子的布尔值为false，则返回第一个运算子的值。
-
+* 如果第一个操作数是对象，则返回第二个操作数。
+    * 如果第二个操作数是对象，则只有在第一个操作数的求值结果为 true 的情况下才会返回该对象。
+    * 如果两个操作数都是对象，则返回第二个操作数。
+    
 20. +法操作有时候会拼接字符串，如：
-    ```
+    
+    ```javascript
     var num1 = 5;
     var num2 = 10;
     var message = "The number is" + num1 + num2 
     console.log(message) // The number is 510
     ```
     想要正确的计算值，可以加个括号，如:
-    ```
+    ```javascript
     var num1 = 5;
     var num2 = 10;
     var message = "The number is" + (num1 + num2 )
     console.log(message) // The number is 15
-    ```
-
+```
+    
 21. `==`表示相等，`===`表示全等。规则为：
+    
     * == 在比较前会先转换类型。
-    * === 直接比较，不会转换类型，比较严格
-
-    ```
+* === 直接比较，不会转换类型，比较严格
+    
+    ```javascript
     var result1 = ("55" == 55)  // true 转换之后相等
     var result1 = ("55" === 55)  // false 因数据类型不同，返回false
-    ```
+```
+    
+22. NaN 与任何操作数进行关系比较，都会返回 false。
+    
+23. 条件操作符，也就是三元表达式`xx?xx:xx`
 
-22. 条件操作符，也就是三元表达式`xx?xx:xx`
-    ```
+    ```javascript
     var max = (num1 > num2) ? num1 : num2
     //以上代码max中储存一个最大的值
     ```
+
+24. for..in  可以用来枚举对象的属性。
+
+25. 如果定义两个同名函数，则取后者。
 
 ## 第四章
 1. 一个变量从另一个变量复制**基本类型的值**，会创建一个新值，两者不会影响，如：
