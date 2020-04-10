@@ -157,18 +157,18 @@ console.log(str.length)  // 11
     var num2 = 10;
     var message = "The number is" + (num1 + num2 )
     console.log(message) // The number is 15
-```
-    
-21. `==`表示相等，`===`表示全等。规则为：
-    
-    * == 在比较前会先转换类型。
+    ```
+ 21. `==`表示相等，`===`表示全等。规则为：
+
+* == 在比较前会先转换类型。
+
 * === 直接比较，不会转换类型，比较严格
-    
+  
     ```javascript
     var result1 = ("55" == 55)  // true 转换之后相等
     var result1 = ("55" === 55)  // false 因数据类型不同，返回false
-```
-    
+    ```
+
 22. NaN 与任何操作数进行关系比较，都会返回 false。
     
 23. 条件操作符，也就是三元表达式`xx?xx:xx`
