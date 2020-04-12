@@ -203,7 +203,7 @@ console.log(str.length)  // 11
     ```
     
 3. 可以把函数的**参数**想象成局部变量。
-    
+   
 4. 使用`instanceof`可以检测是否是引用类型的值，如：
 
     ```javascript
@@ -247,25 +247,36 @@ console.log(str.length)  // 11
 
 #### 第五章 引用类型
 1. 新对象是使用new操作符后跟一个构造函数来创建的。构造函数本身就是一个函数，只不过该函数是出于**创建新对象**的目的而定义的。
-2. `Array.isArray()`可以判断是不是数组
-    
-    ```
+
+2. 访问对象的属性有两种方法：`点表示法` 和 `方括号语法`。方括号语法可以使用**变量**来访问属性。
+
+3. `Array.isArray()`可以判断是不是数组
+
+    ```javascript
     var list = []
     Array.isArray(list)    // true
     ```
-3. `join()`方法能使用不同的分隔符来构建这个字符串。
-    
-    ```
+
+4. `join()`方法能使用不同的分隔符来构建这个字符串。
+
+    ```javascript
     let str = ["hello", "world"];
     let result = str.join(",") // hello,world
     ```
-4. `push()`可以添加任意数量的值，把它们添加到数组的末尾，并返回数组的长度。
-5. `pop()`从数组末尾移除最后一项，返回移除的项。
-6. `shift()`移除数组的第一项，并返回该项。
-7. `unshift()`在数组的前端添加任意项。
-8. `reverse()`方法反转数组项的顺序。
-9. `sort()`方法也会对数组进行排序，但是是按字符串进行的比较。所以需要定义一个方法。
-    ```
+
+5. `push()`可以添加任意数量的值，把它们添加到数组的末尾，并返回数组的长度。
+
+6. `pop()`从数组末尾移除最后一项，返回移除的项。
+
+7. `shift()`移除数组的第一项，并返回该项。
+
+8. `unshift()`在数组的前端添加任意项。
+
+9. `reverse()`方法反转数组项的顺序。
+
+10. `sort()`方法也会对数组进行排序，但是是按**字符串**进行的比较。所以需要定义一个方法。
+
+    ```javascript
     function compare(value1, value2) {
         if(value1 < value2) {
             return -1
@@ -275,69 +286,111 @@ console.log(str.length)  // 11
             return 0;
         }
     }
-
+    
     var values = [1, 3, 5, 10]
     values.sort(compare)
     ```
 
-    ```
+    ```javascript
     function compare(value1, value2) {
         return value2 - value1
     }
     ```
-10. `concat()`方法将参数添加到数组的末尾。
-11. `slice()`方法将返回指定参数位置的值。如果有两个参数，则返回起始和结束位置之间的项，但不包括结尾位置的项。
-    ```
-    var colors = ["red", "yellow", "blue", "orange"];
-    var colors2 = colors.slice(1); // ["yellow", "blue", "orange"]
-    var colors3 = colors.slice(1, 3);  // ["yellow", "blue"]
-    ```
-12. `splice()`方法能够进行：
-    * 删除：`splice(1, 2)`1是要删除位置，2是删除项数。
-    * 插入：`splice(1, 0, "red", "green")`1是要插入的位置，0是要删除的项，剩下两个是要插入的项
-    * 替换：`splice(1, 2, "red", "green")`1是起始位置，2是要删除的项，剩下两个是要替换的项
-13. `indexOf()`和`lastIndexOf()`是用来查找的。接收两个参数，要查找的项和表示查找起点位置的索引。`indexOf()`从前向后查找，`lastIndexOf()`相反。如果没找到，返回-1。
-14. 迭代方法
-    * `every()`,对每一项进行判断，如果都符合条件，返回true,否则返回false
-    * `some()`，对每一项进行判断，只要其中一项符合条件，就返回true。
-    * `filter()`，对数组进行遍历，返回符合条件的值。这个方法对查询符合某些条件的数组项非常有用。
-    * `map()`，能够对数组中的每一项进行相对应的操作。
-    * `forEach()`方法能够对数组中的每一项运行传入的函数。
-15. 递归方法：
-    * `reduce()`,这个方法接收四个参数。可以用来求和
-        * `prev`前一个值
-        * `cur`当前值
-        * `index`项的索引
-        * `array`数组对象
-    ```
-    let arr = [1, 45, 3, 54, 25, 3];
-    let item = 0;
-    item = arr.reduce(function(prev, cur, index, array) {
-        return prev + cur
-    }
-    ```
-    * `reduceRight()`，方法相同，遍历方向相反。
-16. `Date.now()`获取当前的时间戳。使用`+new Date()`方法同样能获取到。
-17. 使用不带圆括号的函数名是访问函数指针，而不是调用函数。
-18. 如果创建了两个同名函数，**第二个会覆盖掉第一个**
-19. 函数的`length`属性定义了函数参数的个数。
-20. `apply()/call()/bind()`能够改变this的指向。
-21. `.toFixed(2)`转换小数点后两位。
-22. `toExponential(2)`返回以指数表示法表示的数值的字符串形式。
-23. `toPrecision(2)`返回最合适的格式。
-24. `charAt()`返回指定位置的值。
-25. `concat()`可以拼接字符串。
+
+11. `concat()`方法将参数添加到数组的末尾。
+
+12. `slice()`方法将返回指定参数位置的值。如果有两个参数，则返回起始和结束位置之间的项，但不包括结尾位置的项。
+
+     ```javascript
+     var colors = ["red", "yellow", "blue", "orange"];
+     var colors2 = colors.slice(1); // ["yellow", "blue", "orange"]
+     var colors3 = colors.slice(1, 3);  // ["yellow", "blue"]
+     ```
+
+13. `splice()`方法能够进行：
+     * 删除：`splice(1, 2)`1是要删除位置，2是删除项数。
+     * 插入：`splice(1, 0, "red", "green")`1是要插入的位置，0是要删除的项，剩下两个是要插入的项
+     * 替换：`splice(1, 2, "red", "green")`1是起始位置，2是要删除的项，剩下两个是要替换的项
+
+14. `indexOf()`和`lastIndexOf()`是用来查找的。接收两个参数，要查找的项和表示查找起点位置的索引。`indexOf()`从前向后查找，`lastIndexOf()`相反。如果没找到，返回-1。
+
+15. 迭代方法
+     * `every()`,对每一项进行判断，如果都符合条件，返回true,否则返回false
+     * `some()`，对每一项进行判断，只要其中一项符合条件，就返回true。
+     * `filter()`，对数组进行遍历，返回符合条件的值。这个方法对查询符合某些条件的数组项非常有用。
+     * `map()`，能够对数组中的每一项进行相对应的操作。
+     * `forEach()`方法能够对数组中的每一项运行传入的函数。
+
+16. 递归方法：
+     * `reduce()`,这个方法接收四个参数。可以用来求和
+         * `prev`前一个值
+         * `cur`当前值
+         * `index`项的索引
+         * `array`数组对象
+     ```javascript
+     let arr = [1, 45, 3, 54, 25, 3];
+     let item = 0;
+     item = arr.reduce(function(prev, cur, index, array) {
+         return prev + cur
+     }
+     ```
+     * `reduceRight()`，方法相同，遍历方向相反。
+
+17. `Date.now()`获取当前的时间戳。使用`+new Date()`方法同样能获取到。
+
+18. RegExp.$1、RegExp.$2 ....RegExp.$9 分别储存第一、第二...第九个**捕获组**。调用 exec() / test() 方法时，这些属性会被填充。
+
+19. 使用不带圆括号的函数名是访问函数指针，而不是调用函数。
+
+20. 如果创建了两个同名函数，**第二个会覆盖掉第一个**。
+
+21. arguments 里面有个叫 `callee` 的属性，指向拥有这个 arguments 对象的函数。ESMAScript 5 也规范了另一个函数对象的属性： `caller`， 可以通过 `arguments.callee.caller` 访问。
+
+22. 5函数的`length`属性定义了函数参数的个数。
+
+23. `apply()/call()/bind()`能够改变this的指向。
+
+24. `.toFixed(2)`转换小数点后两位。
+
+25. `toExponential(2)`返回以指数表示法表示的数值的字符串形式。
+
+26. `toPrecision(2)`返回最合适的格式。
+
+27. `charAt()`返回指定位置的值。
+
+28. `concat()`可以拼接字符串。
 >虽然这个方法是专门用来拼接字符串的方法，但在实践中使用更多的还是`+`，使用`+`在大多数情况下都比使用`concat()`方法要简便易行。
 26. `trim()`方法能够返回去掉前置和后置的空格之后的值。
+
 27. `toUpperCase()`转换大写`toLowerCase()`转换小写
+
 28. `split()`方法能够将指定的分隔符把字符串分割。
+
 29. `localeCompare()`方法能够比较两个字符串，然后返回特定的值。
+
 30. `Math.max()`返回指定数组的最大值。`Math.min()`返回指定数组的最小值。
+
 31. 舍入方法
     * `Math.ceil()`向上舍入
     * `Math.floor()`向下舍入
     * `Math.round()`标准舍入
+    
 32. `Math.random()`方法返回一个大于等于0小于1的一个随机数。
+
+33. 取得 x  到 x 之间的随机数
+
+    ```javascript
+    
+    function selectForm(lowerValue, upperValue) {
+    
+        let choices = upperValue - lowerValue + 1
+    
+        return Math.floor(Math.random * choices + upperValue)
+    
+    }
+    
+    let num = selectForm(2, 10) 
+    ```
 
 #### 第六章
 1. ECMAScript中有两种属性：

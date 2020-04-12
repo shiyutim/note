@@ -461,50 +461,68 @@ console.log(message) // The number is 15
 </ol>
 <h4>第五章 引用类型</h4>
 <ol>
-<li>新对象是使用new操作符后跟一个构造函数来创建的。构造函数本身就是一个函数，只不过该函数是出于<strong>创建新对象</strong>的目的而定义的。</li>
+<li><p>新对象是使用new操作符后跟一个构造函数来创建的。构造函数本身就是一个函数，只不过该函数是出于<strong>创建新对象</strong>的目的而定义的。</p>
+</li>
+<li><p>访问对象的属性有两种方法：<code>点表示法</code> 和 <code>方括号语法</code>。方括号语法可以使用<strong>变量</strong>来访问属性。</p>
+</li>
 <li><p><code>Array.isArray()</code>可以判断是不是数组</p>
-<pre><code> var list = []
+<pre><code class="lang-javascript"> var list = []
  Array.isArray(list)    // true
-</code></pre></li>
+</code></pre>
+</li>
 <li><p><code>join()</code>方法能使用不同的分隔符来构建这个字符串。</p>
-<pre><code> let str = [&quot;hello&quot;, &quot;world&quot;];
+<pre><code class="lang-javascript"> let str = [&quot;hello&quot;, &quot;world&quot;];
  let result = str.join(&quot;,&quot;) // hello,world
-</code></pre></li>
-<li><code>push()</code>可以添加任意数量的值，把它们添加到数组的末尾，并返回数组的长度。</li>
-<li><code>pop()</code>从数组末尾移除最后一项，返回移除的项。</li>
-<li><code>shift()</code>移除数组的第一项，并返回该项。</li>
-<li><code>unshift()</code>在数组的前端添加任意项。</li>
-<li><code>reverse()</code>方法反转数组项的顺序。</li>
-<li><p><code>sort()</code>方法也会对数组进行排序，但是是按字符串进行的比较。所以需要定义一个方法。</p>
-<pre><code> function compare(value1, value2) {
-     if(value1 &lt; value2) {
-         return -1
-     }else if(value &gt; value2) {
-         return 1
-     }else {
-         return 0;
-     }
- }
+</code></pre>
+</li>
+<li><p><code>push()</code>可以添加任意数量的值，把它们添加到数组的末尾，并返回数组的长度。</p>
+</li>
+<li><p><code>pop()</code>从数组末尾移除最后一项，返回移除的项。</p>
+</li>
+<li><p><code>shift()</code>移除数组的第一项，并返回该项。</p>
+</li>
+<li><p><code>unshift()</code>在数组的前端添加任意项。</p>
+</li>
+<li><p><code>reverse()</code>方法反转数组项的顺序。</p>
+</li>
+<li><p><code>sort()</code>方法也会对数组进行排序，但是是按<strong>字符串</strong>进行的比较。所以需要定义一个方法。</p>
+<pre><code class="lang-javascript">function compare(value1, value2) {
+    if(value1 &lt; value2) {
+        return -1
+    }else if(value &gt; value2) {
+        return 1
+    }else {
+        return 0;
+    }
+}
 
- var values = [1, 3, 5, 10]
- values.sort(compare)
-</code></pre><pre><code> function compare(value1, value2) {
-     return value2 - value1
- }
-</code></pre></li>
-<li><code>concat()</code>方法将参数添加到数组的末尾。</li>
-<li><code>slice()</code>方法将返回指定参数位置的值。如果有两个参数，则返回起始和结束位置之间的项，但不包括结尾位置的项。<pre><code>var colors = [&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;, &quot;orange&quot;];
-var colors2 = colors.slice(1); // [&quot;yellow&quot;, &quot;blue&quot;, &quot;orange&quot;]
-var colors3 = colors.slice(1, 3);  // [&quot;yellow&quot;, &quot;blue&quot;]
-</code></pre></li>
-<li><code>splice()</code>方法能够进行：<ul>
+var values = [1, 3, 5, 10]
+values.sort(compare)
+</code></pre>
+<pre><code class="lang-javascript">function compare(value1, value2) {
+    return value2 - value1
+}
+</code></pre>
+</li>
+<li><p><code>concat()</code>方法将参数添加到数组的末尾。</p>
+</li>
+<li><p><code>slice()</code>方法将返回指定参数位置的值。如果有两个参数，则返回起始和结束位置之间的项，但不包括结尾位置的项。</p>
+<pre><code class="lang-javascript"> var colors = [&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;, &quot;orange&quot;];
+ var colors2 = colors.slice(1); // [&quot;yellow&quot;, &quot;blue&quot;, &quot;orange&quot;]
+ var colors3 = colors.slice(1, 3);  // [&quot;yellow&quot;, &quot;blue&quot;]
+</code></pre>
+</li>
+<li><p><code>splice()</code>方法能够进行：</p>
+<ul>
 <li>删除：<code>splice(1, 2)</code>1是要删除位置，2是删除项数。</li>
 <li>插入：<code>splice(1, 0, &quot;red&quot;, &quot;green&quot;)</code>1是要插入的位置，0是要删除的项，剩下两个是要插入的项</li>
 <li>替换：<code>splice(1, 2, &quot;red&quot;, &quot;green&quot;)</code>1是起始位置，2是要删除的项，剩下两个是要替换的项</li>
 </ul>
 </li>
-<li><code>indexOf()</code>和<code>lastIndexOf()</code>是用来查找的。接收两个参数，要查找的项和表示查找起点位置的索引。<code>indexOf()</code>从前向后查找，<code>lastIndexOf()</code>相反。如果没找到，返回-1。</li>
-<li>迭代方法<ul>
+<li><p><code>indexOf()</code>和<code>lastIndexOf()</code>是用来查找的。接收两个参数，要查找的项和表示查找起点位置的索引。<code>indexOf()</code>从前向后查找，<code>lastIndexOf()</code>相反。如果没找到，返回-1。</p>
+</li>
+<li><p>迭代方法</p>
+<ul>
 <li><code>every()</code>,对每一项进行判断，如果都符合条件，返回true,否则返回false</li>
 <li><code>some()</code>，对每一项进行判断，只要其中一项符合条件，就返回true。</li>
 <li><code>filter()</code>，对数组进行遍历，返回符合条件的值。这个方法对查询符合某些条件的数组项非常有用。</li>
@@ -512,47 +530,83 @@ var colors3 = colors.slice(1, 3);  // [&quot;yellow&quot;, &quot;blue&quot;]
 <li><code>forEach()</code>方法能够对数组中的每一项运行传入的函数。</li>
 </ul>
 </li>
-<li>递归方法：<ul>
+<li><p>递归方法：</p>
+<ul>
 <li><code>reduce()</code>,这个方法接收四个参数。可以用来求和<ul>
 <li><code>prev</code>前一个值</li>
 <li><code>cur</code>当前值</li>
 <li><code>index</code>项的索引</li>
-<li><code>array</code>数组对象<pre><code>let arr = [1, 45, 3, 54, 25, 3];
+<li><code>array</code>数组对象<pre><code class="lang-javascript">let arr = [1, 45, 3, 54, 25, 3];
 let item = 0;
 item = arr.reduce(function(prev, cur, index, array) {
 return prev + cur
 }
-</code></pre></li>
+</code></pre>
+</li>
 </ul>
 </li>
 <li><code>reduceRight()</code>，方法相同，遍历方向相反。</li>
 </ul>
 </li>
-<li><code>Date.now()</code>获取当前的时间戳。使用<code>+new Date()</code>方法同样能获取到。</li>
-<li>使用不带圆括号的函数名是访问函数指针，而不是调用函数。</li>
-<li>如果创建了两个同名函数，<strong>第二个会覆盖掉第一个</strong></li>
-<li>函数的<code>length</code>属性定义了函数参数的个数。</li>
-<li><code>apply()/call()/bind()</code>能够改变this的指向。</li>
-<li><code>.toFixed(2)</code>转换小数点后两位。</li>
-<li><code>toExponential(2)</code>返回以指数表示法表示的数值的字符串形式。</li>
-<li><code>toPrecision(2)</code>返回最合适的格式。</li>
-<li><code>charAt()</code>返回指定位置的值。</li>
-<li><code>concat()</code>可以拼接字符串。<blockquote>
+<li><p><code>Date.now()</code>获取当前的时间戳。使用<code>+new Date()</code>方法同样能获取到。</p>
+</li>
+<li><p>RegExp.$1、RegExp.$2 ....RegExp.$9 分别储存第一、第二...第九个<strong>捕获组</strong>。调用 exec() / test() 方法时，这些属性会被填充。</p>
+</li>
+<li><p>使用不带圆括号的函数名是访问函数指针，而不是调用函数。</p>
+</li>
+<li><p>如果创建了两个同名函数，<strong>第二个会覆盖掉第一个</strong>。</p>
+</li>
+<li><p>arguments 里面有个叫 <code>callee</code> 的属性，指向拥有这个 arguments 对象的函数。ESMAScript 5 也规范了另一个函数对象的属性： <code>caller</code>， 可以通过 <code>arguments.callee.caller</code> 访问。</p>
+</li>
+<li><p>5函数的<code>length</code>属性定义了函数参数的个数。</p>
+</li>
+<li><p><code>apply()/call()/bind()</code>能够改变this的指向。</p>
+</li>
+<li><p><code>.toFixed(2)</code>转换小数点后两位。</p>
+</li>
+<li><p><code>toExponential(2)</code>返回以指数表示法表示的数值的字符串形式。</p>
+</li>
+<li><p><code>toPrecision(2)</code>返回最合适的格式。</p>
+</li>
+<li><p><code>charAt()</code>返回指定位置的值。</p>
+</li>
+<li><p><code>concat()</code>可以拼接字符串。</p>
+<blockquote>
 <p>虽然这个方法是专门用来拼接字符串的方法，但在实践中使用更多的还是<code>+</code>，使用<code>+</code>在大多数情况下都比使用<code>concat()</code>方法要简便易行。</p>
 </blockquote>
 </li>
-<li><code>trim()</code>方法能够返回去掉前置和后置的空格之后的值。</li>
-<li><code>toUpperCase()</code>转换大写<code>toLowerCase()</code>转换小写</li>
-<li><code>split()</code>方法能够将指定的分隔符把字符串分割。</li>
-<li><code>localeCompare()</code>方法能够比较两个字符串，然后返回特定的值。</li>
-<li><code>Math.max()</code>返回指定数组的最大值。<code>Math.min()</code>返回指定数组的最小值。</li>
-<li>舍入方法<ul>
+<li><p><code>trim()</code>方法能够返回去掉前置和后置的空格之后的值。</p>
+</li>
+<li><p><code>toUpperCase()</code>转换大写<code>toLowerCase()</code>转换小写</p>
+</li>
+<li><p><code>split()</code>方法能够将指定的分隔符把字符串分割。</p>
+</li>
+<li><p><code>localeCompare()</code>方法能够比较两个字符串，然后返回特定的值。</p>
+</li>
+<li><p><code>Math.max()</code>返回指定数组的最大值。<code>Math.min()</code>返回指定数组的最小值。</p>
+</li>
+<li><p>舍入方法</p>
+<ul>
 <li><code>Math.ceil()</code>向上舍入</li>
 <li><code>Math.floor()</code>向下舍入</li>
 <li><code>Math.round()</code>标准舍入</li>
 </ul>
 </li>
-<li><code>Math.random()</code>方法返回一个大于等于0小于1的一个随机数。</li>
+<li><p><code>Math.random()</code>方法返回一个大于等于0小于1的一个随机数。</p>
+</li>
+<li><p>取得 x  到 x 之间的随机数</p>
+<pre><code class="lang-javascript">
+function selectForm(lowerValue, upperValue) {
+
+    let choices = upperValue - lowerValue + 1
+
+    return Math.floor(Math.random * choices + upperValue)
+
+}
+
+let num = selectForm(2, 10)
+</code></pre>
+</li>
 </ol>
 <h4>第六章</h4>
 <ol>
@@ -927,7 +981,7 @@ history.go(1)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript 高级程序设计","level":"1.2","depth":1,"next":{"title":"图解HTTP","level":"1.3","depth":1,"path":"book/图解HTTP.md","ref":"book/图解HTTP.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"book/javaScript高级程序设计.md","mtime":"2020-04-11T13:12:44.515Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-11T13:13:31.701Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript 高级程序设计","level":"1.2","depth":1,"next":{"title":"图解HTTP","level":"1.3","depth":1,"path":"book/图解HTTP.md","ref":"book/图解HTTP.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"book/javaScript高级程序设计.md","mtime":"2020-04-12T15:17:26.708Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-12T15:18:12.413Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
