@@ -1,0 +1,361 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>JavaScript常用函数 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="React.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../book/javaScript高级程序设计.html">
+            
+                <a href="../book/javaScript高级程序设计.html">
+            
+                    
+                    JavaScript 高级程序设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../book/图解HTTP.html">
+            
+                <a href="../book/图解HTTP.html">
+            
+                    
+                    图解HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../book/高性能JavaScript.html">
+            
+                <a href="../book/高性能JavaScript.html">
+            
+                    
+                    高性能JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../book/响应式web设计html5和css3实战.html">
+            
+                <a href="../book/响应式web设计html5和css3实战.html">
+            
+                    
+                    响应式web设计html5和css3实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="React.html">
+            
+                <a href="React.html">
+            
+                    
+                    React笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="javascriptFun.html">
+            
+                <a href="javascriptFun.html">
+            
+                    
+                    JavaScript常用函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >JavaScript常用函数</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="javascript-&#x5E38;&#x7528;&#x51FD;&#x6570;">JavaScript &#x5E38;&#x7528;&#x51FD;&#x6570;</h1>
+<h2 id="&#x83B7;&#x53D6;&#x5730;&#x5740;&#x680F;&#x6307;&#x5B9A;&#x7684;&#x53C2;&#x6570;">&#x83B7;&#x53D6;&#x5730;&#x5740;&#x680F;&#x6307;&#x5B9A;&#x7684;&#x53C2;&#x6570;</h2>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQueryString</span>(<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;(^|&amp;)&quot;</span> + name + <span class="hljs-string">&quot;=([^&amp;]*)(&amp;|$)&quot;</span>, <span class="hljs-string">&quot;i&quot;</span>);
+    <span class="hljs-keyword">var</span> r = <span class="hljs-built_in">window</span>.location.search.substr(<span class="hljs-number">1</span>).match(reg);
+    <span class="hljs-keyword">if</span> (r != <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">unescape</span>(r[<span class="hljs-number">2</span>]); <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+}
+</code></pre>
+<h2 id="&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x503C;">&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x503C;</h2>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">roundNum</span>(<span class="hljs-params">smlNum, larNum</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.round((larNum - smlNum) * <span class="hljs-built_in">Math</span>.random() + smlNum)
+}
+</code></pre>
+<h2 id="&#x6DF1;&#x62F7;&#x8D1D;">&#x6DF1;&#x62F7;&#x8D1D;</h2>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> assign = (newVal, oldVal) =&gt; {
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> oldVal) {
+        <span class="hljs-keyword">let</span> item = oldVal[k]
+
+        <span class="hljs-keyword">if</span>(item <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) {   <span class="hljs-comment">// Array&#x7684;&#x5224;&#x65AD;&#x5FC5;&#x987B;&#x5728;Object&#x7684;&#x524D;&#x9762;&#xFF0C;&#x56E0;&#x4E3A;Array instance Object &#x4E3A;true</span>
+            newVal[k] = []                    
+            assign(newVal[k], item)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (item <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>) {
+            newVal[k] = {}
+            assign(newVal[k], item)
+        } <span class="hljs-keyword">else</span> {
+            newVal[k] = item
+        }
+    }
+}
+</code></pre>
+<h2 id="&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x6570;&#x7684;&#x5927;&#x5C0F;">&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x6570;&#x7684;&#x5927;&#x5C0F;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/*
+* &#x5347;&#x5E8F;
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compare</span>(<span class="hljs-params">a, b</span>) </span>{
+    <span class="hljs-keyword">return</span> a - b
+}
+arr.sort(compare)
+
+<span class="hljs-comment">/*
+* &#x964D;&#x5E8F;
+*/</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compare</span>(<span class="hljs-params">a, b</span>) </span>{
+    <span class="hljs-keyword">return</span> b - a
+}
+arr.sort(compare)
+
+<span class="hljs-comment">/*
+* &#x6BD4;&#x8F83;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x503C;
+*/</span> 
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compare</span>(<span class="hljs-params">propertyName</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>{
+        <span class="hljs-keyword">let</span> value1 = a[propertyName]
+        <span class="hljs-keyword">let</span> value2 = b[propertyName]
+        <span class="hljs-keyword">return</span> value1 - value2
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="React.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: React笔记">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-04-19T15:17:56.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-19T15:20:01.888Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

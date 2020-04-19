@@ -401,7 +401,7 @@ console.log(str.length)  // 11
         * `Value`包含这个属性的数据值
 
     修改属性默认的特性，必须使用`Object.defineProperty()`方法。
-    ```
+    ```javascript
     var person = new Object();
     Object.defineProperty(person, 'age', {
         Vallue: '20'
@@ -413,21 +413,21 @@ console.log(str.length)  // 11
         * `Get`在读取属性时调用的函数。
         * `Set`在写入属性时调用的函数。
 
-    ```
+    ```javascript
     var person = {
         _year: 2019    //_（下划线）是一种记号，表示只能通过对象访问的属性。
     }
     Object.defineProperty(person, 'year', {
-                get: function() {
-                    return this._year
-                },
-                set: function(newValue) {
-                    if(newValue > 2019) {
-                        this._year = newValue;
-                        this.edition += newValue - 2019;
-                    } 
-                }
-            });
+        get: function() {
+            return this._year
+        },
+        set: function(newValue) {
+            if(newValue > 2019) {
+                this._year = newValue;
+                this.edition += newValue - 2019;
+            } 
+        }
+    });
     person.year = 2029
     console.log(person)
     ```
@@ -444,7 +444,7 @@ console.log(str.length)  // 11
 * 原型模式
 11. JavaScript主要通过原型链实现继承。
 
-#### 第七章
+#### 第七章 
 1. 闭包是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。
 2. this对象是在运行时基于函数的执行环境绑定的。在全局环境中，this等于window，而当函数被作为某个对象的方法调用时，this等于那个对象。
 3. 可以通过`call()`和`apply()`改变函数的执行环境。
