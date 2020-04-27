@@ -298,6 +298,25 @@ arr.sort(compare)
     }
 }
 </code></pre>
+<h2 id="&#x52A0;&#x5BC6;&#x5B57;&#x7B26;&#x4E32;">&#x52A0;&#x5BC6;&#x5B57;&#x7B26;&#x4E32;</h2>
+<pre><code class="lang-javascript">
+<span class="hljs-keyword">const</span> encode = str =&gt; btoa(<span class="hljs-built_in">encodeURIComponent</span>(str))
+
+
+<span class="hljs-keyword">const</span> decode = str =&gt; <span class="hljs-built_in">decodeURIComponent</span>(atob(str))
+
+
+<span class="hljs-keyword">let</span> code = encode(<span class="hljs-string">&apos;My name is shiyutim&apos;</span>)
+<span class="hljs-keyword">let</span> result = decode(code)
+</code></pre>
+<h2 id="&#x5224;&#x65AD;&#x503C;&#x7684;&#x7C7B;&#x578B;">&#x5224;&#x65AD;&#x503C;&#x7684;&#x7C7B;&#x578B;</h2>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">estimateType</span>(<span class="hljs-params">value</span>)</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(value).replace(<span class="hljs-regexp">/^.{8}(.+)]$/</span>, (m,$<span class="hljs-number">1</span>)=&gt; $<span class="hljs-number">1.</span>toLowerCase());
+}
+
+<span class="hljs-comment">// toString.call([]) &quot;[object Array]&quot; &#x622A;&#x53D6;&#x540E;&#x9762;&#x7684;&#x503C;&#x5373;&#x53EF;</span>
+<span class="hljs-comment">// &#x5176;&#x4ED6;&#x540C;&#x7406;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -341,7 +360,7 @@ arr.sort(compare)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-04-19T15:17:56.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T14:14:24.151Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-04-27T14:42:23.913Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-27T14:42:54.986Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

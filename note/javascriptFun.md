@@ -71,3 +71,34 @@ function compare(propertyName) {
     }
 }
 ```
+
+
+
+## 加密字符串
+
+```javascript
+
+const encode = str => btoa(encodeURIComponent(str))
+
+
+const decode = str => decodeURIComponent(atob(str))
+
+
+let code = encode('My name is shiyutim')
+let result = decode(code)
+```
+
+
+
+## 判断值的类型
+
+```js
+function estimateType(value){
+    return Object.prototype.toString.call(value).replace(/^.{8}(.+)]$/, (m,$1)=> $1.toLowerCase());
+}
+
+// toString.call([]) "[object Array]" 截取后面的值即可
+// 其他同理
+
+```
+
