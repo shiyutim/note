@@ -102,3 +102,34 @@ function estimateType(value){
 
 ```
 
+## 数组去重（包含多维数组）
+
+```js
+let result = []
+/**
+*  @arr 要去重的数组
+*  @target 接收去重后的数组
+*/
+function  uniqueArr(arr, target) {
+    if(!target) return
+    if(!(arr instanceof Array)) return
+	
+    // 写法一
+    arr.forEach(i => {
+
+        if(Array.isArray(i)) {
+            return uniqueArr(i, target)
+        }
+
+        if(!target.includes(i)) {
+            target.push(i)
+        }
+    })
+    
+    // 写法二
+    //    arr.forEach(i => Array.isArray(i) ? uniqueArr(i, target) : target.includes(i) ? '' : target.push(i))
+}
+
+uniqueArr([1, 2, 3, [1, 2, 3, [324, 234, 13]] ,[1, 2 ,3, 9, 8]], result)
+```
+

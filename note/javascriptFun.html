@@ -317,6 +317,34 @@ arr.sort(compare)
 <span class="hljs-comment">// toString.call([]) &quot;[object Array]&quot; &#x622A;&#x53D6;&#x540E;&#x9762;&#x7684;&#x503C;&#x5373;&#x53EF;</span>
 <span class="hljs-comment">// &#x5176;&#x4ED6;&#x540C;&#x7406;</span>
 </code></pre>
+<h2 id="&#x6570;&#x7EC4;&#x53BB;&#x91CD;&#xFF08;&#x5305;&#x542B;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#xFF09;">&#x6570;&#x7EC4;&#x53BB;&#x91CD;&#xFF08;&#x5305;&#x542B;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#xFF09;</h2>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> result = []
+<span class="hljs-comment">/**
+*  @arr &#x8981;&#x53BB;&#x91CD;&#x7684;&#x6570;&#x7EC4;
+*  @target &#x63A5;&#x6536;&#x53BB;&#x91CD;&#x540E;&#x7684;&#x6570;&#x7EC4;
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">uniqueArr</span>(<span class="hljs-params">arr, target</span>) </span>{
+    <span class="hljs-keyword">if</span>(!target) <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">if</span>(!(arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>)) <span class="hljs-keyword">return</span>
+
+    <span class="hljs-comment">// &#x5199;&#x6CD5;&#x4E00;</span>
+    arr.forEach(i =&gt; {
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">Array</span>.isArray(i)) {
+            <span class="hljs-keyword">return</span> uniqueArr(i, target)
+        }
+
+        <span class="hljs-keyword">if</span>(!target.includes(i)) {
+            target.push(i)
+        }
+    })
+
+    <span class="hljs-comment">// &#x5199;&#x6CD5;&#x4E8C;</span>
+    <span class="hljs-comment">//    arr.forEach(i =&gt; Array.isArray(i) ? uniqueArr(i, target) : target.includes(i) ? &apos;&apos; : target.push(i))</span>
+}
+
+uniqueArr([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">324</span>, <span class="hljs-number">234</span>, <span class="hljs-number">13</span>]] ,[<span class="hljs-number">1</span>, <span class="hljs-number">2</span> ,<span class="hljs-number">3</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>]], result)
+</code></pre>
 
                                 
                                 </section>
@@ -360,7 +388,7 @@ arr.sort(compare)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-04-27T14:42:23.913Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T14:59:31.467Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-05-05T11:53:55.849Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-05T14:11:59.331Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
