@@ -133,3 +133,21 @@ function  uniqueArr(arr, target) {
 uniqueArr([1, 2, 3, [1, 2, 3, [324, 234, 13]] ,[1, 2 ,3, 9, 8]], result)
 ```
 
+## 判断是否是中文
+
+```js
+function verifyIsChinese(str) {
+    var strList = str.split('')
+
+    let result = strList.every(s => {
+        let code = s.charCodeAt()
+        if(code > 19968 && code < 40869) {
+            return true
+        } else {
+            return false
+        }
+    })
+    return result;
+}
+```
+

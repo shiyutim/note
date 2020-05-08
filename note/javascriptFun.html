@@ -345,6 +345,21 @@ arr.sort(compare)
 
 uniqueArr([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">324</span>, <span class="hljs-number">234</span>, <span class="hljs-number">13</span>]] ,[<span class="hljs-number">1</span>, <span class="hljs-number">2</span> ,<span class="hljs-number">3</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>]], result)
 </code></pre>
+<h2 id="&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x4E2D;&#x6587;">&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x4E2D;&#x6587;</h2>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verifyIsChinese</span>(<span class="hljs-params">str</span>) </span>{
+    <span class="hljs-keyword">var</span> strList = str.split(<span class="hljs-string">&apos;&apos;</span>)
+
+    <span class="hljs-keyword">let</span> result = strList.every(s =&gt; {
+        <span class="hljs-keyword">let</span> code = s.charCodeAt()
+        <span class="hljs-keyword">if</span>(code &gt; <span class="hljs-number">19968</span> &amp;&amp; code &lt; <span class="hljs-number">40869</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+        }
+    })
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -388,7 +403,7 @@ uniqueArr([<span class="hljs-number">1</span>, <span class="hljs-number">2</span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-05-05T11:53:55.849Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-05T14:11:59.331Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-05-08T14:52:47.097Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-08T14:53:37.224Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
