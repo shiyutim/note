@@ -107,8 +107,8 @@ function estimateType(value){
 ```js
 let result = []
 /**
-*  @arr 要去重的数组
-*  @target 接收去重后的数组
+*  @params {arr} 要去重的数组
+*  @params {target} 接收去重后的数组
 */
 function  uniqueArr(arr, target) {
     if(!target) return
@@ -148,6 +148,18 @@ function verifyIsChinese(str) {
         }
     })
     return result;
+}
+```
+
+## 判断是否是数组
+
+```javascript
+function isArray(value) {
+    if(typeof Array.isArray === 'function') {
+        return Array.isArray(value)
+    } else {
+        return Object.prototype.toString.call(value) === '[Object Array]'
+    }
 }
 ```
 

@@ -320,8 +320,8 @@ arr.sort(compare)
 <h2 id="&#x6570;&#x7EC4;&#x53BB;&#x91CD;&#xFF08;&#x5305;&#x542B;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#xFF09;">&#x6570;&#x7EC4;&#x53BB;&#x91CD;&#xFF08;&#x5305;&#x542B;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#xFF09;</h2>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> result = []
 <span class="hljs-comment">/**
-*  @arr &#x8981;&#x53BB;&#x91CD;&#x7684;&#x6570;&#x7EC4;
-*  @target &#x63A5;&#x6536;&#x53BB;&#x91CD;&#x540E;&#x7684;&#x6570;&#x7EC4;
+*  @params {arr} &#x8981;&#x53BB;&#x91CD;&#x7684;&#x6570;&#x7EC4;
+*  @params {target} &#x63A5;&#x6536;&#x53BB;&#x91CD;&#x540E;&#x7684;&#x6570;&#x7EC4;
 */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">uniqueArr</span>(<span class="hljs-params">arr, target</span>) </span>{
     <span class="hljs-keyword">if</span>(!target) <span class="hljs-keyword">return</span>
@@ -358,6 +358,15 @@ uniqueArr([<span class="hljs-number">1</span>, <span class="hljs-number">2</span
         }
     })
     <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<h2 id="&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x6570;&#x7EC4;">&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x6570;&#x7EC4;</h2>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArray</span>(<span class="hljs-params">value</span>) </span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Array</span>.isArray === <span class="hljs-string">&apos;function&apos;</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.isArray(value)
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(value) === <span class="hljs-string">&apos;[Object Array]&apos;</span>
+    }
 }
 </code></pre>
 
@@ -403,7 +412,7 @@ uniqueArr([<span class="hljs-number">1</span>, <span class="hljs-number">2</span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-05-08T14:52:47.097Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-30T14:56:44.409Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript常用函数","level":"1.7","depth":1,"next":{"title":"代码整洁之道","level":"1.8","depth":1,"path":"book/代码整洁之道.md","ref":"book/代码整洁之道.md","articles":[]},"previous":{"title":"React笔记","level":"1.6","depth":1,"path":"note/React.md","ref":"note/React.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/javascriptFun.md","mtime":"2020-06-13T14:53:54.362Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-16T14:51:05.341Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
