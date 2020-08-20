@@ -13,9 +13,9 @@ jobs:
           persist-credentials: false
       - name: install and build
           run: |
-            npm install
+            npm install -g
             gitbook build
-            
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.5.9
           with: 
