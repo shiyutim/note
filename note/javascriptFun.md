@@ -163,3 +163,15 @@ function isArray(value) {
 }
 ```
 
+## 彻底冻结复杂结构类型
+
+```javascript
+const constantize = obj => {
+    Object.freeze(obj)
+    Object.keys(obj).forEach(key => {
+        if(typeof obj[key] === 'object') {
+            constantize(obj[key])
+        }
+    })
+}
+```
